@@ -52,9 +52,6 @@ zstyle ':completion:*' list-colors
 export PATH="$PATH:${HOME}/.dotnet/tools"
 export DOTNET_ROOT=$(dirname $(realpath $(which dotnet)))
 
-## Shell variable, for ranger manly -------------------------
-export SHELL=$(which zsh)
-
 # Source other scripts ------------------------------------------------------------------
 
 ### Set up Node Version Manager -----------------
