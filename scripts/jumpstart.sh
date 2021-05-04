@@ -60,7 +60,6 @@ declare -a AUR_PKGS=(
 	"spicetify-cli" "spicetify-custom-apps-and-extensions-git" "spicetify-themes-git" # Custom theme and extensions for the offical Spotify client
 
 	# Fonts
-	"nerd-fonts-cascadia-code"	  # CaskaydiaCove Nerd Font
 	"nerd-fonts-fira-code"		  # FiraCode Nerd Font
 )
 
