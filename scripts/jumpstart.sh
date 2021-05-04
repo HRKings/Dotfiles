@@ -33,6 +33,7 @@ declare -a OFFICIAL_PKGS=(
 	"discord"									   # Communication at its finest
 
 	# Fonts
+	"ttf-roboto"								   # Roboto, a beautiful Google font
 	"noto-fonts-emoji"							   # OpenSource emoji font, because we like emojis, right ?
 )
 
