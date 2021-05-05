@@ -11,7 +11,7 @@ antigen bundle git
 antigen bundle zsh-users/zsh-syntax-highlighting # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-autosuggestions	 # Fish-like auto suggestions
 antigen bundle zsh-users/zsh-completions		 # Extra zsh completions
-antigen bundle agkozak/zsh-z
+antigen bundle agkozak/zsh-z					 # Z directory auto-jumping
 
 # Load the theme. -------------------------------
 antigen theme romkatv/powerlevel10k
