@@ -52,7 +52,7 @@ zstyle ':completion:*' list-colors
 export PATH="$PATH:${HOME}/.dotnet/tools"
 export DOTNET_ROOT=$(dirname $(realpath $(which dotnet)))
 
-## External global tools -------
+## External global tools ---------
 export PATH="$PATH:${HOME}/.bin"
 
 # Source other scripts ------------------------------------------------------------------
