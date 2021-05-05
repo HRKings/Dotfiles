@@ -14,5 +14,5 @@ echo "-- Installing ranger devicons --"
 git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 
 # Noto Color Emoji ------------------------------------------------
-echo "-- Creating symlink to ranger config --"
+echo "-- Creating symlink to emoji config --"
 ln -sf ${PWD}/config/fontconfig/99-noto-color-emoji.conf ${HOME}/.config/fontconfig/conf.d/99-noto-color-emoji.conf
