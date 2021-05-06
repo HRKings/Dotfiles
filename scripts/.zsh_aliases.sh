@@ -3,7 +3,7 @@
 ### pacman and yay (If needed a LC_ALL=en.US in front of any of these commands to force the language to english) --------
 alias pacman="sudo powerpill"							  # Set powerpill as pacman
 alias pacup="sudo powerpill -Syyu"						  # Update only standard pkgs
-alias yayup="yay -Sua --noconfirm"						  # Update only AUR pkgs
+alias yayup="yay -Sua"									  # Update only AUR pkgs
 #alias yayupall="yay -Syyu --noconfirm"					   # Update standard pkgs and AUR pkgs
 #alias pacunlock="sudo rm /var/lib/pacman/db.lck"		   # Remove pacman lock
 alias paccleanup="sudo powerpill -Rns $(powerpill -Qtdq)" # Remove orphaned packages
