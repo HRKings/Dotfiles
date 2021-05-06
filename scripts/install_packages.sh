@@ -13,6 +13,7 @@ declare -a OFFICIAL_PKGS=(
 	"ranger"									   # Terminal file explorer
 	"ueberzug"									   # To preview images in the terminal when using ranger
 	"trash-cli"									   # Send files to the DE trashbin instead of obliterating them
+	"antigen"									   # A plugin manager for ZSH
 
 	# Development
 	"dotnet-runtime" "dotnet-sdk"				   # Make and run .NET code

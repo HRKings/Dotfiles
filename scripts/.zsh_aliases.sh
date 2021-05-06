@@ -45,6 +45,7 @@ alias pscpu10="ps auxf | sort -nr -k 3 | head -10"
 
 ### Shortcuts -----------------------------------
 alias editzsh="code ~/.zshrc"
+alias editalias="code ~/.zsh_aliases.sh"
 alias updatezsh="source ~/.zshrc"
 alias updatealias="source ~/.zsh_aliases.sh"
 alias vim="nvim"
