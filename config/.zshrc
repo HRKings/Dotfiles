@@ -55,6 +55,9 @@ export DOTNET_ROOT=$(dirname $(realpath $(which dotnet)))
 ## External global tools ---------
 export PATH="$PATH:${HOME}/.bin"
 
+## Set default browser to Braus (Select broswer for each link) --
+export BROWSER=braus
+
 # Source other scripts ------------------------------------------------------------------
 
 ### Set up Node Version Manager -----------------
