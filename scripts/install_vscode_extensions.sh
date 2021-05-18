@@ -26,8 +26,7 @@ declare -a VSCODE_EXTENSIONS=(
 	"octref.vetur"							# Vue Tooling
 
 	# Workflow ------------------------------------------------------
-	"formulahendry.auto-close-tag"			# Auto Close HTML Tags
-	"formulahendry.auto-rename-tag"			# Auto Rename HTML Tags
+	"ritwickdey.liveserver"					# Live server with hot reloading
 	"fosshaas.fontsize-shortcuts"			# Add fontsize shortcuts
 	
 	# Linter/ Formatter ------------------------------
