@@ -55,6 +55,9 @@ declare -a AUR_PKGS=(
 	"stretchly"							# Break reminder
 	"quiterss"							# One of the best RSS feed readers
 
+	# Communication
+	"discord-ptb"						# Double profile for discord
+
 	# Development
 	"visual-studio-code-bin"			# Proprietary VSCode, because we need things to function
 	"firefox-developer-edition"			# My to-go browser, with lots of feature for developers
