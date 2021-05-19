@@ -19,6 +19,8 @@ declare -a VSCODE_EXTENSIONS=(
 	"streetsidesoftware.code-spell-checker"	# Spell Checking
 	"wix.vscode-import-cost" 				# JS Package Import Cost
 	"WallabyJs.quokka-vscode" 				# Inline function results for JS
+	"hediet.vscode-drawio"					# Draw.io
+	"lostintangent.vsls-whiteboard"			# Collaborative Whiteboard for Live Share
 
 	# Intellisense ------------------------------------------------------
 	"christian-kohler.npm-intellisense"		# Intellisense for NPM
