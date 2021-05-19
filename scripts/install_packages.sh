@@ -14,7 +14,6 @@ declare -a OFFICIAL_PKGS=(
 	"ranger"										# Terminal file explorer
 	"ueberzug"										# To preview images in the terminal when using ranger
 	"trash-cli"										# Send files to the DE trashbin instead of obliterating them
-	"antigen"										# A plugin manager for ZSH
 
 	# Development
 	"dotnet-runtime" "aspnet-runtime" "dotnet-sdk"	# Make and run .NET code
@@ -46,6 +45,10 @@ declare -a AUR_PKGS=(
 	# System
 	"hunspell-pt-br"					# Portuguese spellcheck
 	"epson-inkjet-printer-escpr"		# EPSON printer drivers
+	"antigen"							# A plugin manager for ZSH
+
+	# Base
+	"google-chrome"						# Chrome with sync
 
 	# Utils
 	"whatsapp-nativefier"				# Because unforunally, discord isn't enough
