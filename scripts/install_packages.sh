@@ -71,13 +71,14 @@ declare -a AUR_PKGS=(
 # Instalation -------------------------------------------------------------------------------------
 
 ## Install powerpill to get faster package downloads from the official repository -------
-yay -Sy powerpill
+# yay -Sy powerpill
 
 ## Change yay to use powerpill --------
-yay --pacman "powerpill -Syu"
+# yay --pacman "powerpill -Syu"
 
 ### Install everything from the offical repostiory --------
-sudo powerpill -Sy ${OFFICIAL_PKGS[@]}
+# sudo powerpill -Sy ${OFFICIAL_PKGS[@]}
+sudo pacman -Suy ${OFFICIAL_PKGS[@]}
 
 ### Install everything from AUR -------
 yay -Sy ${AUR_PKGS[@]}
