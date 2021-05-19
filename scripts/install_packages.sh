@@ -17,7 +17,7 @@ declare -a OFFICIAL_PKGS=(
 	"antigen"										# A plugin manager for ZSH
 
 	# Development
-	"dotnet-runtime" "dotnet-sdk"					# Make and run .NET code
+	"dotnet-runtime" "aspnet-runtime" "dotnet-sdk"	# Make and run .NET code
 
 	# Utils
 	"mpv"											# The best universal media player
