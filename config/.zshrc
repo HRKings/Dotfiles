@@ -8,10 +8,10 @@ antigen use oh-my-zsh
 antigen bundle git
 
 # Bundles from other repos ----------------------------------------------------
-antigen bundle zsh-users/zsh-syntax-highlighting # Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-autosuggestions	 # Fish-like auto suggestions
-antigen bundle zsh-users/zsh-completions		 # Extra zsh completions
-antigen bundle agkozak/zsh-z					 # Z directory auto-jumping
+antigen bundle zsh-users/zsh-autosuggestions	# Fish-like auto suggestions
+antigen bundle zsh-users/zsh-completions		# Extra zsh completions
+antigen bundle zdharma/fast-syntax-highlighting	# Syntax highlighting bundle.
+antigen bundle agkozak/zsh-z					# Z directory auto-jumping
 
 # Load the theme. -------------------------------
 antigen theme romkatv/powerlevel10k
