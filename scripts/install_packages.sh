@@ -28,6 +28,7 @@ declare -a OFFICIAL_PKGS=(
 	"chromium"										# A chromium engine is needed more times that you may think
 	"braus-git"										# Ask which browser to use when opening each link
 	"jq"											# A terminal JSON formatter
+	"fzf"											# Fuzzy finder for any list
 
 	# Gaming
 	"vulkan-icd-loader" "lib32-vulkan-icd-loader"  	# Vulkan libs required by some games
