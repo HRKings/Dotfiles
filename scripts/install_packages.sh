@@ -1,6 +1,8 @@
-# Packages from the official Arch repository -----------------------------------------------------
+#========================================================================================================================
+# Packages from the official Arch repository
+#========================================================================================================================
 declare -a OFFICIAL_PKGS=(
-	# System
+	# System ------------------------------------------------------------------------------------------
 	"bluez" "bluez-utils-compat"					# Bluetooth support
 	"hunspell" "hunspell-en_US"						# Spellchecking and the english dictionary
 	"kvantum-qt5"									# SVG theme engine for KDE
@@ -11,7 +13,7 @@ declare -a OFFICIAL_PKGS=(
 	"lshw"											# Hardware configuration info
 	"hwinfo"										# Hardware general info
 
-	# Base 
+	# Base ------------------------------------------------------------------------------------------------------
 	"exa"											# A better ls
 	"neovim"										# The only vim
 	"ranger"										# Terminal file explorer
@@ -19,7 +21,7 @@ declare -a OFFICIAL_PKGS=(
 	"trash-cli"										# Send files to the DE trashbin instead of obliterating them
 	"ncdu"											# Disk usage vizualizer
 
-	# Development
+	# Development -------------------------------------------------------------------
 	"dotnet-runtime" "dotnet-sdk"					# Make and run .NET code
 	"aspnet-runtime" "aspnet-targeting-pack"		# And target and run ASP.NET
 	"docker" "docker-compose"						# Containerize all the things
@@ -28,7 +30,7 @@ declare -a OFFICIAL_PKGS=(
 	"python-pip"									# Python package manager
 	"kitty"											# GPU rendered terminal
 
-	# Utils
+	# Utils -----------------------------------------------------------------------------------------------------------
 	"mpv"											# The best universal media player
 	"qbittorrent"									# My preferred torrent client
 	"thunderbird"									# Email client
@@ -43,18 +45,18 @@ declare -a OFFICIAL_PKGS=(
 	"krita"											# Digital drawing software
 	"inkscape"										# Vector image editor
 
-	# Gaming
+	# Gaming ----------------------------------------------------------------------------------
 	"vulkan-icd-loader" "lib32-vulkan-icd-loader"  	# Vulkan libs required by some games
 	"steam"											# One-stop game shop
 	"lutris"										# For when "one-stop" is actually two-stops
 	"discord"										# Communication at its finest
 	"multimc5"										# Minecraft multi instance launcher
 
-	# Fonts
+	# Fonts -----------------------------------------------------------------------------------------------
 	"ttf-roboto"									# Roboto, a beautiful Google font
-	"noto-fonts-emoji"								# OpenSource emoji font, because we like emojis, right ?
+	"noto-fonts-emoji"								# OpenSource emoji font, because we like emojis, right?
 
-	# Misc
+	# Misc --------------------------------------------------------------------------------------
 	"cowsay"										# Because just printing to terminal is boring
 	"fortune-mod"									# And to have something for cows to say
 	"neofetch"										# Vizualize distro infos in a cool way
@@ -62,59 +64,63 @@ declare -a OFFICIAL_PKGS=(
 	"lolcat"										# Rainbow terminal
 )
 
-# Packages from AUR -------------------------------------------------------------------------------
+#========================================================================================================================
+# Packages from AUR
+#========================================================================================================================
 declare -a AUR_PKGS=(
-	# System
-	"hunspell-pt-br"							# Portuguese spellcheck
-	"epson-inkjet-printer-escpr"				# EPSON printer drivers
-	"antigen"									# A plugin manager for ZSH
-	"gestures"									# GUI configurator for touchpad gestures
-	"input-wacom-dkms"							# Wacom tablet driver
+	# System --------------------------------------------------------------------------------
+	"hunspell-pt-br"								# Portuguese spellcheck
+	"epson-inkjet-printer-escpr"					# EPSON printer drivers
+	"antigen"										# A plugin manager for ZSH
+	"gestures"										# GUI configurator for touchpad gestures
+	"input-wacom-dkms"								# Wacom tablet driver
 
-	# Base
-	"google-chrome"								# Chrome with sync
-	"google-chrome-dev"							# Chrome latest features
-	"firefox-nightly"							# To test upcoming features
-	"firefox-developer-edition"					# My to-go browser, with lots of feature for developers
+	# Base ------------------------------------------------------------------------------------------------
+	"google-chrome"									# Chrome with sync
+	"google-chrome-dev"								# Chrome latest features
+	"firefox-nightly"								# To test upcoming features
+	"firefox-developer-edition"						# My to-go browser, with lots of feature for developers
 
-	# Utils
-	"whatsapp-nativefier"						# Because unforunally, discord isn't enough
-	"teams"										# Because unforunally, discord isn't enough, part 2
-	"spotify"									# Let's dance, baby
-	"keepassxc"									# My favorite password manager
-	"stretchly"									# Break reminder
-	"quiterss"									# One of the best RSS feed readers
-	"braus-git"									# Choose on which browser you wanna open a link
-	"stretchly-bin"								# Take frequent breaks
-	"gallery-dl"								# CLI image downloader for various sources
+	# Utils -------------------------------------------------------------------------------------------
+	"whatsapp-nativefier"							# Because unforunally, discord isn't enough
+	"teams"											# Because unforunally, discord isn't enough, part 2
+	"spotify"										# Let's dance, baby
+	"keepassxc"										# My favorite password manager
+	"stretchly"										# Break reminder
+	"quiterss"										# One of the best RSS feed readers
+	"braus-git"										# Choose on which browser you wanna open a link
+	"stretchly-bin"									# Take frequent breaks
+	"gallery-dl"									# CLI image downloader for various sources
 
-	# Communication
-	"discord-ptb"								# Double profile for discord
+	# Communication -------------------------------------------------------------
+	"discord-ptb"									# Double profile for discord
 
-	# Development
-	"visual-studio-code-bin"					# Proprietary VSCode, because we need things to work
-	"jetbrains-toolbox"							# Installs any jetbrains related product with one authentication
-	"insomnia"									# REST API testing workspace
-	"insomnia-designer-bin"						# REST API designing workspace
-	"dockstation"								# Control docker containers
-	"mongodb-compass"							# Access MongoDB
+	# Development --------------------------------------------------------------------------------------------------
+	"visual-studio-code-bin"						# Proprietary VSCode, because we need things to work
+	"jetbrains-toolbox"								# Installs any jetbrains related product with one authentication
+	"insomnia"										# REST API testing workspace
+	"insomnia-designer-bin"							# REST API designing workspace
+	"dockstation"									# Control docker containers
+	"mongodb-compass"								# Access MongoDB
 
-	# Customization
-	"spicetify-cli" "spicetify-themes-git"		# Custom theme and extensions
-	"spicetify-custom-apps-and-extensions-git"	# for the offical Spotify client
-	"latte-dock-git"							# Official dock for KDE
+	# Customization -----------------------------------------------------------------
+	"spicetify-cli" "spicetify-themes-git"			# Custom theme and extensions
+	"spicetify-custom-apps-and-extensions-git"		# for the offical Spotify client
+	"latte-dock-git"								# Official dock for KDE
 
-	# Fonts
-	"nerd-fonts-fira-code"		  				# FiraCode Nerd Font
+	# Fonts -------------------------------------------------------------
+	"nerd-fonts-fira-code"		  					# FiraCode Nerd Font
 
-	# Misc
-	"shell-color-scripts"						# Vizualize shell colors
+	# Misc ------------------------------------------------------------------
+	"shell-color-scripts"							# Vizualize shell colors
 )
 
-# Instalation -------------------------------------------------------------------------------------
+#========================================================================================================================
+# Instalation
+#========================================================================================================================
 
-## Install everything from the offical repostiory --------
+# Install everything from the offical repostiory --------
 sudo pacman -Suy ${OFFICIAL_PKGS[@]}
 
-## Install everything from AUR -------
+# Install everything from AUR -------
 yay -Sy ${AUR_PKGS[@]}
