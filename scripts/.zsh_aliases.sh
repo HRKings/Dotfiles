@@ -1,6 +1,6 @@
-#========================================================================================================================
+#================================================================================================================================
 # Aliases 
-#========================================================================================================================
+#================================================================================================================================
 
 # pacman and yay (If needed a LC_ALL=en.US in front of any of these commands to force the language to english) --------
 alias pacup="sudo pacman -Syyu"								# Update only standard pkgs
@@ -15,12 +15,12 @@ alias paccleanup="sudo pacman -Rns $(pacman -Qtdq)"			# Remove orphaned packages
 #alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
 #alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
-# Changing "ls" to "exa" --------------------------------------------------------------------
-alias ls="exa -al --color=always --group-directories-first --icons" # my preferred listing
-alias la="exa -a --color=always --group-directories-first --icons"  # all files and dirs
-alias ll="exa -l --color=always --group-directories-first --icons"  # long format
-alias lt="exa -aT --color=always --group-directories-first --icons" # tree listing
-alias l.="exa -a | egrep '^\.'"
+# Changing "ls" to "exa" ------------------------------------------------------------------------------------------------------
+alias ls="exa -al --color=always --group-directories-first --icons"										# My preferred listing
+alias la="exa -a --color=always --group-directories-first --icons"										# All files and dirs
+alias ll="exa -l --color=always --group-directories-first --icons"										# Long format
+alias lt="exa -aT --color=always --group-directories-first --icons"										# Tree listing
+alias l.="exa -la --color=always --group-directories-first --icons|egrep --color=never '[m]+\.|\s\.'"	# All .files
 
 # Colorize grep output (good for log files) --------
 alias grep="grep --color=auto"
