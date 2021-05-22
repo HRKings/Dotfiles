@@ -1,4 +1,6 @@
-# Powerlevel10k Instant Prompt ----------------------------------------------------------
+#==================================================================================================
+# Powerlevel10k Instant Prompt
+#==================================================================================================
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -6,10 +8,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Load Antigen --------------------------------------------------------------------------
+#==================================================================================================
+# Antigen (ZSH Plugins)
+#==================================================================================================
+
+# Load Antigen --------------------------
 source /usr/share/zsh/share/antigen.zsh
 
-# Load the oh-my-zsh's library --------------------------------
+# Load the oh-my-zsh's library ----
 antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh) ----
@@ -28,13 +34,18 @@ antigen theme romkatv/powerlevel10k
 # Tell Antigen that you're done. ----------------
 antigen apply
 
-# Powerlevel10k Config ------------------------------------------------------------------
+#==================================================================================================
+# Powerlevel10k Config 
+#==================================================================================================
 
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# ZSH parameter completion for the dotnet CLI -------------------------------------------
+#==================================================================================================
+# Tab completions
+#==================================================================================================
+
+# ZSH parameter completion for the dotnet CLI ---------
 
 _dotnet_zsh_complete()
 {
@@ -45,26 +56,34 @@ _dotnet_zsh_complete()
 
 compctl -K _dotnet_zsh_complete dotnet
 
-# Config keys ---------------------------------------------------------------------------
+#==================================================================================================
+# General Configs
+#==================================================================================================
+
+# Config keys -----------------------
 export DISABLE_LS_COLORS="true"
 zstyle ':completion:*' list-colors
 
-# Exports -------------------------------------------------------------------------------
+#==================================================================================================
+# Exports
+#==================================================================================================
 
-## .NET path config for Arch --------------------------------
+# .NET path config for Arch ------------------------------
 export PATH="$PATH:${HOME}/.dotnet/tools"
 export DOTNET_ROOT=$(dirname $(realpath $(which dotnet)))
 
-## External global tools ---------
+# External global tools ---------
 export PATH="$PATH:${HOME}/.bin"
 
-## Set default browser to Braus (Select broswer for each link) --
+# Set default browser to Braus (Select broswer for each link) --
 export BROWSER=braus
 
-# Source other scripts ------------------------------------------------------------------
+#==================================================================================================
+# Source other scripts
+#==================================================================================================
 
-### Set up Node Version Manager -----------------
+# Set up Node Version Manager -----
 source /usr/share/nvm/init-nvm.sh
 
-### Aliases -------------------------------------
+# My personal aliases -----
 source ~/.zsh_aliases.sh
