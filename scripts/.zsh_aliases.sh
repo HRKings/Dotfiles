@@ -15,12 +15,13 @@ alias paccleanup="sudo pacman -Rns $(pacman -Qtdq)"			# Remove orphaned packages
 #alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
 #alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
-# Changing "ls" to "exa" ------------------------------------------------------------------------------------------------------
-alias ls="exa -al --color=always --group-directories-first --icons"										# My preferred listing
-alias la="exa -a --color=always --group-directories-first --icons"										# All files and dirs
-alias ll="exa -l --color=always --group-directories-first --icons"										# Long format
-alias lt="exa -aT --color=always --group-directories-first --icons"										# Tree listing
-alias l.="exa -la --color=always --group-directories-first --icons|egrep --color=never '[m]+\.|\s\.'"	# All .files
+# Changing "ls" to "exa" --------------------------------------------------------------------------------------------------
+alias ls="exa -al --color=always --group-directories-first --icons"									# My preferred listing
+alias la="exa -a --color=always --group-directories-first --icons"									# All files and dirs
+alias ll="exa -l --color=always --group-directories-first --icons"									# Long format
+alias lt="exa -aT --color=always --group-directories-first --icons"									# Tree listing
+alias l.="exa -la --color=always --group-directories-first --icons | grep -P '\e\[[0-9]+m\.|\s\.'"	# All .files
+alias lss="exa -al --color=always --group-directories-first --icons | egrep"						# A "search" function
 
 # Colorize grep output (good for log files) --------
 alias grep="grep --color=auto"
