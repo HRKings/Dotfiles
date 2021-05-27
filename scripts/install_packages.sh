@@ -111,8 +111,10 @@ declare -a AUR_PKGS=(
 	# Fonts -------------------------------------------------------------
 	"nerd-fonts-fira-code"		  					# FiraCode Nerd Font
 
-	# Misc ------------------------------------------------------------------
+	# Misc --------------------------------------------------------------------------
 	"shell-color-scripts"							# Vizualize shell colors
+	"img2xterm"										# Display images on the terminal
+	"pokemonsay-newgenerations-git"					# Cowsay with pokemons
 )
 
 #========================================================================================================================
