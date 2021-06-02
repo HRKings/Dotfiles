@@ -1,3 +1,7 @@
+#======================================================================
+# Complete installation
+#======================================================================
+
 # Install all packages ---------------------
 echo "Installing all required packages..."
 source ${PWD}/scripts/install_packages.sh
