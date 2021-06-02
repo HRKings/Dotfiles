@@ -115,6 +115,7 @@ declare -a AUR_PKGS=(
 	"shell-color-scripts"							# Vizualize shell colors
 	"img2xterm"										# Display images on the terminal
 	"pokemonsay-newgenerations-git"					# Cowsay with pokemons
+	"mpv-mpris"										# Enable MPRIS for MPV
 )
 
 #========================================================================================================================
