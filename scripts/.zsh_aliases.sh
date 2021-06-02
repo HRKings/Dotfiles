@@ -54,3 +54,4 @@ alias vim="nvim"
 alias tp="trash-put"
 alias jsonf="xclip -o | jq" 				# Format JSON in the clipboard
 alias jsonfc="xclip -o | jq | xclip -i"		# Format JSON in the clipboard then put it on the clipboard
+alias cshell="csharprepl"					# Open C# interactive shell
