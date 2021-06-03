@@ -16,7 +16,7 @@ fi
 source /usr/share/zsh/share/antigen.zsh
 
 # Load Antigen bundles ----
-antigen init .antigenrc
+antigen init ~/.antigenrc
 
 #==================================================================================================
 # Powerlevel10k Config 
