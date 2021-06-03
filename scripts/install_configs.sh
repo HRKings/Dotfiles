@@ -1,5 +1,5 @@
 # Set some variables ------------------------------------------------
-CONFIG_DIR=$(dirname $PWD)
+CONFIG_DIR=$(dirname $(dirname $(readlink -f $0)))
 
 # ZSH Config ---------------------------------------------------
 echo "-- Creating symlink to zsh config --"
