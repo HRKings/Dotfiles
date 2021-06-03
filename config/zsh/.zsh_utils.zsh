@@ -86,10 +86,8 @@ alias pscpu10="ps auxf | sort -nr -k 3 | head -10"
 # Shortcuts
 #================================================================================================================================
 
-alias editzsh="code ~/.zshrc"
-alias editalias="code ~/.zsh_aliases.sh"
-alias updatezsh="source ~/.zshrc"
-alias updatealias="source ~/.zsh_aliases.sh"
+alias editzsh="code ~/.zshrc ~/.zsh_utils.zsh"
+alias updatezsh="source ~/.zsh_utils.zsh"
 alias vim="nvim"
 alias tp="trash-put"
 alias jsonf="xclip -o | jq" 				# Format JSON in the clipboard
