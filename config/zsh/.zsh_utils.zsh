@@ -68,7 +68,10 @@ alias fgrep="fgrep --color=auto"
 # Confirm before overwriting something --------
 alias cp="cp -i"
 alias mv="mv -i"
-alias rm="rm -i"
+alias rmi="rm -i"
+
+# Send to the trash instead of deleting --------
+alias rm="trash-put"
 
 # Adding flags --------------------------------
 alias df="df -h"		# human-readable sizes
