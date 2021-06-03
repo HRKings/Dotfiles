@@ -13,8 +13,8 @@ ln -sf ${CONFIG_DIR}/config/zsh/.antigenrc ${HOME}/.antigenrc
 echo "-- Creating symlink to powerlevel10k config --"
 ln -sf ${CONFIG_DIR}/config/zsh/.p10k.zsh ${HOME}/.p10k.zsh
 
-# Aliases ------------------------------------------------------
-echo "-- Creating symlink to the aliases script --"
+# The rest of the ZSH Configs -------------------------------------------
+echo "-- Creating symlink to the zsh utils script --"
 ln -sf ${CONFIG_DIR}/config/zsh/.zsh_utils.zsh ${HOME}/.zsh_utils.zsh
 
 # Ranger config ------------------------------------------------
