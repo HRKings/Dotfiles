@@ -92,7 +92,6 @@ alias pscpu10="ps auxf | sort -nr -k 3 | head -10"
 alias editzsh="code ~/.zshrc ~/.zsh_utils.zsh"
 alias updatezsh="source ~/.zsh_utils.zsh"
 alias vim="nvim"
-alias tp="trash-put"
 alias jsonf="xclip -o | jq" 				# Format JSON in the clipboard
 alias jsonfc="xclip -o | jq | xclip -i"		# Format JSON in the clipboard then put it on the clipboard
 alias cshell="csharprepl"					# Open C# interactive shell
