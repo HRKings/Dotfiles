@@ -3,15 +3,19 @@ CONFIG_DIR=$(dirname $PWD)
 
 # ZSH Config ---------------------------------------------------
 echo "-- Creating symlink to zsh config --"
-ln -sf ${CONFIG_DIR}/config/.zshrc ${HOME}/.zshrc
+ln -sf ${CONFIG_DIR}/config/zsh/.zshrc ${HOME}/.zshrc
+
+# Antigen Config ---------------------------------------------------
+echo "-- Creating symlink to antigen config --"
+ln -sf ${CONFIG_DIR}/config/zsh/.antigenrc ${HOME}/.antigenrc
 
 # Powerlevel10k Config -----------------------------------------
 echo "-- Creating symlink to powerlevel10k config --"
-ln -sf ${CONFIG_DIR}/config/.p10k.zsh ${HOME}/.p10k.zsh
+ln -sf ${CONFIG_DIR}/config/zsh/.p10k.zsh ${HOME}/.p10k.zsh
 
 # Aliases ------------------------------------------------------
 echo "-- Creating symlink to the aliases script --"
-ln -sf ${CONFIG_DIR}/scripts/.zsh_aliases.sh ${HOME}/.zsh_aliases.sh
+ln -sf ${CONFIG_DIR}/config/zsh/.zsh_utils.zsh ${HOME}/.zsh_utils.zsh
 
 # Ranger config ------------------------------------------------
 echo "-- Creating symlink to ranger config --"
