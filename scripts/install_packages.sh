@@ -102,6 +102,9 @@ declare -a AUR_PKGS=(
 	"insomnia-designer-bin"							# REST API designing workspace
 	"dockstation"									# Control docker containers in a GUI fashion
 	"mongodb-compass"								# Access MongoDB
+	"gitgudcli-git"									# GitGud CLI wrapper
+	"gibo"											# Github's gitignore collection from the CLI
+	"lazygit"										# Git TUI
 
 	# Customization -----------------------------------------------------------------
 	"spicetify-cli" "spicetify-themes-git"			# Custom theme and extensions
