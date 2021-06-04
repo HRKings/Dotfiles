@@ -100,7 +100,7 @@ declare -a AUR_PKGS=(
 	"jetbrains-toolbox"								# Installs any jetbrains related product with one authentication
 	"insomnia"										# REST API testing workspace
 	"insomnia-designer-bin"							# REST API designing workspace
-	"dockstation"									# Control docker containers
+	"dockstation"									# Control docker containers in a GUI fashion
 	"mongodb-compass"								# Access MongoDB
 
 	# Customization -----------------------------------------------------------------
