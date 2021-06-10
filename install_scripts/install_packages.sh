@@ -123,7 +123,7 @@ declare -a AUR_PKGS=(
 #========================================================================================================================
 
 # Install everything from the offical repostiory --------
-sudo pacman -Suy ${OFFICIAL_PKGS[@]}
+sudo pacman -Suy --needed ${OFFICIAL_PKGS[@]}
 
 # Install everything from AUR -------
-yay -Sy ${AUR_PKGS[@]}
+yay -Sy --needed ${AUR_PKGS[@]}
