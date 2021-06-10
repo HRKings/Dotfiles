@@ -68,10 +68,14 @@ alias fgrep="fgrep --color=auto"
 # Confirm before overwriting something --------
 alias cp="cp -i"
 alias mv="mv -i"
-alias rmi="rm -i"
+alias rm="rm -i"
 
-# Send to the trash instead of deleting --------
-alias rm="trash-put"
+# Copy
+alias cp="rsync -pogbr -hhh --backup-dir=/tmp/rsync -e /dev/null --progress"
+
+# Trash bin related commands --------------------
+alias tp="trash-put"
+alias emptytrash="rm -rf ~/.local/share/Trash/*"
 
 # Adding flags --------------------------------
 alias df="df -h"		# human-readable sizes
@@ -85,17 +89,24 @@ alias psmem10="ps auxf | sort -nr -k 4 | head -10"
 alias pscpu="ps auxf | sort -nr -k 3"
 alias pscpu10="ps auxf | sort -nr -k 3 | head -10"
 
+# Format JSON from the clipboard ------------------------------------------------
+alias jsonf="xclip -o | jq" 				# Then print
+alias jsonfc="xclip -o | jq | xclip -i"		# Then put it back on the clipboard
+
+# Copy something directly to the clipboard ----
+alias clip="xclip -selection clipboard -i"
+
+# Change name of programs -------------------------------
+alias vim="nvim"
+alias cshell="csharprepl"	# Open C# interactive shell
+alias gud="gitgud commit"
+
 #================================================================================================================================
-# Shortcuts
+# Personal Shortcuts
 #================================================================================================================================
 
 alias editzsh="code ~/.zsh_utils.zsh ~/.zshrc"
 alias reloadzsh="source ~/.zsh_utils.zsh"
-alias vim="nvim"
-alias jsonf="xclip -o | jq" 				# Format JSON in the clipboard
-alias jsonfc="xclip -o | jq | xclip -i"		# Format JSON in the clipboard then put it on the clipboard
-alias cshell="csharprepl"					# Open C# interactive shell
-alias gud="gitgud"
 
 #================================================================================================================================
 # Functions
@@ -109,7 +120,7 @@ gitrecurse() {
 	for dir in $(find . -name ".git")
 	do 
 		cd ${dir%/*}
-		echo $PWD
+		echo "> $PWD"
 		git $@
 		cd - > /dev/null
 	done
