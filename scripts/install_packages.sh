@@ -38,7 +38,6 @@ declare -a OFFICIAL_PKGS=(
 	"flameshot"										# Screenshot tool
 	"libreoffice-fresh"								# Because everyone needs to edit documents (fresh = latest version)
 	"chromium"										# A chromium engine is needed more times that you may think
-	"braus-git"										# Ask which browser to use when opening each link
 	"jq"											# A terminal JSON formatter
 	"fzf"											# Fuzzy finder for any list
 	"bpytop"										# A more advanced htop
@@ -107,8 +106,6 @@ declare -a AUR_PKGS=(
 	"lazygit"										# Git TUI
 
 	# Customization -----------------------------------------------------------------
-	"spicetify-cli" "spicetify-themes-git"			# Custom theme and extensions
-	"spicetify-custom-apps-and-extensions-git"		# for the offical Spotify client
 	"latte-dock-git"								# Official dock for KDE
 
 	# Fonts -------------------------------------------------------------
