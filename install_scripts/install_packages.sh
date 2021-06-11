@@ -20,6 +20,7 @@ declare -a OFFICIAL_PKGS=(
 	"ueberzug"										# To preview images in the terminal when using ranger
 	"trash-cli"										# Send files to the DE trashbin instead of obliterating them
 	"ncdu"											# Disk usage vizualizer
+	"kitty"											# GPU rendered terminal
 
 	# Development -------------------------------------------------------------------
 	"dotnet-runtime" "dotnet-sdk"					# Make and run .NET code
@@ -28,7 +29,7 @@ declare -a OFFICIAL_PKGS=(
 	"github-cli"									# Finer access to GitHub features
 	"jre-openjdk" "jdk-openjdk"						# Run Java apps
 	"python-pip"									# Python package manager
-	"kitty"											# GPU rendered terminal
+	"dbeaver"										# GUI for SQL databases
 
 	# Utils -----------------------------------------------------------------------------------------------------------
 	"mpv"											# The best universal media player
@@ -70,9 +71,9 @@ declare -a AUR_PKGS=(
 	# System --------------------------------------------------------------------------------
 	"hunspell-pt-br"								# Portuguese spellcheck
 	"epson-inkjet-printer-escpr"					# EPSON printer drivers
-	"antigen"										# A plugin manager for ZSH
 	"gestures"										# GUI configurator for touchpad gestures
 	"input-wacom-dkms"								# Wacom tablet driver
+	"dotbot"										# Dotfiles bootstraper
 
 	# Base ------------------------------------------------------------------------------------------------
 	"google-chrome"									# Chrome with sync
@@ -90,6 +91,7 @@ declare -a AUR_PKGS=(
 	"braus-git"										# Choose on which browser you wanna open a link
 	"stretchly-bin"									# Take frequent breaks
 	"gallery-dl"									# CLI image downloader for various sources
+	"ookla-speedtest-bin"							# Speedtest.net CLI
 
 	# Communication -------------------------------------------------------------
 	"discord-ptb"									# Double profile for discord
@@ -105,8 +107,9 @@ declare -a AUR_PKGS=(
 	"gibo"											# Github's gitignore collection from the CLI
 	"lazygit"										# Git TUI
 
-	# Customization -----------------------------------------------------------------
-	"latte-dock-git"								# Official dock for KDE
+	# Gaming
+	"mcrcon"										# RCON CLI for Minecraft Servers
+	"ds4drv-cemuhook-git"							# DualShock 4 drivers with Cemuhook support
 
 	# Fonts -------------------------------------------------------------
 	"nerd-fonts-fira-code"		  					# FiraCode Nerd Font
