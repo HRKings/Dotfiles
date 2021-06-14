@@ -69,6 +69,7 @@ declare -a OFFICIAL_PKGS=(
 #========================================================================================================================
 declare -a AUR_PKGS=(
 	# System --------------------------------------------------------------------------------
+	"antigen"										# ZSH plugin manager
 	"hunspell-pt-br"								# Portuguese spellcheck
 	"epson-inkjet-printer-escpr"					# EPSON printer drivers
 	"gestures"										# GUI configurator for touchpad gestures

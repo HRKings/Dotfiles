@@ -10,6 +10,7 @@
 
 - link:
     ~/.zshrc: config/zsh/dot_zshrc.zsh
+    ~/.antigenrc: config/zsh/dot_antigen.zsh
     ~/.zshd/:
       glob: true
       path: config/zsh/dot_zshd/**
