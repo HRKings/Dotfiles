@@ -50,7 +50,6 @@ declare -a OFFICIAL_PKGS=(
 	"steam"											# One-stop game shop
 	"lutris"										# For when "one-stop" is actually two-stops
 	"discord"										# Communication at its finest
-	"multimc5"										# Minecraft multi instance launcher
 
 	# Fonts -----------------------------------------------------------------------------------------------
 	"ttf-roboto"									# Roboto, a beautiful Google font
@@ -87,7 +86,6 @@ declare -a AUR_PKGS=(
 	"teams"											# Because unforunally, discord isn't enough, part 2
 	"spotify"										# Let's dance, baby
 	"keepassxc"										# My favorite password manager
-	"stretchly"										# Break reminder
 	"quiterss"										# One of the best RSS feed readers
 	"braus-git"										# Choose on which browser you wanna open a link
 	"stretchly-bin"									# Take frequent breaks
@@ -111,6 +109,7 @@ declare -a AUR_PKGS=(
 	# Gaming
 	"mcrcon"										# RCON CLI for Minecraft Servers
 	"ds4drv-cemuhook-git"							# DualShock 4 drivers with Cemuhook support
+	"multimc5"										# Minecraft multi instance launcher
 
 	# Fonts -------------------------------------------------------------
 	"nerd-fonts-fira-code"		  					# FiraCode Nerd Font
