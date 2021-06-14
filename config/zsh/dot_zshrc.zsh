@@ -15,7 +15,7 @@ fi
 # Load Antigen --------------------------
 source /usr/share/zsh/share/antigen.zsh
 
-# Load Antigen bundles ----
+# Load Antigen bundles (cache) ----
 antigen init ~/.antigenrc
 
 #==================================================================================================
