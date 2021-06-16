@@ -3,7 +3,7 @@
 #========================================================================================================================
 declare -a OFFICIAL_PKGS=(
 	# System ------------------------------------------------------------------------------------------
-	"bluez" "bluez-utils-compat"					# Bluetooth support
+	"bluez"											# Bluetooth support
 	"hunspell" "hunspell-en_US"						# Spellchecking and the english dictionary
 	"kvantum-qt5"									# SVG theme engine for KDE
 	"lshw"											# To list the hardware
@@ -17,18 +17,20 @@ declare -a OFFICIAL_PKGS=(
 	"exa"											# A better ls
 	"neovim"										# The only vim
 	"ranger"										# Terminal file explorer
-	"ueberzug"										# To preview images in the terminal when using ranger
+	#"ueberzug"										# To preview images in the terminal when using ranger
 	"trash-cli"										# Send files to the DE trashbin instead of obliterating them
 	"ncdu"											# Disk usage vizualizer
 	"kitty"											# GPU rendered terminal
+	"rofi"                                          # Highly customizable application launcher
 
 	# Development -------------------------------------------------------------------
 	"dotnet-runtime" "dotnet-sdk"					# Make and run .NET code
 	"aspnet-runtime" "aspnet-targeting-pack"		# And target and run ASP.NET
-	"docker" "docker-compose"						# Containerize all the things
+	"podman" "podman-compose"						# Containerize all the things (without root)
+	#"docker" "docker-compose"						# Containerize all the things
 	"github-cli"									# Finer access to GitHub features
 	"jre-openjdk" "jdk-openjdk"						# Run Java apps
-	"python-pip"									# Python package manager
+	"python" "python-pip"							# Python and its package manager
 	"dbeaver"										# GUI for SQL databases
 
 	# Utils -----------------------------------------------------------------------------------------------------------
@@ -44,6 +46,7 @@ declare -a OFFICIAL_PKGS=(
 	"bpytop"										# A more advanced htop
 	"krita"											# Digital drawing software
 	"inkscape"										# Vector image editor
+	"kdeconnect"									# Notification and clipboard sync for android
 
 	# Gaming ----------------------------------------------------------------------------------
 	"vulkan-icd-loader" "lib32-vulkan-icd-loader"  	# Vulkan libs required by some games
@@ -69,6 +72,7 @@ declare -a OFFICIAL_PKGS=(
 declare -a AUR_PKGS=(
 	# System --------------------------------------------------------------------------------
 	"antigen"										# ZSH plugin manager
+	"bluez-utils-compat"							# More bluetooth support
 	"hunspell-pt-br"								# Portuguese spellcheck
 	"epson-inkjet-printer-escpr"					# EPSON printer drivers
 	"gestures"										# GUI configurator for touchpad gestures
@@ -78,7 +82,6 @@ declare -a AUR_PKGS=(
 	# Base ------------------------------------------------------------------------------------------------
 	"google-chrome"									# Chrome with sync
 	"google-chrome-dev"								# Chrome latest features
-	"firefox-nightly"								# To test upcoming features
 	"firefox-developer-edition"						# My to-go browser, with lots of feature for developers
 
 	# Utils -------------------------------------------------------------------------------------------
@@ -89,8 +92,9 @@ declare -a AUR_PKGS=(
 	"quiterss"										# One of the best RSS feed readers
 	"braus-git"										# Choose on which browser you wanna open a link
 	"stretchly-bin"									# Take frequent breaks
-	"gallery-dl"									# CLI image downloader for various sources
+	"gallery-dl-bin"								# CLI image downloader for various sources
 	"ookla-speedtest-bin"							# Speedtest.net CLI
+	"tdrop-git"										# Turn any application in a quake-mode dropdown
 
 	# Communication -------------------------------------------------------------
 	"discord-ptb"									# Double profile for discord
@@ -98,9 +102,8 @@ declare -a AUR_PKGS=(
 	# Development --------------------------------------------------------------------------------------------------
 	"visual-studio-code-bin"						# Proprietary VSCode, because we need things to work
 	"jetbrains-toolbox"								# Installs any jetbrains related product with one authentication
-	"insomnia"										# REST API testing workspace
-	"insomnia-designer-bin"							# REST API designing workspace
-	"dockstation"									# Control docker containers in a GUI fashion
+	"insomnia-bin"										# REST API designing and testing workspace
+	#"dockstation"									# Control docker containers in a GUI fashion
 	"mongodb-compass"								# Access MongoDB
 	"gitgudcli-git"									# GitGud CLI wrapper
 	"gibo"											# Github's gitignore collection from the CLI
@@ -109,7 +112,7 @@ declare -a AUR_PKGS=(
 	# Gaming
 	"mcrcon"										# RCON CLI for Minecraft Servers
 	"ds4drv-cemuhook-git"							# DualShock 4 drivers with Cemuhook support
-	"multimc5"										# Minecraft multi instance launcher
+	"multimc-bin"									# Minecraft multi instance launcher
 
 	# Fonts -------------------------------------------------------------
 	"nerd-fonts-fira-code"		  					# FiraCode Nerd Font
