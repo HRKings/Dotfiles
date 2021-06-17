@@ -17,7 +17,6 @@ declare -a OFFICIAL_PKGS=(
 	"exa"											# A better ls
 	"neovim"										# The only vim
 	"ranger"										# Terminal file explorer
-	#"ueberzug"										# To preview images in the terminal when using ranger
 	"trash-cli"										# Send files to the DE trashbin instead of obliterating them
 	"ncdu"											# Disk usage vizualizer
 	"kitty"											# GPU rendered terminal
@@ -26,8 +25,8 @@ declare -a OFFICIAL_PKGS=(
 	# Development -------------------------------------------------------------------
 	"dotnet-runtime" "dotnet-sdk"					# Make and run .NET code
 	"aspnet-runtime" "aspnet-targeting-pack"		# And target and run ASP.NET
-	"podman" "podman-compose"						# Containerize all the things (without root)
-	#"docker" "docker-compose"						# Containerize all the things
+	#"podman" "podman-compose"						# Containerize all the things (without root)
+	"docker" "docker-compose"						# Containerize all the things
 	"github-cli"									# Finer access to GitHub features
 	"jre-openjdk" "jdk-openjdk"						# Run Java apps
 	"python" "python-pip"							# Python and its package manager
@@ -95,6 +94,7 @@ declare -a AUR_PKGS=(
 	"gallery-dl-bin"								# CLI image downloader for various sources
 	"ookla-speedtest-bin"							# Speedtest.net CLI
 	"tdrop-git"										# Turn any application in a quake-mode dropdown
+	"espanso"										# Substitute aliases strings
 
 	# Communication -------------------------------------------------------------
 	"discord-ptb"									# Double profile for discord
@@ -102,7 +102,7 @@ declare -a AUR_PKGS=(
 	# Development --------------------------------------------------------------------------------------------------
 	"visual-studio-code-bin"						# Proprietary VSCode, because we need things to work
 	"jetbrains-toolbox"								# Installs any jetbrains related product with one authentication
-	"insomnia-bin"										# REST API designing and testing workspace
+	"insomnia-bin"									# REST API designing and testing workspace
 	#"dockstation"									# Control docker containers in a GUI fashion
 	"mongodb-compass"								# Access MongoDB
 	"gitgudcli-git"									# GitGud CLI wrapper
