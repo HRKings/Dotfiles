@@ -59,6 +59,9 @@ alias jsonfc="xclip -o | jq | xclip -i"		# Then put it back on the clipboard
 # Copy something directly to the clipboard ----
 alias clip="xclip -selection clipboard -i"
 
+# Change the diff to use Kitty terminal ----
+alias diff="kitty +kitten diff"
+
 # Change name of programs -------------------------------
 alias vim="nvim"
 alias cshell="csharprepl"	# Open C# interactive shell
