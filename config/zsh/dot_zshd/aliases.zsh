@@ -72,4 +72,3 @@ alias gud="gitgud commit"
 #================================================================================================================================
 
 alias editzsh="code ~/.zshd/ ~/.zshrc"
-alias reloadzsh="source ~/.zshd/*.zsh"
