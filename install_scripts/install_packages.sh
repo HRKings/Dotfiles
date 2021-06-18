@@ -22,7 +22,7 @@ declare -a OFFICIAL_PKGS=(
 	"kitty"											# GPU rendered terminal
 	"rofi"                                          # Highly customizable application launcher
 
-	# Development -------------------------------------------------------------------
+	# Development -------------------------------------------------------------------------------
 	"dotnet-runtime" "dotnet-sdk"					# Make and run .NET code
 	"aspnet-runtime" "aspnet-targeting-pack"		# And target and run ASP.NET
 	#"podman" "podman-compose"						# Containerize all the things (without root)
@@ -82,7 +82,7 @@ declare -a AUR_PKGS=(
 	"google-chrome-dev"								# Chrome latest features
 	"firefox-developer-edition"						# My to-go browser, with lots of feature for developers
 
-	# Utils -------------------------------------------------------------------------------------------
+	# Utils ---------------------------------------------------------------------------------------------
 	"whatsapp-nativefier"							# Because unforunally, discord isn't enough
 	"teams"											# Because unforunally, discord isn't enough, part 2
 	"spotify"										# Let's dance, baby
@@ -94,10 +94,10 @@ declare -a AUR_PKGS=(
 	"tdrop-git"										# Turn any application in a quake-mode dropdown
 	"espanso"										# Substitute aliases strings
 
-	# Communication -------------------------------------------------------------
+	# Communication ---------------------------------------------------------------
 	"discord-ptb"									# Double profile for discord
 
-	# Development --------------------------------------------------------------------------------------------------
+	# Development ---------------------------------------------------------------------------------------------------
 	"visual-studio-code-bin"						# Proprietary VSCode, because we need things to work
 	"jetbrains-toolbox"								# Installs any jetbrains related product with one authentication
 	"insomnia-bin"									# REST API designing and testing workspace
@@ -107,7 +107,7 @@ declare -a AUR_PKGS=(
 	"gibo"											# Github's gitignore collection from the CLI
 	"lazygit"										# Git TUI
 
-	# Gaming
+	# Gaming ------------------------------------------------------------------------------------
 	"mcrcon"										# RCON CLI for Minecraft Servers
 	"ds4drv-cemuhook-git"							# DualShock 4 drivers with Cemuhook support
 	"multimc-bin"									# Minecraft multi instance launcher
