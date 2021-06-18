@@ -22,6 +22,8 @@
     ~/.config/ranger/rc.conf: config/dot_config/ranger/rc.conf
     ~/.config/fontconfig/conf.d/99-noto-color-emoji.conf: config/dot_config/fontconfig/99-noto-color-emoji.conf
     ~/.config/espanso/default.yml : config/dot_config/espanso/default.yaml
+    ~/.bin/browser_chooser.sh : scripts/rofi/rofi_browser.sh
 
 - create:
     - ~/Dev
+    - ~/.bin

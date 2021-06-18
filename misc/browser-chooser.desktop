@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Browser Chooser
+Exec=/usr/bin/sh "~"/.bin/browser_chooser.sh %U
+Terminal=false
+Icon=internet-web-browser
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=x-scheme-handler/http;x-scheme-handler/https;
