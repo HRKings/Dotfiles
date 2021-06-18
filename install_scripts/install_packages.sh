@@ -45,7 +45,6 @@ declare -a OFFICIAL_PKGS=(
 	"bpytop"										# A more advanced htop
 	"krita"											# Digital drawing software
 	"inkscape"										# Vector image editor
-	"kdeconnect"									# Notification and clipboard sync for android
 
 	# Gaming ----------------------------------------------------------------------------------
 	"vulkan-icd-loader" "lib32-vulkan-icd-loader"  	# Vulkan libs required by some games
@@ -89,7 +88,6 @@ declare -a AUR_PKGS=(
 	"spotify"										# Let's dance, baby
 	"keepassxc"										# My favorite password manager
 	"quiterss"										# One of the best RSS feed readers
-	"braus-git"										# Choose on which browser you wanna open a link
 	"stretchly-bin"									# Take frequent breaks
 	"gallery-dl-bin"								# CLI image downloader for various sources
 	"ookla-speedtest-bin"							# Speedtest.net CLI
