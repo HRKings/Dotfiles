@@ -19,7 +19,6 @@ declare -a OFFICIAL_PKGS=(
 	"neovim"										# The only vim
 	"ranger"										# Terminal file explorer
 	"trash-cli"										# Send files to the DE trashbin instead of obliterating them
-	"ncdu"											# Disk usage vizualizer
 	"kitty"											# GPU rendered terminal
 	"rofi"                                          # Highly customizable application launcher
 
@@ -84,6 +83,7 @@ declare -a AUR_PKGS=(
 	"google-chrome"									# Chrome with sync
 	"google-chrome-dev"								# Chrome latest features
 	"firefox-developer-edition"						# My to-go browser, with lots of feature for developers
+	"gdu"											# Disk usage vizualizer
 
 	# Utils ---------------------------------------------------------------------------------------------
 	"whatsapp-nativefier"							# Because unforunally, discord isn't enough
