@@ -38,10 +38,12 @@ source ~/.zshd/completions.zsh
 # SSH Agent Auto-Start
 #================================================================================================================================
 
-if [ -z "$SSH_AGENT_PID" ]
-then
-	eval "$(ssh-agent -s)" > /dev/null
+# Use keychain to handle SSH Agent startup (to keep only one instance) ----
+eval $(keychain --eval --noask -q)
 
+# If there are no keys, add then --------------------------
+if [ "$(keychain -L)" = "The agent has no identities." ]
+then
 	for file in $(find $HOME/.ssh -name "*.pri")
 	do 
 		ssh-add $file 2> /dev/null

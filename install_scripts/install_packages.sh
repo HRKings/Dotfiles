@@ -12,6 +12,7 @@ declare -a OFFICIAL_PKGS=(
 	"xdotool"										# Send keypresses via terminal
 	"lshw"											# Hardware configuration info
 	"hwinfo"										# Hardware general info
+	"keychain"										# Handle ssh-agent
 
 	# Base ------------------------------------------------------------------------------------------------------
 	"exa"											# A better ls
