@@ -46,6 +46,7 @@ declare -a OFFICIAL_PKGS=(
 	"bpytop"										# A more advanced htop
 	"krita"											# Digital drawing software
 	"inkscape"										# Vector image editor
+	"sd"											# A faster replacement for sed
 
 	# Gaming ----------------------------------------------------------------------------------
 	"vulkan-icd-loader" "lib32-vulkan-icd-loader"  	# Vulkan libs required by some games
@@ -77,6 +78,7 @@ declare -a AUR_PKGS=(
 	"gestures"										# GUI configurator for touchpad gestures
 	"input-wacom-dkms"								# Wacom tablet driver
 	"dotbot"										# Dotfiles bootstraper
+	"zoxide-bin"									# Z autojumping
 
 	# Base ------------------------------------------------------------------------------------------------
 	"google-chrome"									# Chrome with sync
@@ -107,6 +109,7 @@ declare -a AUR_PKGS=(
 	"gitgudcli-git"									# GitGud CLI wrapper
 	"gibo"											# Github's gitignore collection from the CLI
 	"lazygit"										# Git TUI
+	"shellchek-bin"									# Syntax and checker for shellscripts
 
 	# Gaming ------------------------------------------------------------------------------------
 	"mcrcon"										# RCON CLI for Minecraft Servers
