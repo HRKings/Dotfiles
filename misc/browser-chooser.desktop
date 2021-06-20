@@ -6,4 +6,5 @@ Terminal=false
 Icon=internet-web-browser
 Type=Application
 Categories=Network;WebBrowser;
+StartupNotify=true
 MimeType=x-scheme-handler/http;x-scheme-handler/https;
