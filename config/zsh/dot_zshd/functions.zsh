@@ -33,3 +33,20 @@ stringdiff() {
 	echo $2 > /tmp/string_diff_file_2
 	kitty +kitten diff /tmp/string_diff_file_1 /tmp/string_diff_file_2
 }
+
+# Open ranger and cd into the directory if you quit with Q ------------------------------------
+function ranger {
+    local IFS=$'\t\n'
+    local tempfile="$(mktemp -t tmp.XXXXXX)"
+    local ranger_cmd=(
+        command
+        ranger
+        --cmd="map Q chain shell echo %d > "$tempfile"; quitall"
+    )
+    
+    ${ranger_cmd[@]} "$@"
+    if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
+        cd -- "$(cat "$tempfile")" || return
+    fi
+    command rm -f -- "$tempfile" 2>/dev/null
+}
