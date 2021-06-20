@@ -54,5 +54,8 @@ fi
 # Source other scripts
 #================================================================================================================================
 
+# Setup Zoxide ------------
+eval "$(zoxide init zsh)"
+
 # Set up Node Version Manager -----
 source /usr/share/nvm/init-nvm.sh
