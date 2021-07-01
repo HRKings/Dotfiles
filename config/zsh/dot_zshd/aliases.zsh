@@ -66,6 +66,9 @@ alias diff="kitty +kitten diff"
 alias vim="nvim"
 alias cshell="csharprepl"	# Open C# interactive shell
 alias gud="gitgud commit"
+alias mkfile="touch"
+alias lgit="lazygit"
+alias ldocker="lazydocker"
 
 #================================================================================================================================
 # Personal Shortcuts
