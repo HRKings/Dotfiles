@@ -84,6 +84,9 @@ declare -a AUR_PKGS=(
 	"google-chrome-dev"								# Chrome latest features
 	"firefox-developer-edition"						# My to-go browser, with lots of feature for developers
 	"gdu"											# Disk usage vizualizer
+	"bat"											# Cat but with syntax highlighting
+	"glow"											# TUI markdown viwer
+	"tealdeer"										# Tldr provides example usages for some commands
 
 	# Utils ---------------------------------------------------------------------------------------------
 	"whatsapp-nativefier"							# Because unforunally, discord isn't enough
@@ -96,6 +99,7 @@ declare -a AUR_PKGS=(
 	"ookla-speedtest-bin"							# Speedtest.net CLI
 	"tdrop-git"										# Turn any application in a quake-mode dropdown
 	"espanso"										# Substitute aliases strings
+	"sleek"											# Todo.txt GUI
 
 	# Communication ---------------------------------------------------------------
 	"discord-ptb"									# Double profile for discord
@@ -109,6 +113,7 @@ declare -a AUR_PKGS=(
 	"gitgudcli-git"									# GitGud CLI wrapper
 	"gibo"											# Github's gitignore collection from the CLI
 	"lazygit"										# Git TUI
+	"lazydocker"									# Docker TUI
 	"shellchek-bin"									# Syntax and checker for shellscripts
 
 	# Gaming ------------------------------------------------------------------------------------
