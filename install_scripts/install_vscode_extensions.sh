@@ -24,6 +24,7 @@ declare -a VSCODE_EXTENSIONS=(
 	"hediet.vscode-drawio"						# Draw.io
 	"lostintangent.vsls-whiteboard"				# Collaborative Whiteboard for Live Share
 	"ms-dotnettools.dotnet-interactive-vscode"	# .NET Interactive Jupyter Notebooks
+	"j-brooke.fracturedjsonvsc"					# A JSON formatter focusing on readability
 
 	# Intellisense ------------------------------------------------------
 	"christian-kohler.npm-intellisense"			# Intellisense for NPM
