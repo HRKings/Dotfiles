@@ -6,29 +6,28 @@
 # Matches are the substitution rules, when you type the "trigger" string
 # it gets replaced by the "replace" string.
 matches:
-  # Simple text replacement
-  - trigger: ":espanso"
-    replace: "Hi there!"
-
-  # Dates
+# Date ------------------------------------------------
+  # Replace with the current date
   - trigger: ":date"
-    replace: "{{mydate}}"
+    replace: "{{date}}"
     vars:
-      - name: mydate
-        type: date
-        params:
-          format: "%d-%m-%Y"
-
-  # Shell commands
-  - trigger: ":shell"
-    replace: "{{output}}"
-    vars:
-      - name: output
+      - name: date
         type: shell
         params:
-          cmd: "echo Hello from your shell"
+          cmd: "date +%d-%-%Y"
 
-  - trigger: ":ipp"
+  # Replace with the current date ISO formatted
+  - trigger: ":date_iso"
+    replace: "{{isodate}}"
+    vars:
+      - name: isodate
+        type: shell
+        params:
+          cmd: "date +%Y-%m-%d"
+
+# Network ---------------------------------------------
+  # Replace with the public IPv4
+  - trigger: ":public_ip"
     replace: "{{public_ipv4}}"
     vars:
       - name: public_ipv4
