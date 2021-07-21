@@ -115,6 +115,7 @@ declare -a AUR_PKGS=(
 	"lazygit"										# Git TUI
 	"lazydocker"									# Docker TUI
 	"shellchek-bin"									# Syntax and checker for shellscripts
+	"earthly-bin"									# Universal build system
 
 	# Gaming ------------------------------------------------------------------------------------
 	"mcrcon"										# RCON CLI for Minecraft Servers
