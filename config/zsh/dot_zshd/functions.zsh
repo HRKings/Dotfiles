@@ -31,7 +31,7 @@ gitrecurse() {
 stringdiff() {
 	echo $1 > /tmp/string_diff_file_1
 	echo $2 > /tmp/string_diff_file_2
-	kitty +kitten diff /tmp/string_diff_file_1 /tmp/string_diff_file_2
+	delta /tmp/string_diff_file_1 /tmp/string_diff_file_2
 }
 
 # Open ranger and cd into the directory if you quit with Q ------------------------------------

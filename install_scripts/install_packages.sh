@@ -31,6 +31,7 @@ declare -a OFFICIAL_PKGS=(
 	"jre-openjdk" "jdk-openjdk"						# Run Java apps
 	"python" "python-pip"							# Python and its package manager
 	"dbeaver"										# GUI for SQL databases
+	"git-delta"										# Next-Gen Diff engine
 
 	# Utils -----------------------------------------------------------------------------------------------------------
 	"mpv"											# The best universal media player
