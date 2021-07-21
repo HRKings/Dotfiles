@@ -69,6 +69,7 @@ alias gud="gitgud commit"
 alias mkfile="touch"
 alias lgit="lazygit"
 alias ldocker="lazydocker"
+alias py="python"
 
 #================================================================================================================================
 # Personal Shortcuts
