@@ -1,3 +1,5 @@
+#! /usr/bin/bash
+
 # Clear all docker storage --------------------------------
 docker system prune -a -f
 docker volume rm $(docker volume ls -qf dangling=true)
