@@ -6,16 +6,22 @@
 
 # Install all packages ---------------------
 echo "> Installing all required packages..."
-source ${PWD}/install_scripts/install_packages.sh
+source "${PWD}/install_scripts/install_packages.sh"
 
 # Install configs ---------------------
 echo "> Installing all the configs..."
 dotbot -c install.conf.yaml
 
-# Install VSCode extensions --------------------------
-echo "> Installing all the required VSCode extensions"
-source ${PWD}/install_scripts/install_vscode_extensions.sh
+# Install VSCode extensions ------------------------------
+echo "> Installing all the required VSCode extensions..."
+source "${PWD}/install_scripts/install_vscode_extensions.sh"
+
+# Install .NET ---------------------------------------
+echo "> Installing .NET..."
+wget 'https://dot.net/v1/dotnet-install.sh' -O "${HOME}/.bin/dotnet-install"
+chmod +x "${HOME}/.bin/dotnet-install"
+dotnet-install
 
 # Install .NET global tools --------------------------
-echo "> Installing all the .NET global tools"
-source ${PWD}/install_scripts/install_dotnet_tools.sh
+echo "> Installing all the .NET global tools..."
+source "${PWD}/install_scripts/install_dotnet_tools.sh"
