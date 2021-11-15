@@ -44,7 +44,7 @@ eval $(keychain --eval --noask -q)
 # If there are no keys, add then --------------------------
 if [ "$(keychain -L)" = "The agent has no identities." ]
 then
-	for file in $(find $HOME/.ssh -name "*.pri")
+	for file in $(find $HOME/.ssh -not -name "*.pub")
 	do 
 		ssh-add $file 2> /dev/null
 	done
