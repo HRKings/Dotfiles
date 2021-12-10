@@ -59,8 +59,9 @@ alias jsonfc="xclip -o | jq | xclip -i"		# Then put it back on the clipboard
 # Copy something directly to the clipboard ----
 alias clip="xclip -selection clipboard -i"
 
-# Change the diff to use Kitty terminal ----
-alias diff="kitty +kitten diff"
+# List installed packages ----
+alias listpkg="pacman -Qent"
+alias listaur="pacman -Qem"
 
 # Change name of programs -------------------------------
 alias vim="nvim"
