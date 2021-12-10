@@ -4,14 +4,15 @@
 # Extension IDs to install
 #==================================================================================================
 declare -a VSCODE_EXTENSIONS=(
-	# Languages ---------------------------------------------------------
+	# Languages ---------------------------------------------------------------
 	"ms-dotnettools.csharp"			         			# C# Support
 	"ms-python.python"						          	# Python Support
 	"redhat.vscode-yaml"					          	# YAML Support
 	"yzhang.markdown-all-in-one"			      	# Markdown All-In-One
 	"earthly.earthfile-syntax-highlighting"		# Earthly Build Support
+  "matklad.rust-analyzer"                   # Better Rust language support
 
-	# Appearance ----------------------------------------------------
+	# Appearance -------------------------------------------------------------
 	"pkief.material-icon-theme"				      	# Material Icons
 	"zhuangtongfa.material-theme"			      	# OneDark Pro Theme
 
@@ -30,6 +31,7 @@ declare -a VSCODE_EXTENSIONS=(
 	"oderwat.indent-rainbow"				        	# Colorize identation
 	"timonwong.shellcheck"					        	# Analyzer for shell scripts
 	"quicktype.quicktype"					          	# Paste JSON as types (TS, C#, etc.)
+  "Arjun.swagger-viewer"                    # View Swagger spec in a visual way 
 
 	# Intellisense ------------------------------------------------------------
 	"christian-kohler.npm-intellisense"		  	# Intellisense for NPM
