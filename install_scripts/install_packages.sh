@@ -25,18 +25,24 @@ declare -a OFFICIAL_PKGS=(
 	"neovim"								                     		# The only vim
 	"ranger"								                     		# Terminal file explorer
 	"trash-cli"							                   			# Send files to the DE trashbin instead of obliterating them
-	#"kitty"									                    	# GPU rendered terminal
+	# "kitty"									                    	 # GPU rendered terminal
 	"rofi"                                          # Highly customizable application launcher
 	"zoxide"								                     		# Z autojumping
+  "wireshark-qt"                                  # Network traffic monitoring like a hacker
 
 	# Development -------------------------------------------------------------------------------
-	"docker"										                    # Containerize all the things
+	"docker" "docker-compose"									      # Containerize all the things
 	"github-cli"								                  	# Finer access to GitHub features
 	"jre-openjdk" "jdk-openjdk"				          		# Run Java apps
 	"python" "python-pip"				              			# Python and its package manager
 	"git-delta"									                  	# Next-Gen Diff engine
-	"shellchek"							                  			# Syntax and checker for shellscripts
-	"qpick"									                    		# Super advanced color picker
+	"shellcheck"							                  		# Syntax and checker for shellscripts
+	"gpick"									                    		# Super advanced color picker
+  "dbeaver"                                       # GUI to manage DBMS
+  "git-lfs"                                       # Really large files support for Git, like your momma
+  "gource"                                        # Git history vizualization
+  "kubectl"                                       # Container hell management
+	"lazygit"									                    	# Git TUI
 
 	# Utils -----------------------------------------------------------------------------------------------------------
 	"mpv"										                      	# The best universal media player
@@ -90,18 +96,21 @@ declare -a AUR_PKGS=(
 	"bat"									                      		# Cat but with syntax highlighting
 	"glow-bin"						                  				# TUI markdown viwer
 	"tealdeer"						                  				# Tldr provides example usages for some commands
+  "qalculate-qt5"
 
 	# Utils ---------------------------------------------------------------------------------------------
-	"teams"							                    				# Because unforunally, discord isn't enough
+	"teams-insiders"							             			# Because unforunally, discord isn't enough
 	"spotify"								                    		# Let's dance, baby
 	"keepassxc"						                  				# My favorite password manager
 	"quiterss"					                   					# One of the best RSS feed readers
 	"stretchly-bin"						                			# Take frequent breaks
 	"gallery-dl-bin"						                		# CLI image downloader for various sources
 	"ookla-speedtest-bin"			               				# Speedtest.net CLI
-	#"tdrop-git"						                				# Turn any application in a quake-mode dropdown
-	#"espanso-bin"					                				# Substitute aliases strings
+	# "tdrop-git"						                				 # Turn any application in a quake-mode dropdown
+	# "espanso-bin"					                				 # Substitute aliases strings
 	"sleek"								                     			# Todo.txt GUI
+  "1password"                                     # Password manager
+  "nvm"
 
 	# Communication ---------------------------------------------------------------
 	"discord-ptb"						                  			# Double profile for discord
@@ -112,14 +121,17 @@ declare -a AUR_PKGS=(
 	"insomnia-bin"								                	# REST API designing and testing workspace
 	"gitgudcli-git"							                		# GitGud CLI wrapper
 	"gibo"										                    	# Github's gitignore collection from the CLI
-	"lazygit"									                    	# Git TUI
 	"lazydocker-bin"					                			# Docker TUI
-	"earthly-bin"							                  		# Universal build system
+  "aws-cli-v2-bin"                                # AWS management, because managing your own infra is hard (and you don't really care about money, do you ?)
+  "pnpm"                                          # A better and more disk efficient NPM, because disk space if expensive
 
 	# Gaming ------------------------------------------------------------------------------------
 	# "mcrcon"										                    # RCON CLI for Minecraft Servers
 	"ds4drv-cemuhook-git"					              		# DualShock 4 drivers with Cemuhook support
 	"multimc-bin"									                  # Minecraft multi instance launcher
+  "citra-qt-bin"                                  # 3DS emulator, because I like Pokemon
+  "yuzu-mainline-bin"                             # Switch emulator, because (I like Pokemon)² and Zelda
+  "vintagestory"                                  # Minecraft survival on steroids
 
 	# Fonts -------------------------------------------------------------
 	"nerd-fonts-fira-code"		  	          				# FiraCode Nerd Font
