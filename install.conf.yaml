@@ -15,6 +15,9 @@
       glob: true
       path: config/zsh/dot_zshd/**
     ~/.p10k.zsh: config/zsh/dot_p10k.zsh
+    ~/.ssh/config: .private/ssh/config
+    ~/.gitconfig: .private/.gitconfig
+    ~/.gnupg/gpg-agent.conf: .private/gpg/gpg-agent.conf
     ~/.config/kitty/:
       glob: true
       path: config/dot_config/kitty/**

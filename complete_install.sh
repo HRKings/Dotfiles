@@ -8,6 +8,10 @@
 echo "> Installing all required packages..."
 source "${PWD}/install_scripts/install_packages.sh"
 
+# Clone private dotfiles --------------------------------------
+echo "> Cloning private dotfiles..."
+git clone git@github.com:HRKings/Private-Dotfiles.git .private
+
 # Install configs ---------------------
 echo "> Installing all the configs..."
 dotbot -c install.conf.yaml
