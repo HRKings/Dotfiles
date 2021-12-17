@@ -16,7 +16,7 @@ gitcg() {
   GPG_EMAILS=$(gpg --list-secret-keys | grep ".*\@.*" | cut -d '<' -f 2 | cut -d '>' -f 1)
   GIT_EMAIL=$(printf "%s\n" "${GPG_EMAILS[@]}" | fzf --preview 'gpg --keyid-format=long --locate-keys {1}')
 
-  if [[ ! -z $GIT_EMAIL ]]; then
+  if [[ ! -z "$GIT_EMAIL" ]]; then
     GPG_KEY=$(gpg --keyid-format=long --locate-keys "${GIT_EMAIL}" | head -n 1 | cut -d '/' -f 2 | cut -d ' ' -f 1)
 
     git config user.email "${GIT_EMAIL}" && git config user.signingkey "${GPG_KEY}"
