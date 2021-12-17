@@ -11,6 +11,23 @@ reloadzsh() {
 	done
 }
 
+# Select which Git email and GPG signing key to use inside a repository -----------------------------------------------
+gitcg() {
+  GPG_EMAILS=$(gpg --list-secret-keys | grep ".*\@.*" | cut -d '<' -f 2 | cut -d '>' -f 1)
+  GIT_EMAIL=$(printf "%s\n" "${GPG_EMAILS[@]}" | fzf --preview 'gpg --keyid-format=long --locate-keys {1}')
+
+  if [[ ! -z $GIT_EMAIL ]]; then
+    GPG_KEY=$(gpg --keyid-format=long --locate-keys "${GIT_EMAIL}" | head -n 1 | cut -d '/' -f 2 | cut -d ' ' -f 1)
+
+    git config user.email "${GIT_EMAIL}" && git config user.signingkey "${GPG_KEY}"
+
+    echo "\u001b[32mYour current GIT credentials are:\u001b[0m"
+    echo "\u001b[36m - Name  :\u001b[0m $(git config user.name)"
+    echo "\u001b[36m - Email :\u001b[0m $(git config user.email)"
+    echo "\u001b[36m - GPG   :\u001b[0m $(git config user.signingkey)"
+  fi
+}
+
 # List all packages in both Upstream and AUR, with fuzzy searching via fzf ----------------------------------------------------
 pkgfind() {
 	yay -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf --multi --preview 'yay -Si {1}' | cut -d " " -f 1 | xargs -ro yay -S
