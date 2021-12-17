@@ -2,11 +2,11 @@
 # Functions
 #================================================================================================================================
 
-# Reload all ZSH configs ------------
+# Reload all ZSH configs ----------------------------------
 reloadzsh() {
-	for file in $HOME/.zshd/*.zsh
+	for file in $(find "$HOME/.zshd" -type l -name "*.zsh")
 	do
-  		echo "> Reloading $file"
+  	echo "> Reloading $file"
 		source $file
 	done
 }
