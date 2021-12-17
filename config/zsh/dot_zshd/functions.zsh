@@ -28,6 +28,21 @@ gitcg() {
   fi
 }
 
+# Dump a GitHub gist into the specified file -----------------------------------------------------------------------------------------------------------
+dumpgist() {
+  if [[ -z "$1" ]]; then
+    echo "Please provide a file name..."
+    return
+  fi
+
+  GIST=$(gh gist list | cut -f 1,2 | fzf --preview 'echo {1} | cut -f 1 | xargs gh gist view --raw ')
+
+  if [[ ! -z "$GIST" ]]; then
+    gh gist view --raw "$(echo $GIST | cut -f 1)" | tail -n +3 > $1 \
+      && echo "\u001b[32mCreated '\u001b[36m$1\u001b[0m' \u001b[32mwith the gist '\u001b[36m$(echo $GIST | cut -f 2)\u001b[32m' contents...\u001b[0m"
+  fi
+}
+
 # List all packages in both Upstream and AUR, with fuzzy searching via fzf ----------------------------------------------------
 pkgfind() {
 	yay -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf --multi --preview 'yay -Si {1}' | cut -d " " -f 1 | xargs -ro yay -S
