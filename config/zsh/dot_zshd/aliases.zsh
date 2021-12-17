@@ -72,6 +72,7 @@ alias lgit="lazygit"
 alias ldocker="lazydocker"
 alias py="python"
 alias calc="qalc"
+alias open="xdg-open"
 
 #================================================================================================================================
 # Personal Shortcuts
