@@ -79,3 +79,4 @@ alias open="xdg-open"
 #================================================================================================================================
 
 alias editzsh="code ~/.zshd/ ~/.zshrc"
+alias mkcompose="dumpgist docker-compose.yaml" # Create a Docker Compose file with a template
