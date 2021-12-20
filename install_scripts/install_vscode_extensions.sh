@@ -23,20 +23,17 @@ declare -a VSCODE_EXTENSIONS=(
 	"streetsidesoftware.code-spell-checker"		# Spell Checking
 	"wix.vscode-import-cost" 				        	# JS Package Import Cost
 	"WallabyJs.quokka-vscode" 				      	# Inline function results for JS
-	# "hediet.vscode-drawio"					        	# Draw.io
-	"lostintangent.vsls-whiteboard"			    	# Collaborative Whiteboard for Live Share
 	"j-brooke.fracturedjsonvsc"				      	# A JSON formatter focusing on readability
 	"formulahendry.auto-rename-tag"			    	# HTML Auto-Rename Tags
 	"formulahendry.auto-close-tag"			    	# HTML Auto-Close Tags
 	"oderwat.indent-rainbow"				        	# Colorize identation
 	"timonwong.shellcheck"					        	# Analyzer for shell scripts
 	"quicktype.quicktype"					          	# Paste JSON as types (TS, C#, etc.)
-  "Arjun.swagger-viewer"                    # View Swagger spec in a visual way 
+  "Arjun.swagger-viewer"                    # Display Swagger specs in a visual way 
 
 	# Intellisense ------------------------------------------------------------
 	"christian-kohler.npm-intellisense"		  	# Intellisense for NPM
 	"christian-kohler.path-intellisense"	  	# Intellisense for File Path
-	# "octref.vetur"							             	# Vue Tooling
 	"johnsoncodehk.volar"					           	# Vue 3 Tooling
 
 	# Workflow --------------------------------------------------------------------
