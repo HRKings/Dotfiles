@@ -29,3 +29,7 @@ dotnet-install
 # Install .NET global tools --------------------------
 echo "> Installing all the .NET global tools..."
 source "${PWD}/install_scripts/install_dotnet_tools.sh"
+
+# Install Rust -------------------------------------------------
+echo "> Installing Rust..."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
