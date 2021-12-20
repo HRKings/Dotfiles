@@ -44,6 +44,7 @@ declare -a OFFICIAL_PKGS=(
   "gource"                                        # Git history vizualization
   "kubectl"                                       # Container hell management
 	"lazygit"									                    	# Git TUI
+  "go"                                            # Go core compiler tools
 
 	# Utils -----------------------------------------------------------------------------------------------------------
 	"mpv"										                      	# The best universal media player
