@@ -3,7 +3,7 @@
 #================================================================================================================================
 
 # Reload all ZSH configs ----------------------------------
-reloadzsh() {
+function reloadzsh {
 	for file in $(find "$HOME/.zshd" -type l -name "*.zsh")
 	do
   	echo "> Reloading $file"
@@ -12,7 +12,7 @@ reloadzsh() {
 }
 
 # Select which Git email and GPG signing key to use inside a repository -----------------------------------------------
-gitcg() {
+function gitcfg {
   GPG_EMAILS=$(gpg --list-secret-keys | grep ".*\@.*" | cut -d '<' -f 2 | cut -d '>' -f 1)
   GIT_EMAIL=$(printf "%s\n" "${GPG_EMAILS[@]}" | fzf --preview 'gpg --keyid-format=long --locate-keys {1}')
 
@@ -29,7 +29,7 @@ gitcg() {
 }
 
 # Dump a GitHub gist into the specified file -----------------------------------------------------------------------------------------------------------
-dumpgist() {
+function dumpgist {
   if [[ -z "$1" ]]; then
     echo "Please provide a file name..."
     return
@@ -44,12 +44,12 @@ dumpgist() {
 }
 
 # List all packages in both Upstream and AUR, with fuzzy searching via fzf ----------------------------------------------------
-pkgfind() {
+function pkgfind {
 	yay -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf --multi --preview 'yay -Si {1}' | cut -d " " -f 1 | xargs -ro yay -S
 }
 
 # Execute a Git command in all repositories contained in nested directories ----
-gitrecurse() {
+function gitrecurse {
 	for dir in $(find . -name ".git")
 	do 
 		cd ${dir%/*}
@@ -60,7 +60,7 @@ gitrecurse() {
 }
 
 # Executes a diff in two strings ----------------------------------------
-stringdiff() {
+function stringdiff {
 	echo $1 > /tmp/string_diff_file_1
 	echo $2 > /tmp/string_diff_file_2
 	delta /tmp/string_diff_file_1 /tmp/string_diff_file_2
