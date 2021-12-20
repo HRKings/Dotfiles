@@ -29,6 +29,7 @@ declare -a OFFICIAL_PKGS=(
 	"rofi"                                          # Highly customizable application launcher
 	"zoxide"								                     		# Z autojumping
   "wireshark-qt"                                  # Network traffic monitoring like a hacker
+  "yakuake"                                       # KDE's drop down terminal
 
 	# Development -------------------------------------------------------------------------------
 	"docker" "docker-compose"									      # Containerize all the things
