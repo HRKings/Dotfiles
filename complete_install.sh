@@ -33,3 +33,7 @@ source "${PWD}/install_scripts/install_dotnet_tools.sh"
 # Install Rust -------------------------------------------------
 echo "> Installing Rust..."
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Install Ranger icons ----------------------------------------------------------------------------------
+echo "> Installing Ranger icons..."
+git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
