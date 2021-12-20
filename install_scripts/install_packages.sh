@@ -25,7 +25,6 @@ declare -a OFFICIAL_PKGS=(
 	"neovim"								                     		# The only vim
 	"ranger"								                     		# Terminal file explorer
 	"trash-cli"							                   			# Send files to the DE trashbin instead of obliterating them
-	# "kitty"									                    	 # GPU rendered terminal
 	"rofi"                                          # Highly customizable application launcher
 	"zoxide"								                     		# Z autojumping
   "wireshark-qt"                                  # Network traffic monitoring like a hacker
@@ -98,7 +97,7 @@ declare -a AUR_PKGS=(
 	"bat"									                      		# Cat but with syntax highlighting
 	"glow-bin"						                  				# TUI markdown viwer
 	"tealdeer"						                  				# Tldr provides example usages for some commands
-  "qalculate-qt5"
+  "qalculate-qt5"                                 # The best calculator in existence
 
 	# Utils ---------------------------------------------------------------------------------------------
 	"teams-insiders"							             			# Because unforunally, discord isn't enough
@@ -108,11 +107,7 @@ declare -a AUR_PKGS=(
 	"stretchly-bin"						                			# Take frequent breaks
 	"gallery-dl-bin"						                		# CLI image downloader for various sources
 	"ookla-speedtest-bin"			               				# Speedtest.net CLI
-	# "tdrop-git"						                				 # Turn any application in a quake-mode dropdown
-	# "espanso-bin"					                				 # Substitute aliases strings
-	"sleek"								                     			# Todo.txt GUI
   "1password"                                     # Password manager
-  "nvm"
 
 	# Communication ---------------------------------------------------------------
 	"discord-ptb"						                  			# Double profile for discord
@@ -126,9 +121,9 @@ declare -a AUR_PKGS=(
 	"lazydocker-bin"					                			# Docker TUI
   "aws-cli-v2-bin"                                # AWS management, because managing your own infra is hard (and you don't really care about money, do you ?)
   "pnpm"                                          # A better and more disk efficient NPM, because disk space if expensive
+  "nvm"                                           # Node Version Manager, because having just one circle of hell isn't enough
 
 	# Gaming ------------------------------------------------------------------------------------
-	# "mcrcon"										                    # RCON CLI for Minecraft Servers
 	"ds4drv-cemuhook-git"					              		# DualShock 4 drivers with Cemuhook support
 	"multimc-bin"									                  # Minecraft multi instance launcher
   "citra-qt-bin"                                  # 3DS emulator, because I like Pokemon
