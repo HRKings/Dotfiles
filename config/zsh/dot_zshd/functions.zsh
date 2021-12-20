@@ -6,7 +6,7 @@
 function reloadzsh {
 	for file in $(find "$HOME/.zshd" -type l -name "*.zsh")
 	do
-  	echo "> Reloading $file"
+  	echo "\u001b[32m> Reloading \u001b[36m$file\u001b[0m"
 		source $file
 	done
 }
@@ -53,7 +53,7 @@ function gitrecurse {
 	for dir in $(find . -name ".git")
 	do 
 		cd ${dir%/*}
-		echo "> $PWD"
+		echo "\u001b[32m> $PWD\u001b[0m"
 		git $@
 		cd - > /dev/null
 	done
