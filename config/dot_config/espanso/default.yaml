@@ -14,10 +14,10 @@ matches:
       - name: date
         type: shell
         params:
-          cmd: "date +%d-%-%Y"
+          cmd: "date +%d/%m/%Y"
 
   # Replace with the current date ISO formatted
-  - trigger: ":date_iso"
+  - trigger: ":isodate"
     replace: "{{isodate}}"
     vars:
       - name: isodate
@@ -27,7 +27,7 @@ matches:
 
 # Network ---------------------------------------------
   # Replace with the public IPv4
-  - trigger: ":public_ip"
+  - trigger: ":ippub"
     replace: "{{public_ipv4}}"
     vars:
       - name: public_ipv4
