@@ -2,12 +2,18 @@
 # Exports
 #================================================================================================================================
 
-# .NET path config for Arch ------------------------------
-export PATH="$PATH:${HOME}/.dotnet:${HOME}/.dotnet/tools:${HOME}/.cargo/bin"
+# .NET path config ---------------------------------------
+export PATH="$PATH:${HOME}/.dotnet:${HOME}/.dotnet/tools"
 export DOTNET_ROOT=$(dirname $(realpath $(which dotnet)))
 
-# External global tools ---------
-export PATH="$PATH:${HOME}/.bin"
+# Go path config -------------
+export GOPATH="${HOME}/go"
+
+# External global tools -----------------------------------------
+export PATH="$PATH:${HOME}/.bin:${GOPATH}/bin:${HOME}/.cargo/bin"
+
+# Enable Anti Aliasing for fonts inside Java GUI aplications ---
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 
 # Set default browser to Braus (Select broswer for each link) --
 #export BROWSER=${HOME}/.bin/browser_chooser.sh
