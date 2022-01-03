@@ -14,6 +14,3 @@ export PATH="$PATH:${HOME}/.bin:${GOPATH}/bin:${HOME}/.cargo/bin"
 
 # Enable Anti Aliasing for fonts inside Java GUI aplications ---
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
-
-# Set default browser to Braus (Select broswer for each link) --
-#export BROWSER=${HOME}/.bin/browser_chooser.sh
