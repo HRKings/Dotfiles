@@ -35,7 +35,7 @@ function dumpgist {
     return
   fi
 
-  GIST=$(gh gist list | cut -f 1,2 | fzf --preview 'echo {1} | cut -f 1 | xargs gh gist view --raw ')
+  GIST=$(gh gist list | grep "Template Docker Compose File" | cut -f 1,2 | fzf --preview 'echo {1} | cut -f 1 | xargs gh gist view --raw ')
 
   if [[ ! -z "$GIST" ]]; then
     gh gist view --raw "$(echo $GIST | cut -f 1)" | tail -n +3 > $1 \
