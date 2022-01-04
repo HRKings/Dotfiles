@@ -34,21 +34,13 @@ source ~/.zshd/variables.zsh
 source ~/.zshd/functions.zsh
 source ~/.zshd/completions.zsh
 
-#================================================================================================================================
+#====================================================================================================================================
 # SSH Agent Auto-Start
-#================================================================================================================================
+#====================================================================================================================================
 
-# Use keychain to handle SSH Agent startup (to keep only one instance) ----
-eval $(keychain --eval --noask -q)
-
-# If there are no keys, add then --------------------------
-if [ "$(keychain -L)" = "The agent has no identities." ]
-then
-	for file in $(find $HOME/.ssh -type f -not -name "*.pub" -and -not -name "config" -and -not -name "known_hosts*")
-	do 
-		ssh-add $file 2> /dev/null
-	done
-fi
+# Use keychain to handle SSH Agent startup and key loading, to keep only one instance
+eval $(keychain --eval --noask -Q -q)
+keychain -q $(find "$HOME/.ssh" -type f -not -name "*.pub" -and -not -name "config" -and -not -name "known_hosts*" | tr '\n' ' ')
 
 #================================================================================================================================
 # Source other scripts
