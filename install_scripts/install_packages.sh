@@ -57,6 +57,8 @@ declare -a OFFICIAL_PKGS=(
 	"krita"										                	    # Digital drawing software
 	"inkscape"									                   	# Vector image editor
 	"sd"										                      	# A faster replacement for sed
+  "task"                                          # TaskWarrior: todo tracking with support for TimeWarrior
+  "timew"                                         # TimeWarrior: Track time via the CLI
 
 	# Gaming ----------------------------------------------------------------------------------
 	"vulkan-icd-loader" "lib32-vulkan-icd-loader"  	# Vulkan libs required by some games
@@ -85,7 +87,6 @@ declare -a AUR_PKGS=(
 	"bluez-utils-compat"							              # More bluetooth support
 	"hunspell-pt-br"							                	# Portuguese spellcheck
 	"epson-inkjet-printer-escpr"		          			# EPSON printer drivers
-	"gestures"									                  	# GUI configurator for touchpad gestures
 	"input-wacom-dkms"						              		# Wacom tablet driver
 	"dotbot"									                    	# Dotfiles bootstraper
 
@@ -138,6 +139,7 @@ declare -a AUR_PKGS=(
 	"img2xterm"										                  # Display images on the terminal
 	"pokemonsay-newgenerations-git"			        		# Cowsay with pokemons
 	"mpv-mpris"								                  		# Enable MPRIS for MPV
+  "wakatime-cli-bin"                              # Wakatime CLI
 )
 
 #========================================================================================================================
