@@ -26,6 +26,8 @@
     ~/.config/chrome-dev-flags.conf : config/dot_config/chrome-flags.conf
     ~/.config/chrome-flags.conf : config/dot_config/chrome-flags.conf
     ~/.config/chromium-flags.conf : config/dot_config/chrome-flags.conf
+    ~/.ngrok2/ngrok.yml : .private/ngrok/ngrok.yml
+    ~/.wakatime.cfg : .private/.wakatime.cfg
 
 - create:
     - ~/Dev
