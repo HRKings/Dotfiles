@@ -10,7 +10,7 @@ source "${PWD}/install_scripts/install_packages.sh"
 
 # Clone private dotfiles --------------------------------------
 echo "> Cloning private dotfiles..."
-git clone https://github.com/HRKings/Private-Dotfiles.git .private
+git clone git@github.com:HRKings/Private-Dotfiles.git .private
 
 # Install configs ---------------------
 echo "> Installing all the configs..."
