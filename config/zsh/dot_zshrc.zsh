@@ -40,7 +40,7 @@ source ~/.zshd/completions.zsh
 
 # Use keychain to handle SSH Agent startup and key loading, to keep only one instance
 eval $(keychain --eval --noask -Q -q)
-keychain -q $(find "$HOME/.ssh" -type f -not -name "*.pub" -and -not -name "config" -and -not -name "known_hosts*" | tr '\n' ' ')
+keychain -q $(find "$HOME/.ssh" -type f -not -name "*.pub" -and -not -name "config" -and -not -name "known_hosts*")
 
 #================================================================================================================================
 # Source other scripts
