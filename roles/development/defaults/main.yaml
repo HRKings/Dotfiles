@@ -1,0 +1,44 @@
+vscode_extensions:
+  # Languages ---------------------------------------------------------------
+  - ms-dotnettools.csharp                    # C# Support
+  - redhat.vscode-yaml                       # YAML Support
+  - yzhang.markdown-all-in-one               # Markdown All-In-One
+  - earthly.earthfile-syntax-highlighting    # Earthly Build Support
+
+  # Appearance -------------------------------------------------------------
+  - pkief.material-icon-theme                # Material Icons
+  - zhuangtongfa.material-theme              # OneDark Pro Theme
+
+  # Utilities -----------------------------------------------------------------------------
+  - eamodio.gitlens                          # Gitlens
+  - ms-vsliveshare.vsliveshare               # LiveShare
+  - alefragnani.project-manager              # Project Manager
+  - streetsidesoftware.code-spell-checker    # Spell Checking
+  - wix.vscode-import-cost                   # JS Package Import Cost
+  - WallabyJs.quokka-vscode                  # Inline function results for JS
+  - j-brooke.fracturedjsonvsc                # A JSON formatter focusing on readability
+  - formulahendry.auto-rename-tag            # HTML Auto-Rename Tags
+  - formulahendry.auto-close-tag             # HTML Auto-Close Tags
+  - oderwat.indent-rainbow                   # Colorize identation
+  - timonwong.shellcheck                     # Analyzer for shell scripts
+  - quicktype.quicktype                      # Paste JSON as types (TS, C#, etc.)
+  - Arjun.swagger-viewer                     # Display Swagger specs in a visual way
+
+  # Intellisense ------------------------------------------------------------
+  - christian-kohler.npm-intellisense        # Intellisense for NPM
+  - christian-kohler.path-intellisense       # Intellisense for File Path
+  - johnsoncodehk.volar                      # Vue 3 Tooling
+
+  # Workflow --------------------------------------------------------------------
+  - ms-vscode.live-server                    # Live server with hot reloading
+  - fosshaas.fontsize-shortcuts              # Add fontsize shortcuts
+
+  # Linter/ Formatter ---------------------------------------------------------
+  - esbenp.prettier-vscode                   # Prettier
+  - dbaeumer.vscode-eslint                   # ESLint
+  - HookyQR.beautify                         # Beautify JS, CSS, JSON files
+  - editorconfig.editorconfig                # Override workspace configs based on .editorconfig
+
+dotnet_tools:
+  - dotnet-script	# Run .csx C# scripts
+  - csharprepl		  # Interactive C# shell

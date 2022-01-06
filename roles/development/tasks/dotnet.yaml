@@ -1,0 +1,16 @@
+---
+- name: Download .NET installer
+  tags: dotnet
+  get_url:
+    url: https://dot.net/v1/dotnet-install.sh
+    dest: ~/.local/bin/dotnet-install
+    mode: 774
+
+- name: Install .NET
+  tags: dotnet
+  command: dotnet-install
+
+- name: Install .NET tools
+  tags: dotnet
+  command: "dotnet tool install -g {{ item }}"
+  loop: "{{ dotnet_tools }}"

@@ -1,0 +1,4 @@
+---
+- name: Install VSCode extensions
+  command: "code --install-extension {{ item }}"
+  loop: "{{ vscode_extensions }}"
