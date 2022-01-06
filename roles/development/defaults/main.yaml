@@ -6,7 +6,7 @@ vscode_extensions:
   - earthly.earthfile-syntax-highlighting    # Earthly Build Support
 
   # Appearance -------------------------------------------------------------
-  - pkief.material-icon-theme                # Material Icons
+  - PKief.material-icon-theme                # Material Icons
   - zhuangtongfa.material-theme              # OneDark Pro Theme
 
   # Utilities -----------------------------------------------------------------------------
@@ -37,7 +37,7 @@ vscode_extensions:
   - esbenp.prettier-vscode                   # Prettier
   - dbaeumer.vscode-eslint                   # ESLint
   - HookyQR.beautify                         # Beautify JS, CSS, JSON files
-  - editorconfig.editorconfig                # Override workspace configs based on .editorconfig
+  - EditorConfig.EditorConfig                # Override workspace configs based on .editorconfig
 
 dotnet_tools:
   - dotnet-script	# Run .csx C# scripts
