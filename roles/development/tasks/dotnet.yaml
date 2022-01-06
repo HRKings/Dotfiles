@@ -16,7 +16,7 @@
 - name: Install .NET
   tags: dotnet
   command: dotnet-install
-  when: is_dotnet_installed.stat.exists == False
+  when: "is_dotnet_installed.stat.exists == False"
 
 - name: Verify installed .NET extensions
   tags: dotnet
