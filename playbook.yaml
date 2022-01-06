@@ -2,7 +2,7 @@
 - hosts: local
   vars_prompt:
     - name: gpg_passphrase
-      prompt: Enter the GPG key
+      prompt: Enter the GPG passphrase
   roles:
     - role: system
       tags:

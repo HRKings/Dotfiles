@@ -50,8 +50,9 @@
     state: directory
     suffix: gpg
   register: temp_gpg
+  changed_when: false
 
-- name: Copy public keys
+- name: Copy GPG keys
   tags: gpg
   copy:
     src: "{{ item.src }}"
@@ -60,13 +61,38 @@
   with_items:
     - { src: 'gpg/main.armor.gpg', dest: 'main.gpg' }
     - { src: 'gpg/work.armor.gpg', dest: 'work.gpg' }
+  changed_when: false
+
+- name: Get KeyID of the temp GPG keys
+  tags: gpg
+  shell: 'gpg --import-option show-only --keyid-format long --import {{ temp_gpg.path }}/{{ item }} | grep sec | cut -d " " -f 4 | xargs echo "{{ item }}:$1"'
+  loop:
+    - main.gpg
+    - work.gpg
+  register: temp_gpg_id_stdout
+  changed_when: false
+
+- name: Combine the KeyID of the temp GPG keys into a dictionary
+  tags: gpg
+  vars:
+    temp_gpg_id: {}
+  set_fact:
+    temp_gpg_id: "{{ temp_gpg_id|combine({item.stdout.split(':')[0]:item.stdout.split(':')[1]})  }}"
+  loop: "{{ temp_gpg_id_stdout.results }}"
+
+- name: Get KeyID of the local GPG keys
+  tags: gpg
+  shell: "gpg --list-secret-keys --keyid-format long | grep sec | cut -d ' ' -f 4"
+  register: local_gpg_id
+  changed_when: false
 
 - name: Import GPG keys
   tags: gpg
-  command: "gpg --batch
+  shell: "gpg --batch
                 --passphrase {{ gpg_passphrase }}
                 --pinentry-mode loopback
                 --import {{ temp_gpg.path }}/{{ item }}"
   loop:
     - main.gpg
     - work.gpg
+  when: "temp_gpg_id[item].replace(' ', '') not in local_gpg_id.stdout_lines"
