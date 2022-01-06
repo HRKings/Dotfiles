@@ -10,7 +10,7 @@ export DOTNET_ROOT="$(dirname $(realpath $(which dotnet)))"
 export GOPATH="${HOME}/go"
 
 # External global tools -----------------------------------------
-export PATH="$PATH:${HOME}/.bin:${GOPATH}/bin:${HOME}/.cargo/bin"
+export PATH="$PATH:${HOME}/.local/bin:${GOPATH}/bin:${HOME}/.cargo/bin"
 
 # Enable Anti Aliasing for fonts inside Java GUI aplications ---
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
