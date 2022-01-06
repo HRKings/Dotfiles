@@ -14,7 +14,7 @@
 - name: Link the .pk10
   file:
     src: "{{ role_path }}/files/dot_p10k.zsh"
-    dest: ~/.p10k
+    dest: ~/.p10k.zsh
     state: link
 
 - name: Ensure ~/.zshd directory exists
