@@ -1,0 +1,16 @@
+---
+- name: Install official packages
+  become: yes
+  tags: packages
+  pacman:
+    name: "{{ official_packages }}"
+    state: present
+
+- name: Install AUR packages
+  become: yes
+  become_user: aur_builder
+  tags: packages
+  kewlfft.aur.aur:
+    name: "{{ aur_packages }}"
+    use: yay
+    state: present

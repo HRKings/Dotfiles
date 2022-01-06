@@ -1,0 +1,72 @@
+---
+- name: Create the `aur_builder` user
+  tags: essential
+  become: yes
+  user:
+    name: aur_builder
+    create_home: no
+    group: wheel
+
+- name: Allow the `aur_builder` user to run `sudo pacman` without a password
+  tags: essential
+  become: yes
+  lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    validate: 'visudo -cf %s'
+
+- name: Ensure ~/.ssh directory exists
+  tags: ssh
+  file:
+    dest: ~/.ssh
+    state: directory
+
+- name: Install private keys
+  tags: ssh
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: 0600
+  with_items:
+    - { src: 'ssh/github_main', dest: '~/.ssh/github_main' }
+    - { src: 'ssh/aur', dest: '~/.ssh/aur' }
+    - { src: 'ssh/github_work', dest: '~/.ssh/github_work' }
+
+- name: Install public keys
+  tags: ssh
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: 0600
+  with_items:
+    - { src: 'ssh/github_main.pub', dest: '~/.ssh/github_main.pub' }
+    - { src: 'ssh/aur', dest: '~/.ssh/aur.pub' }
+    - { src: 'ssh/github_work', dest: '~/.ssh/github_work.pub' }
+
+- name: Create temporary GPG directory
+  tags: gpg
+  tempfile:
+    state: directory
+    suffix: gpg
+  register: temp_gpg
+
+- name: Copy public keys
+  tags: gpg
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ temp_gpg.path }}/{{ item.dest }}"
+    mode: 0600
+  with_items:
+    - { src: 'gpg/main.armor.gpg', dest: 'main.gpg' }
+    - { src: 'gpg/work.armor.gpg', dest: 'work.gpg' }
+
+- name: Import GPG keys
+  tags: gpg
+  command: "gpg --batch
+                --passphrase {{ gpg_passphrase }}
+                --pinentry-mode loopback
+                --import {{ temp_gpg.path }}/{{ item }}"
+  loop:
+    - main.gpg
+    - work.gpg
