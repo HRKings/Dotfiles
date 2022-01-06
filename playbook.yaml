@@ -1,0 +1,21 @@
+---
+- hosts: local
+  vars_prompt:
+    - name: gpg_passphrase
+      prompt: Enter the GPG key
+  roles:
+    - role: system
+      tags:
+        - system
+
+    - role: shell
+      tags:
+        - shell
+
+    - role: dotfiles
+      tags:
+        - dotfiles
+
+    - role: development
+      tags:
+        - development
