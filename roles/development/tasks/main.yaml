@@ -2,6 +2,3 @@
   tags: vscode
 - include_tasks: dotnet.yaml
   tags: dotnet
-
-- name: Install Rust
-  command: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"

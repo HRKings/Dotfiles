@@ -44,6 +44,7 @@ official_packages:
   - kubectl                                       # Container hell management
   - lazygit                                       # Git TUI
   - go                                            # Go core compiler tools
+  - rustup                                        # Rust management tool
 
   # Utils -----------------------------------------------------------------------------------------------------------
   - mpv                                           # The best universal media player
