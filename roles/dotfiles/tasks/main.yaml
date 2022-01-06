@@ -1,0 +1,45 @@
+---
+- name: Link the SSH config
+  tags: dotfiles
+  file:
+    src: "{{ role_path }}/files/ssh/config"
+    dest: ~/.ssh/config
+    state: link
+
+- name: Link the GPG config
+  tags: dotfiles
+  file:
+    src: "{{ role_path }}/files/gpg/gpg-agent.conf"
+    dest: ~/.gnupg/gpg-agent.conf
+    state: link
+
+- name: Link the Git config
+  tags: dotfiles
+  file:
+    src: "{{ role_path }}/files/.gitconfig"
+    dest: ~/.gitconfig
+    state: link
+
+- name: Copy .work.gitconfig
+  tags: dotfiles
+  copy:
+    src: .work.gitconfig
+    dest: ~/.work.gitconfig
+
+- name: Copy the wakatime config
+  tags: dotfiles
+  copy:
+    src: wakatime.cfg
+    dest: ~/.wakatime.cfg
+
+- name: Link the ngrok config
+  tags: dotfiles
+  file:
+    src: "{{ role_path }}/files/ngrok/ngrok.yml"
+    dest: ~/.ngrok2/ngrok.yml
+    state: link
+
+- include_tasks: dotconfigs.yaml
+  tags: dotconfigs
+- include_tasks: scripts.yaml
+  tags: scripts

@@ -1,0 +1,48 @@
+---
+- name: Link the Chrome Dev flags
+  tags: dotfiles
+  file:
+    src: "{{ role_path }}/files/dot_config/chrome-flags.conf"
+    dest: ~/.config/chrome-dev-flags.conf
+    state: link
+
+- name: Link the Chrome flags
+  tags: dotfiles
+  file:
+    src: "{{ role_path }}/files/dot_config/chrome-flags.conf"
+    dest: ~/.config/chrome-flags.conf
+    state: link
+
+- name: Link the Chromium flags
+  tags: dotfiles
+  file:
+    src: "{{ role_path }}/files/dot_config/chrome-flags.conf"
+    dest: ~/.config/chromium-flags.conf
+    state: link
+
+- name: Link the Ranger configs
+  tags: dotfiles
+  file:
+    src: "{{ role_path }}/files/dot_config/ranger/rc.conf"
+    dest: ~/.config/ranger/rc.conf
+    state: link
+
+- name: Install Ranger Icons
+  tags: dotfiles
+  git:
+    repo: git@github.com:alexanderjeurissen/ranger_devicons.git
+    dest: ~/.config/ranger/plugins/ranger_devicons
+
+- name: Link the emoji font config
+  tags: dotfiles
+  file:
+    src: "{{ role_path }}/files/dot_config/fontconfig/99-noto-color-emoji.conf"
+    dest: ~/.config/fontconfig/conf.d/99-noto-color-emoji.conf
+    state: link
+
+- name: Link the Espanso config
+  tags: dotfiles
+  file:
+    src: "{{ role_path }}/files/dot_config/espanso/default.yaml"
+    dest:  ~/.config/espanso/default.yml
+    state: link
