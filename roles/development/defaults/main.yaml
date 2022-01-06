@@ -40,5 +40,5 @@ vscode_extensions:
   - EditorConfig.EditorConfig                # Override workspace configs based on .editorconfig
 
 dotnet_tools:
-  - dotnet-script	# Run .csx C# scripts
+  - dotnet-script	  # Run .csx C# scripts
   - csharprepl		  # Interactive C# shell
