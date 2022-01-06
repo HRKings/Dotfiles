@@ -1,4 +1,12 @@
 ---
+- name: Verify installed VSCode extensions
+  tags: vscode
+  command: "code --list-extensions"
+  register: installed_vscode_extensions
+  changed_when: false
+
 - name: Install VSCode extensions
+  tags: vscode
   command: "code --install-extension {{ item }}"
   loop: "{{ vscode_extensions }}"
+  when: "item not in installed_vscode_extensions.stdout_lines"
