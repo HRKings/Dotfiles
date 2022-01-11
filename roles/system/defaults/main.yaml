@@ -25,7 +25,6 @@ official_packages:
   - rofi                                          # Highly customizable application launcher
   - zoxide                                        # Z auto-jumping
   - wireshark-qt                                  # Network traffic monitoring like a hacker
-  - yakuake                                       # KDE's drop down terminal
 
   # Development -------------------------------------------------------------------------------
   - docker                                        # Containerize all the things
@@ -96,6 +95,7 @@ aur_packages:
   - glow-bin                                       # TUI markdown viewer
   - tealdeer                                       # Tldr provides example usages for some commands
   - qalculate-qt5                                  # The best calculator in existence
+  - tdrop                                          # Transform any application into a dropdown window
 
   # Utils ---------------------------------------------------------------------------------------------
   - teams-insiders                                 # Because unfortunately, discord isn't enough
@@ -108,7 +108,7 @@ aur_packages:
   - 1password                                      # Password manager
 
   # Communication ---------------------------------------------------------------
-  - discord-ptb                                     # Double profile for discord
+  - discord-ptb                                    # Double profile for discord
 
   # Development ---------------------------------------------------------------------------------------------------
   - visual-studio-code-bin                         # Proprietary VSCode, because we need things to work
