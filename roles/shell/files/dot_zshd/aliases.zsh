@@ -1,5 +1,5 @@
 #================================================================================================================================
-# Aliases 
+# Aliases
 #================================================================================================================================
 
 # pacman and yay (If needed a LC_ALL=en.US in front of any of these commands to force the language to english) --------
@@ -73,6 +73,10 @@ alias ldocker="lazydocker"
 alias py="python"
 alias calc="qalc"
 alias open="xdg-open"
+
+# Kitty aliases --------------------------
+alias ssh="kitty +kitten ssh"
+alias hg="kitty +kitten hyperlinked_grep"
 
 #================================================================================================================================
 # Personal Shortcuts
