@@ -1,14 +1,11 @@
-# Import the theme ----
-include nord.conf
-
 # Font Config -----------------------------------
-font_family      FiraCode Nerd Font Mono Retina
+font_family      Fira Code Retina Nerd Font Complete Mono
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
 
 font_size 12.0
-disable_ligatures never
+disable_ligatures cursor
 
 # Extras -------------
 enable_audio_bell yes
@@ -29,3 +26,8 @@ map alt+left neighboring_window left
 map alt+right neighboring_window right
 map alt+up neighboring_window up
 map alt+down neighboring_window down
+
+# BEGIN_KITTY_THEME
+# Nord
+include current-theme.conf
+# END_KITTY_THEME
