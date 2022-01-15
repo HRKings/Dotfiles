@@ -16,7 +16,7 @@ alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/p
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 # Changing "ls" to "exa" --------------------------------------------------------------------------------------------------
-alias ls="exa -al --color=always --group-directories-first --icons"									# My preferred listing
+alias ls="exa -al --color=always --group-directories-first --icons --header"				# My preferred listing
 alias la="exa -a --color=always --group-directories-first --icons"									# All files and dirs
 alias ll="exa -l --color=always --group-directories-first --icons"									# Long format
 alias lt="exa -aT --color=always --group-directories-first --icons"									# Tree listing
