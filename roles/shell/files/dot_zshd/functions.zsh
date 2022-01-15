@@ -51,7 +51,7 @@ function pkgfind {
 # Execute a Git command in all repositories contained in nested directories ----
 function gitrecurse {
 	for dir in $(find . -name ".git")
-	do 
+	do
 		cd ${dir%/*}
 		echo "\u001b[32m> $PWD\u001b[0m"
 		git $@
@@ -75,7 +75,7 @@ function ranger {
         ranger
         --cmd="map Q chain shell echo %d > "$tempfile"; quitall"
     )
-    
+
     ${ranger_cmd[@]} "$@"
     if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
         cd -- "$(cat "$tempfile")" || return
