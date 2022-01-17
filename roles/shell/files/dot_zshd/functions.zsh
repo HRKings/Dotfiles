@@ -13,7 +13,12 @@ function reloadzsh {
 
 # Select which Git email and GPG signing key to use inside a repository -----------------------------------------------
 function gitcfg {
-  GPG_EMAILS=$(gpg --list-secret-keys | grep ".*\@.*" | cut -d '<' -f 2 | cut -d '>' -f 1)
+  if [[ $(git rev-parse --is-inside-work-tree 2&> /dev/null) != "true" ]]; then
+    echo "Current folder '$PWD' is not a git repository."
+    return 1
+  fi
+
+  GPG_EMAILS=$(gpg --list-secret-keys | grep ".*\@.*" | cut -d '<' -f 2 | cut -d '>' -f 1 | tac)
   GIT_EMAIL=$(printf "%s\n" "${GPG_EMAILS[@]}" | fzf --preview 'gpg --keyid-format=long --locate-keys {1}')
 
   if [[ ! -z "$GIT_EMAIL" ]]; then
