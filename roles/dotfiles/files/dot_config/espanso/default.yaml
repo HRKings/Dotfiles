@@ -33,4 +33,4 @@ matches:
       - name: public_ipv4
         type: shell
         params:
-          cmd: "curl ifconfig.me/ip"
+          cmd: "dig +short myip.opendns.com @resolver1.opendns.com"
