@@ -25,6 +25,7 @@ official_packages:
   - rofi                                          # Highly customizable application launcher
   - zoxide                                        # Z auto-jumping
   - wireshark-qt                                  # Network traffic monitoring like a hacker
+  - glow                                          # TUI markdown viewer
 
   # Development -------------------------------------------------------------------------------
   - docker                                        # Containerize all the things
@@ -92,7 +93,6 @@ aur_packages:
   - firefox-developer-edition                      # My to-go browser, with lots of feature for developers
   - gdu-bin                                        # Disk usage visualizer
   - bat                                            # Cat but with syntax highlighting
-  - glow-bin                                       # TUI markdown viewer
   - tealdeer                                       # Tldr provides example usages for some commands
   - qalculate-qt5                                  # The best calculator in existence
   - tdrop                                          # Transform any application into a dropdown window
