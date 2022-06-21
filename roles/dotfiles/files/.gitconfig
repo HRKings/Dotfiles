@@ -15,3 +15,5 @@
 
 [include]
     path = .work.gitconfig
+[safe]
+	directory = /opt/flutter
