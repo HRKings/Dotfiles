@@ -95,6 +95,7 @@ aur_packages:
   - tealdeer                                       # Tldr provides example usages for some commands
   - qalculate-qt5                                  # The best calculator in existence
   - tdrop                                          # Transform any application into a dropdown window
+  - 7-zip-full                                     # Official full replacement for p7zip
 
   # Utils ---------------------------------------------------------------------------------------------
   - teams-insiders                                 # Because unfortunately, discord isn't enough
