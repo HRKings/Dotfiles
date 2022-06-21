@@ -54,7 +54,7 @@ official_packages:
   - chromium                                      # A chromium engine is needed more times that you may think
   - jq                                            # A terminal JSON formatter
   - fzf                                           # Fuzzy finder for any list
-  - bpytop                                        # A more advanced htop
+  - btop                                          # A more advanced htop
   - krita                                         # Digital drawing software
   - inkscape                                      # Vector image editor
   - sd                                            # A faster replacement for sed
@@ -75,7 +75,6 @@ official_packages:
   # Misc --------------------------------------------------------------------------------------
   - cowsay                                        # Because just printing to terminal is boring
   - fortune-mod                                   # And to have something for cows to say
-  - neofetch                                      # Visualize distro infos in a cool way
   - onefetch                                      # Visualize repository infos in a cool way
   - lolcat                                        # Rainbow terminal
 
@@ -137,3 +136,4 @@ aur_packages:
   - pokemonsay-newgenerations-git                  # Cowsay with pokemon
   - mpv-mpris                                      # Enable MPRIS for MPV
   - wakatime-cli-bin                               # WakaTime CLI
+  - fastfetch-git                                  # Visualize distro infos in a cool way
