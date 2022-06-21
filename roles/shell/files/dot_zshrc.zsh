@@ -51,3 +51,8 @@ eval "$(zoxide init zsh)"
 
 # Set up Node Version Manager -----
 source /usr/share/nvm/init-nvm.sh
+
+# pnpm
+export PNPM_HOME="/home/ton/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
