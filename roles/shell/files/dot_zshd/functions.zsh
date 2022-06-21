@@ -50,7 +50,7 @@ function dumpgist {
 
 # List all packages in both Upstream and AUR, with fuzzy searching via fzf ----------------------------------------------------
 function pkgfind {
-	yay -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf --multi --preview 'yay -Si {1}' | cut -d " " -f 1 | xargs -ro yay -S
+	yay -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf --multi --preview 'yay -Si {1}' -q $1 | cut -d " " -f 1 | xargs -ro yay -S
 }
 
 # Execute a Git command in all repositories contained in nested directories ----
