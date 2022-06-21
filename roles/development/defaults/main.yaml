@@ -23,6 +23,7 @@ vscode_extensions:
   - timonwong.shellcheck                     # Analyzer for shell scripts
   - quicktype.quicktype                      # Paste JSON as types (TS, C#, etc.)
   - Arjun.swagger-viewer                     # Display Swagger specs in a visual way
+  - ms-vscode.hexeditor                      # Hex Editor and Viewer
 
   # Intellisense ------------------------------------------------------------
   - christian-kohler.npm-intellisense        # Intellisense for NPM
