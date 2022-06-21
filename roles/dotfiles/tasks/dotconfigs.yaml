@@ -2,8 +2,8 @@
 - name: Link the Kitty Nord theme
   tags: dotconfigs
   file:
-    src: "{{ role_path }}/files/dot_config/kitty/nord.conf"
-    dest:  ~/.config/kitty/nord.conf
+    src: "{{ role_path }}/files/dot_config/kitty/theme.conf"
+    dest:  ~/.config/kitty/theme.conf
     state: link
 
 - name: Link the Kitty config
