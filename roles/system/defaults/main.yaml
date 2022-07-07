@@ -6,7 +6,6 @@ official_packages:
   - hunspell-en_US
   - kvantum-qt5                                   # SVG theme engine for KDE
   - lshw                                          # To list the hardware
-  - gnome-keyring                                 # Some programs need the keyring to store auth data
   - xclip                                         # Clipboard manager for the command line
   - xdotool                                       # Send key presses via terminal
   - lshw                                          # Hardware configuration info
@@ -16,6 +15,7 @@ official_packages:
   - qt5-imageformats                              # Thumbnails for other image formats, like WEBP
   - kio-extras                                    # Additional functionality for KIO
   - ffmpegthumbs                                  # Thumbnails for video formats
+  - sheldon                                       # Shell plugin manager
 
   # Base ------------------------------------------------------------------------------------------------------
   - exa                                           # A better ls
@@ -79,14 +79,15 @@ official_packages:
   - lolcat                                        # Rainbow terminal
 
 aur_packages:
-  # System --------------------------------------------------------------------------------
-  - antigen                                        # ZSH plugin manager
+  # System ----------------------------------------------------------------------------------------------------------
   - bluez-utils-compat                             # More bluetooth support
   - hunspell-pt-br                                 # Portuguese spellcheck
   - epson-inkjet-printer-escpr                     # EPSON printer drivers
   - input-wacom-dkms                               # Wacom tablet driver
+  - ventoy-bin                                     # Multi ISO USB manager
+  - kwallet-secrets                                # KDE secrets management with support for org.freedesktop.secrets
 
-  # Base ------------------------------------------------------------------------------------------------
+  # Base ------------------------------------------------------------------------------------------------------------
   - google-chrome                                  # Chrome with sync
   - google-chrome-dev                              # Chrome latest features
   - firefox-developer-edition                      # My to-go browser, with lots of feature for developers
