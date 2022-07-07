@@ -1,0 +1,38 @@
+# `sheldon` configuration file
+# ----------------------------
+#
+# You can modify this file directly or you can use one of the following
+# `sheldon` commands which are provided to assist in editing the config file:
+#
+# - `sheldon add` to add a new plugin to the config file
+# - `sheldon edit` to open up the config file in the default editor
+# - `sheldon remove` to remove a plugin from the config file
+#
+# See the documentation for more https://github.com/rossmacarthur/sheldon#readme
+
+shell = "zsh"
+
+[templates]
+functions = 'fpath=("{{ dir }}"/functions(-/FN) $fpath); setopt LOCAL_OPTIONS EXTENDED_GLOB; for pluginFunction in "{{ dir }}"/functions/^([_.]*|prompt_*_setup|README*|*~)(-.N:t); do autoload -Uz $pluginFunction; done'
+
+[plugins.oh-my-zsh]
+github = 'ohmyzsh/ohmyzsh'
+
+[plugins.archive]
+github = 'HRKings/zsh-archive-plugin'
+apply = [ 'functions' ]
+
+[plugins.fzf-tab]
+github = 'Aloxaf/fzf-tab'
+
+[plugins.fast-syntax-highlighting]
+github = 'zdharma-continuum/fast-syntax-highlighting'
+
+[plugins.zsh-autosuggestions]
+github = 'zsh-users/zsh-autosuggestions'
+
+[plugins.zsh-completions]
+github = 'zsh-users/zsh-completions'
+
+[plugins.powerlevel10k]
+github = 'romkatv/powerlevel10k'

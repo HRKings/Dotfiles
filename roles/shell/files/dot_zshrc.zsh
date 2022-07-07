@@ -9,14 +9,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 #==================================================================================================
-# Antigen (ZSH Plugins)
+# Sheldon (ZSH Plugins)
 #==================================================================================================
 
-# Load Antigen --------------------------
-source /usr/share/zsh/share/antigen.zsh
+# Set the path for OhMyZSH -----------------------------------------------
+export ZSH="$HOME/.local/share/sheldon/repos/github.com/ohmyzsh/ohmyzsh"
 
-# Load Antigen bundles (cache) ----
-antigen init ~/.antigenrc
+# Load Sheldon --------------------------
+eval "$(sheldon source)"
 
 #==================================================================================================
 # Powerlevel10k Config
