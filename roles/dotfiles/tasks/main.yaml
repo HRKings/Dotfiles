@@ -16,20 +16,20 @@
 - name: Link the Git config
   tags: dotfiles
   file:
-    src: "{{ role_path }}/files/.gitconfig"
+    src: "{{ role_path }}/files/dot_gitconfig.cfg"
     dest: ~/.gitconfig
     state: link
 
 - name: Copy .work.gitconfig
   tags: dotfiles
   copy:
-    src: .work.gitconfig
+    src: "{{ role_path }}/files/dot_work.gitconfig.cfg"
     dest: ~/.work.gitconfig
 
 - name: Copy the wakatime config
   tags: dotfiles
   copy:
-    src: wakatime.cfg
+    src: "{{ role_path }}/files/dot_wakatime.cfg"
     dest: ~/.wakatime.cfg
 
 - name: Link the ngrok config
