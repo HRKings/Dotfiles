@@ -26,6 +26,13 @@
     src: "{{ role_path }}/files/dot_work.gitconfig.cfg"
     dest: ~/.work.gitconfig
 
+- name: Link the Atool config
+  tags: dotfiles
+  file:
+    src: "{{ role_path }}/files/dot_atoolrc"
+    dest: ~/.atoolrc
+    state: link
+
 - name: Copy the wakatime config
   tags: dotfiles
   copy:
