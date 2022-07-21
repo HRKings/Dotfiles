@@ -60,3 +60,10 @@
     src: "{{ role_path }}/files/dot_config/espanso/default.yaml"
     dest:  ~/.config/espanso/default.yml
     state: link
+
+- name: Link the Cheat config
+  tags: dotconfigs
+  file:
+    src: "{{ role_path }}/files/dot_config/cheat"
+    dest:  ~/.config/cheat/cheatsheets/personal
+    state: link

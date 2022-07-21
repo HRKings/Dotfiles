@@ -1,0 +1,39 @@
+---
+syntax: bash
+---
+
+# Find
+fd
+tldr fd
+
+# Disk usage
+dua
+dua i <root>
+
+# Navigate folders
+tere
+
+# Code cat
+bat <file>
+
+# View processes like top
+btop
+
+# Man
+tldr <command>
+
+# Drag'n drop for the CLI
+dragon-drop <file>
+# Drag'n drop for the CLI (quits after dropping)
+dragon-drop --and-exit <file>
+# Drag'n drop for the CLI (prints the dropped file to the stdout)
+dragon-drop --target
+# Drag'n drop for the CLI (each file you drop becomes its own draggable button, which you can drag elsewhere later)
+dragon-drop --target --keep
+
+# PS
+procs
+tldr procs
+
+# View Hex on the CLI
+hexyl <file>

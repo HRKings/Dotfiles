@@ -1,0 +1,8 @@
+---
+syntax: bash
+---
+# Execute dotfiles ansible
+ansible-playbook <playbook> --ask-become-pass --ask-vault-pass --tags "<tags>"
+# Ansible vault
+ansible-vault decrypt <file>
+ansible-vault encrypt <file>
