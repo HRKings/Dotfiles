@@ -216,7 +216,7 @@ randhex() {
 	openssl rand -hex $1 | toupper
 }
 
-# Compress a tarball using brotli -----------------------------------------------------------
+# Archive and unarchive a tarball using brotli -----------------------------------------------------------
 tarbrot() {
 	if [ ! command -v brotli &> /dev/null ]; then
     echo "'brotli' could not be found"
@@ -234,4 +234,22 @@ tarbrot() {
 	path_to_archive="${@:2}"
 
 	tar -cvf "${archive_name}" --use-compress-program="$(where brotli)" "${=path_to_archive}"
+}
+
+untarbrot() {
+	if [ ! command -v brotli &> /dev/null ]; then
+    echo "'brotli' could not be found"
+    return 1
+	fi
+
+	local archive_name
+	if (( $# == 0 ))
+	then
+		echo "usage: $0 [archive_name.tar.br]"
+		return 1
+	fi
+
+	archive_name="${1:t}"
+
+	tar -xvf "$archive_name" --use-compress-program="$(where brotli)"
 }
