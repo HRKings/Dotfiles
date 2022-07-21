@@ -8,6 +8,7 @@ official_packages:
   - lshw                                          # To list the hardware
   - xclip                                         # Clipboard manager for the command line
   - xdotool                                       # Send key presses via terminal
+  - wmctrl                                        # Control the window manager via CLI
   - lshw                                          # Hardware configuration info
   - hwinfo                                        # Hardware general info
   - keychain                                      # Handle ssh-agent
@@ -26,6 +27,8 @@ official_packages:
   - zoxide                                        # Z auto-jumping
   - wireshark-qt                                  # Network traffic monitoring like a hacker
   - glow                                          # TUI markdown viewer
+  - pigz                                          # Parallel GZip
+  - lbzip2                                        # Parallel BZip2
 
   # Development -------------------------------------------------------------------------------
   - docker                                        # Containerize all the things
@@ -58,8 +61,8 @@ official_packages:
   - krita                                         # Digital drawing software
   - inkscape                                      # Vector image editor
   - sd                                            # A faster replacement for sed
-  - task                                          # TaskWarrior: todo tracking with support for TimeWarrior
-  - timew                                         # TimeWarrior: Track time via the CLI
+  - dua                                           # Disk usage visualizer
+  - atool                                         # Manage file archives of various types
 
   # Gaming ----------------------------------------------------------------------------------
   - vulkan-icd-loader                             # Vulkan libs required by some games
@@ -91,7 +94,6 @@ aur_packages:
   - google-chrome                                  # Chrome with sync
   - google-chrome-dev                              # Chrome latest features
   - firefox-developer-edition                      # My to-go browser, with lots of feature for developers
-  - gdu-bin                                        # Disk usage visualizer
   - bat                                            # Cat but with syntax highlighting
   - tealdeer                                       # Tldr provides example usages for some commands
   - qalculate-qt5                                  # The best calculator in existence
@@ -101,12 +103,13 @@ aur_packages:
   # Utils ---------------------------------------------------------------------------------------------
   - teams-insiders                                 # Because unfortunately, discord isn't enough
   - spotify                                        # Let's dance, baby
-  - keepassxc                                      # My favorite password manager
   - quiterss                                       # One of the best RSS feed readers
   - stretchly-bin                                  # Take frequent breaks
   - gallery-dl-bin                                 # CLI image downloader for various sources
   - ookla-speedtest-bin                            # Speedtest.net CLI
-  - 1password                                      # Password manager
+  - 1password                                      # My favorite password manager
+  - tere                                           # Navigate folders like a pro
+  - cheat                                          # Vizualize cheatsheets on the terminal
 
   # Communication ---------------------------------------------------------------
   - discord-ptb                                    # Double profile for discord
@@ -121,6 +124,9 @@ aur_packages:
   - aws-cli-v2-bin                                 # AWS management, because managing your own infra is hard (and you don't really care about money, do you ?)
   - pnpm                                           # A better and more disk efficient NPM, because disk space if expensive
   - nvm                                            # Node Version Manager, because having just one circle of hell isn't enough
+  - kubecolor                                      # Colorize kubectl output
+  - hexyl                                          # Hex vizualizer for the CLI
+  - hyperfine                                      # Benchmark CLI execution times
 
   # Gaming ------------------------------------------------------------------------------------
   - ds4drv-cemuhook-git                            # DualShock 4 drivers with CemuHook support
