@@ -5,10 +5,10 @@
     dest: ~/.zshrc
     state: link
 
-- name: Link the .antigenrc
+- name: Link the Sheldon plugins config
   file:
-    src: "{{ role_path }}/files/dot_antigenrc.zsh"
-    dest: ~/.antigenrc
+    src: "{{ role_path }}/files/sheldon_plugins.toml"
+    dest: ~/.config/sheldon/plugins.toml
     state: link
 
 - name: Link the .pk10
@@ -32,6 +32,7 @@
     - completions.zsh
     - functions.zsh
     - variables.zsh
+    - session_init.zsh
 
 - name: Change user shell to ZSH
   tags: essential

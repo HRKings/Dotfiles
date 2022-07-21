@@ -14,4 +14,5 @@ function cool_init {
   aperture_science_quote | pokemonsay -W $(tput cols)
 }
 
+# Invoke the cool init
 cool_init
