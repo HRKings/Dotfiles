@@ -34,9 +34,9 @@ eval "$(sheldon source)"
 # The rest of my .zshrc
 #==================================================================================================
 
-source ~/.zshd/aliases.zsh
 source ~/.zshd/variables.zsh
 source ~/.zshd/functions.zsh
+source ~/.zshd/aliases.zsh
 source ~/.zshd/completions.zsh
 
 #==================================================================================================================================
