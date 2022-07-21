@@ -71,16 +71,40 @@ alias mkfile="touch"
 alias lgit="lazygit"
 alias ldocker="lazydocker"
 alias py="python"
-alias calc="qalc"
 alias open="xdg-open"
+alias kubectl="kubecolor"
+alias gzip="pigz"
+alias pbzip2="pbzip2"
 
 # Kitty aliases --------------------------
 alias ssh="kitty +kitten ssh"
+alias icat="kitty +kitten icat"
 alias hg="kitty +kitten hyperlinked_grep"
+
+# Alias thefuck ----------
+eval $(thefuck --alias)
+
+# Alias Qalculate ----------------------------------------------------------------------------------------
+aliases[=]='noglob qalc' # The equals sign `=` is not bindable by default, so we have to use this syntax
+
+# Utility aliases -----
+alias toupper="tr '[:lower:]' '[:upper:]'"
+alias tolower="tr '[:upper:]' '[:lower:]'"
 
 #================================================================================================================================
 # Personal Shortcuts
 #================================================================================================================================
 
-alias editzsh="code ~/.zshd/ ~/.zshrc"
+alias editzsh="code ~/.zshd/ ~/.zshrc" # Open all ZSH configs in VSCode
 alias mkcompose="dumpgist docker-compose.yaml" # Create a Docker Compose file with a template
+alias getgitbackup='echo "dura/$(git rev-parse HEAD)"' # Get the dura branch for the Git backups
+alias zc="zi && code ." # Open Z interactive and open VSCode there
+alias cza="git reset --soft 'HEAD^' && cz" # Reverts last commit and calls commitizen
+
+#================================================================================================================================
+# Personal Cheatsheets Shortcuts
+#================================================================================================================================
+
+alias csa="cheat arsenal -s"
+alias csh="cheat shell -s"
+alias csps="cheat snippets -s"
