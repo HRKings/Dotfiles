@@ -4,7 +4,7 @@
 
 # Reload all ZSH configs ----------------------------------
 function reloadzsh {
-	for file in $(find "$HOME/.zshd" -type l -name "*.zsh"); do
+	for file in $(fd -t l -e "zsh" . "$HOME/.zshd"); do
 		echo "\u001b[32m> Reloading \u001b[36m$file\u001b[0m"
 		source $file
 	done
@@ -74,12 +74,8 @@ function pkgfind {
 
 # Execute a Git command in all repositories contained in nested directories ----
 function gitrecurse {
-	for dir in $(find . -name ".git"); do
-		cd ${dir%/*}
-		echo "\u001b[32m> $PWD\u001b[0m"
-		git $@
-		cd - >/dev/null
-	done
+	DIVIDER=$(printf "%$(tput cols)s" " " | tr ' ' '-')
+	fd -HI '^.git$' -x sh -c "echo $DIVIDER && cd '{//}' && printf '\u001b[32m> $PWD\u001b[0m\n' && git $@"
 }
 
 # Executes a diff in two strings ----------------------------------------
