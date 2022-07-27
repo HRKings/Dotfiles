@@ -1,0 +1,58 @@
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "One Dark Pro",
+    "editor.fontFamily": "'FiraCode Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontLigatures": true,
+    "editor.detectIndentation": false,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "shellcheck.customArgs": [
+      "-x"
+    ],
+    "files.trimTrailingWhitespace": true,
+    "[json]": {
+      "editor.defaultFormatter": "j-brooke.fracturedjsonvsc"
+    },
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "fontshortcuts.defaultTerminalFontSize": 14,
+    "editor.lineHeight": 0,
+    "editor.fontSize": 14,
+    "volar.codeLens.scriptSetupTools": true,
+    "volar.autoCompleteRefs": true,
+    "python.formatting.provider": "black",
+    "svelte.enable-ts-plugin": true,
+    "cSpell.userWords": [
+      "tauri"
+    ],
+    "javascript.format.semicolons": "insert",
+    "typescript.format.semicolons": "insert",
+    "[vue]": {
+      "editor.defaultFormatter": "Vue.volar"
+    },
+    "terminal.external.linuxExec": "kitty",
+    "terminal.integrated.localEchoExcludePrograms": [
+      "vim",
+      "vi",
+      "nano",
+			"micro",
+      "tmux",
+      "nvim"
+    ],
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+    "git.experimental.mergeEditor": true,
+    "editor.minimap.renderCharacters": false,
+    "terminal.integrated.shellIntegration.enabled": true,
+    "window.commandCenter": true,
+    "window.titleBarStyle": "custom",
+    "rust-analyzer.checkOnSave.command": "clippy",
+    "prettier.useTabs": true,
+	"editor.insertSpaces": false,
+	"editor.tabSize": 2,
+	"oneDarkPro.bold": true,
+	"oneDarkPro.editorTheme": "One Dark Pro Darker",
+	"glassit.alpha": 245,
+	"redhat.telemetry.enabled": false
+}

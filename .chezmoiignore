@@ -1,3 +1,4 @@
 key.age
 .gnupg/keys/*
+.symlinked/**/*
 README.md
