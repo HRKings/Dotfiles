@@ -1,7 +1,0 @@
----
-- name: Link the extract script
-  tags: dotfiles
-  file:
-    src: "{{ role_path }}/files/scripts/extract.sh"
-    dest:  ~/.local/bin/extract
-    state: link

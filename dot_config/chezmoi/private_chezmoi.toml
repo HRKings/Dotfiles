@@ -1,0 +1,11 @@
+encryption = "age"
+[age]
+    identity = "~/key.age"
+    recipient = "age1qhcnx6st90l0udt4t9dur7k9q0lw287p2l44ht45z5t55f2lqcdqpq5h6z"
+
+[edit]
+    command = "code"
+    args = ["--wait"]
+
+[diff]
+    command = "delta"

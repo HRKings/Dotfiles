@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ -f "$HOME/key.age" ]; then
+	for key in "{{ .chezmoi.sourceDir }}"/private_dot_gnupg/keys/*
+	do
+    age --decrypt --identity "$HOME/key.age" "$key" | gpg --import -
+	done
+	exit 0
+fi
+
+exit 1

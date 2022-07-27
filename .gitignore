@@ -1,4 +1,1 @@
-inventory.ini
-*.bak
-
-roles/dotfiles/files/dot_config/cheat/shell
+.vscode/
