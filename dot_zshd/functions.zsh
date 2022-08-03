@@ -331,8 +331,8 @@ cz() (
 	_commit() {
 		# Preview the final changes
 		gum style --bold "The commit message will be:"
-		gum style --bold "$SUMMARY"
-		test -z "$DESCRIPTION" && gum style "$DESCRIPTION"
+		gum style --border="rounded" "$SUMMARY"
+		test -n "$DESCRIPTION" && gum style --border="rounded" "$DESCRIPTION"
 
 		# Commit these changes if user confirms
 		gum confirm "Commit changes?" && git commit -m "$SUMMARY" -m "$DESCRIPTION" $AMEND
@@ -342,14 +342,18 @@ cz() (
 	while [ $# -gt 0 ]; do
   	case "$1" in
   	  -h|--help)
-  	    echo "$0 - create "
+  	    echo "$0 - commit with a conventional commit format"
   	    echo " "
-  	    echo "$0 [options] application [arguments]"
+  	    echo "$0 [options]"
   	    echo " "
   	    echo "options:"
-  	    echo "-h, --help                show brief help"
-  	    echo "-a, --action=ACTION       specify an action to use"
-  	    echo "-o, --output-dir=DIR      specify a directory to store output in"
+  	    echo "-h, --help                        Show this help message"
+  	    echo "-s, --scope SCOPE                 Specify the commit scope"
+  	    echo "-m, --message MESSAGE             Specify the commit message"
+  	    echo "-d, --description DESCRIPTION     Specify the commit body"
+  	    echo "-q, --quick                       Skip all prompts"
+  	    echo "--retry                           Retry the last commit"
+  	    echo "--amend                           Build the message and amend the previous commit"
   	    return 0
   	    ;;
   	  -s* | --scope*)
@@ -400,28 +404,27 @@ cz() (
 				fi
   	    shift
   	    ;;
-			-q | --quick)
-  	    QUICK="true"
-  	    shift
-  	    ;;
-  	  --retry)
-  	    RETRY="true"
-  	    shift
-  	    ;;
 			--amend)
   	    AMEND="--amend"
+  	    shift
+  	    ;;
+			--retry)
+				RETRY="true"
+				shift
+  	    ;;
+			-q | --quick)
+  	    QUICK="true"
   	    shift
   	    ;;
   	  *)
 				gum style --bold --foreground 1  "Unknown option '$1'"
 				return 1
-  	    break
   	    ;;
   	esac
 	done
 
-	# If the user wants to retry and we have the cache
-	if [ "$RETRY" = "true" ]; then
+	# If the user wants to retry
+	if [[ "$RETRY" = "true" ]]; then
 		# If we don't have a cache, alert the user and exit
 		if [ ! -f "$SUMMARY_CACHE" ]; then
 			printf "There's nothing to retry"
