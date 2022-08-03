@@ -22,7 +22,6 @@ official_packages=(
 	# Base ------------------------------------------------------------------------------------------------------
 	exa																							# A better ls
 	neovim																					# The only vim
-	ranger																					# Terminal file explorer
 	trash-cli																				# Send files to the DE trash bin instead of obliterating them
 	rofi																						# Highly customizable application launcher
 	zoxide																					# Z auto-jumping
@@ -56,7 +55,8 @@ official_packages=(
 	git-lfs																					# Really large files support for Git, like your momma
 	gource																					# Git history visualization
 	kubectl																					# Container hell management
-	gitui																						# Git TUI
+	lazygit																						# Git TUI
+	gitui
 	go																							# Go core compiler tools
 	rustup																					# Rust management tool
 	hexyl																						# Hex vizualizer for the CLI
@@ -68,6 +68,8 @@ official_packages=(
 	aspnet-runtime																	# Make backends with .NET
 	aspnet-targeting-pack
 	subversion																			# SVN, like Git, but less mainstream
+	cargo-edit																			# Edit the Cargo.toml easily
+	rust-script																			# Run Rust files as if they are scripts
 
 	# Utils -----------------------------------------------------------------------------------------------------------
 	mpv																							# The best universal media player
@@ -87,12 +89,13 @@ official_packages=(
 	age																							# Modern file encryption
 	aria2																						# Fast download manager for the CLI
 	persepolis																			# GUI for aria2
-	nnn																							# Terminal file manager
 	obsidian																				# Note taking to the extreme
 	obs-studio																			# Screen recording and streaming
 	peek																						# Easier screen recording
 	thefuck																					# Correct your previous command
 	time																						# Calculate time and RAM consumption for commands
+	jc																							# Convert command outputs to JSON
+	gum																							# Create better shell scripts
 
 	# Gaming ----------------------------------------------------------------------------------
 	vulkan-icd-loader																# Vulkan libs required by some games

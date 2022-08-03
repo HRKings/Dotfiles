@@ -20,6 +20,7 @@ aur_packages=(
 	tdrop																						# Transform any application into a dropdown window
 	7-zip-full																			# Official full replacement for p7zip
 	pacseek																					# TUI for downloading ArchLinux packages
+	nnn-nerd																				# Terminal file manager (with nerd-fonts)
 
 	# Utils ---------------------------------------------------------------------------------------------
 	teams-insiders																	# Because unfortunately, discord isn't enough
