@@ -4,7 +4,7 @@
 
 # Reload all ZSH configs ----------------------------------
 function reloadzsh {
-	for file in $(fd -t l -e "zsh" . "$HOME/.zshd"); do
+	for file in $(fd -e "zsh" . "$HOME/.zshd"); do
 		echo "\u001b[32m> Reloading \u001b[36m$file\u001b[0m"
 		source $file
 	done
