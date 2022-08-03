@@ -29,8 +29,8 @@ alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 
 # Confirm before overwriting something --------
-alias cp="cp -i"
-alias mv="mv -i"
+alias cp="cpg -i"
+alias mv="mvg -i"
 alias rm="rm -i"
 
 # Copy
@@ -65,7 +65,8 @@ alias listaur="pacman -Qem"
 
 # Change name of programs -------------------------------
 alias vim="nvim"
-alias cshell="csharprepl"	# Open C# interactive shell
+alias cshell="csharprepl"			# Open C# interactive shell (REPL)
+alias rsshell="evcxr"					# Open Rust interactive shell (REPL)
 alias gud="gitgud commit"
 alias mkfile="touch"
 alias lgit="lazygit"
