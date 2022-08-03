@@ -315,3 +315,189 @@ n ()
             rm -f "$NNN_TMPFILE" > /dev/null
     fi
 }
+
+# A more complete implementation of convetional commits -----------------------------------------------
+cz() (
+	# If we are not inside a Git repo, exit
+	if [[ $(git rev-parse --is-inside-work-tree 2&>/dev/null) != "true" ]]; then
+		echo "Current folder '$PWD' is not a git repository."
+		return 1
+	fi
+
+	# Define the variables that will hold the cache path
+	SUMMARY_CACHE="/tmp/cz_summary"
+	DESCRIPTION_CACHE="/tmp/cz_description"
+
+	_commit() {
+		# Preview the final changes
+		gum style --bold "The commit message will be:"
+		gum style --bold "$SUMMARY"
+		test -z "$DESCRIPTION" && gum style "$DESCRIPTION"
+
+		# Commit these changes if user confirms
+		gum confirm "Commit changes?" && git commit -m "$SUMMARY" -m "$DESCRIPTION" $AMEND
+	}
+
+	# Parse the flags and parameters
+	while [ $# -gt 0 ]; do
+  	case "$1" in
+  	  -h|--help)
+  	    echo "$0 - create "
+  	    echo " "
+  	    echo "$0 [options] application [arguments]"
+  	    echo " "
+  	    echo "options:"
+  	    echo "-h, --help                show brief help"
+  	    echo "-a, --action=ACTION       specify an action to use"
+  	    echo "-o, --output-dir=DIR      specify a directory to store output in"
+  	    return 0
+  	    ;;
+  	  -s* | --scope*)
+				if test $# -gt 1; then
+					shift
+  	      SCOPE=$1
+				fi
+
+  	    if [[ "$1" == *"="* ]]; then
+  				SCOPE=$(echo $1 | sd '^[^=]*=' '')
+  	    fi
+
+				if [[ -z "$SCOPE" ]]; then
+					gum style --bold --foreground 1 "No scope was specified"
+  	      return 1
+				fi
+  	    shift
+  	    ;;
+  	  -m* | --message*)
+				if test $# -gt 1; then
+					shift
+  	      MESSAGE=$1
+				fi
+
+  	    if [[ "$1" == *"="* ]]; then
+  				MESSAGE=$(echo $1 | sd '^[^=]*=' '')
+  	    fi
+
+				if [[ -z "$MESSAGE" ]]; then
+					gum style --bold --foreground 1 "No message was specified"
+  	      return 1
+				fi
+  	    shift
+  	    ;;
+			-d* | --description*)
+				if test $# -gt 1; then
+					shift
+  	      DESCRIPTION=$1
+				fi
+
+  	    if [[ "$1" == *"="* ]]; then
+  				DESCRIPTION=$(echo $1 | sd '^[^=]*=' '')
+  	    fi
+
+				if [[ -z "$DESCRIPTION" ]]; then
+					gum style --bold --foreground 1 "No description was specified"
+  	      return 1
+				fi
+  	    shift
+  	    ;;
+			-q | --quick)
+  	    QUICK="true"
+  	    shift
+  	    ;;
+  	  --retry)
+  	    RETRY="true"
+  	    shift
+  	    ;;
+			--amend)
+  	    AMEND="--amend"
+  	    shift
+  	    ;;
+  	  *)
+				gum style --bold --foreground 1  "Unknown option '$1'"
+				return 1
+  	    break
+  	    ;;
+  	esac
+	done
+
+	# If the user wants to retry and we have the cache
+	if [ "$RETRY" = "true" ]; then
+		# If we don't have a cache, alert the user and exit
+		if [ ! -f "$SUMMARY_CACHE" ]; then
+			printf "There's nothing to retry"
+			return 1
+		fi
+
+		# Load the cache
+		SUMMARY=$(cat $SUMMARY_CACHE)
+		DESCRIPTION=$(cat $DESCRIPTION_CACHE)
+
+		# Execute the commit sequence
+		_commit
+
+		# Exit with the last status code
+		return $?
+	fi
+
+	# Ask for the commit type
+	gum style --bold "Enter the commit type:"
+	TYPE=$(printf "fix\nfeat\ndocs\nstyle\nrefactor\ntest\nchore\nrevert" | gum filter)
+
+	# Get the scope from the params, if not, ask it
+	if [[ -z "$SCOPE" && "$QUICK" != "true" ]]; then
+		gum style --bold "Enter the commit scope:"
+		SCOPE=$(gum input --placeholder "scope")
+	fi
+
+	# Since the scope is optional, wrap it in parentheses if it has a value.
+	test -n "$SCOPE" && SCOPE="($SCOPE)"
+
+	# Ask for breaking changes
+	gum confirm "There are breaking changes?" && BREAKING="!"
+
+	# Ask for a breaking change footer if not in the quick mode
+	if [[ -n "$BREAKING" && "$QUICK" != "true" ]]; then
+		gum style --bold "Enter the breaking change description:"
+		BREAKING_FOOTER=$(gum input --placeholder "Breaking change footer")
+	fi
+
+	# Build the summary
+	SUMMARY="${TYPE}${SCOPE}${BREAKING}: "
+
+	# If the message is set, create the commit summary
+	# if not pre-populate the input with the type(scope): so that the user may change it
+	if [ -z "$MESSAGE" ]; then
+		gum style --bold "Enter the commit summary:"
+
+		# Don't let the message be empty
+		while [ -z "$MESSAGE" ]; do
+			MESSAGE=$(gum input --prompt "> $SUMMARY" --placeholder "Summary of this change")
+
+			# If the input is interrupted, then exit
+			INPUT_EXIT_CODE="$?"
+			if [ "$INPUT_EXIT_CODE" -eq 130 -o "$INPUT_EXIT_CODE" -eq 2 -o "$INPUT_EXIT_CODE" -eq 1 ]; then
+				return 1
+			fi
+
+		done
+	fi
+
+	# Update the summary
+	SUMMARY="${SUMMARY}${MESSAGE}"
+
+	# If the description is empty and not in the quick mode, ask for a description
+	if [[ -z "$DESCRIPTION" && "$QUICK" != "true" ]]; then
+		gum style --bold "Enter the commit description:"
+		DESCRIPTION=$(gum write --placeholder "Details of this change")
+	fi
+
+	# Append the breaking change footer to the description
+	test -n $BREAKING_FOOTER && DESCRIPTION=$(printf "$DESCRIPTION\n$BREAKING_FOOTER")
+
+	# Save the summary and description to the temp files
+	echo "$SUMMARY" > $SUMMARY_CACHE
+	echo "$DESCRIPTION" > $DESCRIPTION_CACHE
+
+	# Execute the commit sequence
+	_commit
+)
