@@ -22,6 +22,9 @@ github = 'ohmyzsh/ohmyzsh'
 github = 'HRKings/zsh-archive-plugin'
 apply = [ 'functions' ]
 
+[plugins.zsh-fzf-history-search]
+github = 'joshskidmore/zsh-fzf-history-search'
+
 [plugins.fzf-tab]
 github = 'Aloxaf/fzf-tab'
 
