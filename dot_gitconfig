@@ -23,6 +23,9 @@
 [safe]
 	directory = /opt/flutter
 
+[push]
+	autoSetupRemote = true
+
 [core]
 	fsmonitor = true
 	untrackedcache = true
