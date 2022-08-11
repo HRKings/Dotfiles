@@ -207,8 +207,8 @@ randhex() {
 # Archive and unarchive a tarball using brotli -----------------------------------------------------------
 tarbrot() {
 	if [ ! command -v brotli &> /dev/null ]; then
-    echo "'brotli' could not be found"
-    return 1
+		echo "'brotli' could not be found"
+		return 1
 	fi
 
 	local archive_name path_to_archive
@@ -226,8 +226,8 @@ tarbrot() {
 
 untarbrot() {
 	if [ ! command -v brotli &> /dev/null ]; then
-    echo "'brotli' could not be found"
-    return 1
+		echo "'brotli' could not be found"
+		return 1
 	fi
 
 	local archive_name
@@ -282,38 +282,38 @@ view7zfiles() {
 # Open nnn with cd on quit and the preview plugin --------------------------------------
 n ()
 {
-    # Block nesting of nnn in subshells
-    if [[ "${NNNLVL:-0}" -ge 1 ]]; then
-        echo "nnn is already running"
-        return
-    fi
+		# Block nesting of nnn in subshells
+		if [[ "${NNNLVL:-0}" -ge 1 ]]; then
+				echo "nnn is already running"
+				return
+		fi
 
-    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
-    # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
-    # see. To cd on quit only on ^G, remove the "export" and make sure not to
-    # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
-    #     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+		# The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
+		# If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
+		# see. To cd on quit only on ^G, remove the "export" and make sure not to
+		# use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
+		#     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+		export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
 
-    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
-    # stty start undef
-    # stty stop undef
-    # stty lwrap undef
-    # stty lnext undef
+		# Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
+		# stty start undef
+		# stty stop undef
+		# stty lwrap undef
+		# stty lnext undef
 
 		export PAGER="less -R"
 		# a = file preview requirement; r = Use advcpmv
 		export NNN_OPTS="ar"
 		export NNN_PLUG='v:preview-tui'
 
-    # The backslash allows one to alias n to nnn if desired without making an
-    # infinitely recursive alias
-    \nnn -P v "$@"
+		# The backslash allows one to alias n to nnn if desired without making an
+		# infinitely recursive alias
+		\nnn -P v "$@"
 
-    if [ -f "$NNN_TMPFILE" ]; then
-            . "$NNN_TMPFILE"
-            rm -f "$NNN_TMPFILE" > /dev/null
-    fi
+		if [ -f "$NNN_TMPFILE" ]; then
+						. "$NNN_TMPFILE"
+						rm -f "$NNN_TMPFILE" > /dev/null
+		fi
 }
 
 # A more complete implementation of convetional commits -----------------------------------------------
@@ -340,87 +340,87 @@ cz() (
 
 	# Parse the flags and parameters
 	while [ $# -gt 0 ]; do
-  	case "$1" in
-  	  -h|--help)
-  	    echo "$0 - commit with a conventional commit format"
-  	    echo " "
-  	    echo "$0 [options]"
-  	    echo " "
-  	    echo "options:"
-  	    echo "-h, --help                        Show this help message"
-  	    echo "-s, --scope SCOPE                 Specify the commit scope"
-  	    echo "-m, --message MESSAGE             Specify the commit message"
-  	    echo "-d, --description DESCRIPTION     Specify the commit body"
-  	    echo "-q, --quick                       Skip all prompts"
-  	    echo "--retry                           Retry the last commit"
-  	    echo "--amend                           Build the message and amend the previous commit"
-  	    return 0
-  	    ;;
-  	  -s* | --scope*)
+		case "$1" in
+			-h|--help)
+				echo "$0 - commit with a conventional commit format"
+				echo " "
+				echo "$0 [options]"
+				echo " "
+				echo "options:"
+				echo "-h, --help                        Show this help message"
+				echo "-s, --scope SCOPE                 Specify the commit scope"
+				echo "-m, --message MESSAGE             Specify the commit message"
+				echo "-d, --description DESCRIPTION     Specify the commit body"
+				echo "-q, --quick                       Skip all prompts"
+				echo "--retry                           Retry the last commit"
+				echo "--amend                           Build the message and amend the previous commit"
+				return 0
+				;;
+			-s* | --scope*)
 				if test $# -gt 1; then
 					shift
-  	      SCOPE=$1
+					SCOPE=$1
 				fi
 
-  	    if [[ "$1" == *"="* ]]; then
-  				SCOPE=$(echo $1 | sd '^[^=]*=' '')
-  	    fi
+				if [[ "$1" == *"="* ]]; then
+					SCOPE=$(echo $1 | sd '^[^=]*=' '')
+				fi
 
 				if [[ -z "$SCOPE" ]]; then
 					gum style --bold --foreground 1 "No scope was specified"
-  	      return 1
+					return 1
 				fi
-  	    shift
-  	    ;;
-  	  -m* | --message*)
+				shift
+				;;
+			-m* | --message*)
 				if test $# -gt 1; then
 					shift
-  	      MESSAGE=$1
+					MESSAGE=$1
 				fi
 
-  	    if [[ "$1" == *"="* ]]; then
-  				MESSAGE=$(echo $1 | sd '^[^=]*=' '')
-  	    fi
+				if [[ "$1" == *"="* ]]; then
+					MESSAGE=$(echo $1 | sd '^[^=]*=' '')
+				fi
 
 				if [[ -z "$MESSAGE" ]]; then
 					gum style --bold --foreground 1 "No message was specified"
-  	      return 1
+					return 1
 				fi
-  	    shift
-  	    ;;
+				shift
+				;;
 			-d* | --description*)
 				if test $# -gt 1; then
 					shift
-  	      DESCRIPTION=$1
+					DESCRIPTION=$1
 				fi
 
-  	    if [[ "$1" == *"="* ]]; then
-  				DESCRIPTION=$(echo $1 | sd '^[^=]*=' '')
-  	    fi
+				if [[ "$1" == *"="* ]]; then
+					DESCRIPTION=$(echo $1 | sd '^[^=]*=' '')
+				fi
 
 				if [[ -z "$DESCRIPTION" ]]; then
 					gum style --bold --foreground 1 "No description was specified"
-  	      return 1
+					return 1
 				fi
-  	    shift
-  	    ;;
+				shift
+				;;
 			--amend)
-  	    AMEND="--amend"
-  	    shift
-  	    ;;
+				AMEND="--amend"
+				shift
+				;;
 			--retry)
 				RETRY="true"
 				shift
-  	    ;;
+				;;
 			-q | --quick)
-  	    QUICK="true"
-  	    shift
-  	    ;;
-  	  *)
+				QUICK="true"
+				shift
+				;;
+			*)
 				gum style --bold --foreground 1  "Unknown option '$1'"
 				return 1
-  	    ;;
-  	esac
+				;;
+		esac
 	done
 
 	# If the user wants to retry
