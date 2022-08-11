@@ -3,7 +3,6 @@
     "workbench.colorTheme": "One Dark Pro",
     "editor.fontFamily": "'FiraCode Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.fontLigatures": true,
-    "editor.detectIndentation": false,
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
     "terminal.integrated.defaultProfile.linux": "zsh",
@@ -47,12 +46,10 @@
     "terminal.integrated.shellIntegration.enabled": true,
     "window.commandCenter": true,
     "window.titleBarStyle": "custom",
-    "rust-analyzer.checkOnSave.command": "clippy",
-    "prettier.useTabs": true,
-	"editor.insertSpaces": false,
-	"editor.tabSize": 2,
+		"rust-analyzer.checkOnSave.command": "clippy",
 	"oneDarkPro.bold": true,
 	"oneDarkPro.editorTheme": "One Dark Pro Darker",
 	"glassit.alpha": 245,
-	"redhat.telemetry.enabled": false
+	"redhat.telemetry.enabled": false,
+	"editor.tabSize": 2
 }
