@@ -64,7 +64,7 @@ aur_packages=(
 
 	# Gaming ------------------------------------------------------------------------------------
 	ds4drv-cemuhook-git															# DualShock 4 drivers with CemuHook support
-	multimc-bin																			# Minecraft multi instance launcher
+	polymc-bin																			# Minecraft multi instance launcher
 	citra-qt-git																		# 3DS emulator, because I like Pokemon
 	yuzu-mainline-bin																# Switch emulator, because (I like Pokemon)² and Zelda
 	ryujinx-ldn-bin																	# Another Switch emulator

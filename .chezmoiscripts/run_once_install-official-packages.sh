@@ -55,7 +55,7 @@ official_packages=(
 	git-lfs																					# Really large files support for Git, like your momma
 	gource																					# Git history visualization
 	kubectl																					# Container hell management
-	lazygit																						# Git TUI
+	lazygit																					# Git TUI
 	gitui
 	go																							# Go core compiler tools
 	rustup																					# Rust management tool
@@ -70,6 +70,8 @@ official_packages=(
 	subversion																			# SVN, like Git, but less mainstream
 	cargo-edit																			# Edit the Cargo.toml easily
 	rust-script																			# Run Rust files as if they are scripts
+	git-filter-repo																	# Rewrite commit history quickly
+	jwt-cli																					# Encode and decode JWT in the terminal
 
 	# Utils -----------------------------------------------------------------------------------------------------------
 	mpv																							# The best universal media player
@@ -77,7 +79,8 @@ official_packages=(
 	thunderbird																			# Email client
 	libreoffice-fresh																# Because everyone needs to edit documents (fresh = latest version)
 	chromium																				# A chromium engine is needed more times that you may think
-	jq																							# A terminal JSON formatter
+	jq																							# A terminal JSON parse/query tool
+	htmlq																						# A terminal HTML parse/query tool
 	fzf																							# Fuzzy finder for any list
 	btop																						# A more advanced htop
 	krita																						# Digital drawing software
@@ -96,6 +99,7 @@ official_packages=(
 	time																						# Calculate time and RAM consumption for commands
 	jc																							# Convert command outputs to JSON
 	gum																							# Create better shell scripts
+	inotify-tools																		# Listen for filesystem changes
 
 	# Gaming ----------------------------------------------------------------------------------
 	vulkan-icd-loader																# Vulkan libs required by some games
