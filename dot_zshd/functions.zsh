@@ -291,6 +291,19 @@ view7zfiles() {
 	&& 7z l {} | tail -n +21 | head -n -2 | awk  'BEGIN{FIELDWIDTHS=\"53 1000\"}{print \$2}' | tree --fromfile ."
 }
 
+# View 7z directory tree ----------------------------------------------------------------------------------
+7ztree() {
+	if (( $# == 0 ))
+	then
+		echo "usage: $0 [7z archive to display]"
+		return 1
+	fi
+
+	compressed_archive=$1
+
+	7z l $compressed_archive | tail -n +21 | head -n -2 | awk  'BEGIN{FIELDWIDTHS="53 1000"}{print $2}' | tree --fromfile .
+}
+
 # Open nnn with cd on quit and the preview plugin --------------------------------------
 n ()
 {
