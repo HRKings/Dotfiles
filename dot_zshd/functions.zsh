@@ -244,8 +244,20 @@ untarbrot() {
 
 # Check a blake3 hash checksum ------------------------------------------------
 checkblake3() {
-	blake3_file=$1
-	file_to_check=$2
+	if (( $# == 0 ))
+	then
+		echo "usage: $0 [file to check] <blake3 file>"
+		echo "if the blake3 file is not specified, the file 'file_to_check.blake3' will be used"
+		return 1
+	fi
+
+	file_to_check=$1
+	blake3_file=$2
+
+	if [[ -z $blake3_file ]]; then
+		blake3_file="${file_to_check}.blake3"
+		return 0
+	fi
 
 	echo "$(cat "$blake3_file" | awk '{print $1}')  $file_to_check" | b3sum -c
 }
