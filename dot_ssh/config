@@ -1,9 +1,0 @@
-Host github.com
-	HostName github.com
-	IdentityFile ~/.ssh/github_main
-	IdentitiesOnly yes
-
-Host work.github.com
-	HostName github.com
-	IdentityFile ~/.ssh/github_work
-	IdentitiesOnly yes
