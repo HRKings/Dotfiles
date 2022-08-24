@@ -102,7 +102,7 @@ alias editzsh="code ~/.zshd/ ~/.zshrc" # Open all ZSH configs in VSCode
 alias mkcompose="dumpgist docker-compose.yaml" # Create a Docker Compose file with a template
 alias getgitbackup='echo "dura/$(git rev-parse HEAD)"' # Get the dura branch for the Git backups
 alias zc="zi && code ." # Open Z interactive and open VSCode there
-alias cza="git reset --soft 'HEAD^' && cz" # Reverts last commit and calls commitizen
+alias pacseek="pacseek -i -u"
 
 #================================================================================================================================
 # Personal Cheatsheets Shortcuts
