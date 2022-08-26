@@ -481,7 +481,7 @@ cz() (
 	test -n "$SCOPE" && SCOPE="($SCOPE)"
 
 	# Ask for breaking changes
-	gum confirm "There are breaking changes?" && BREAKING="!"
+	gum confirm --default=false "There are breaking changes?" && BREAKING="!"
 
 	# Ask for a breaking change footer if not in the quick mode
 	if [[ -n "$BREAKING" && "$QUICK" != "true" ]]; then
