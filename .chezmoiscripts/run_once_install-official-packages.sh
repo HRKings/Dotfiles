@@ -18,6 +18,7 @@ official_packages=(
 	ffmpegthumbs																		# Thumbnails for video formats
 	sheldon																					# Shell plugin manager
 	kitty																						# Hardware accelerated terminal
+	smb4k																						# SMB share support
 
 	# Base ------------------------------------------------------------------------------------------------------
 	exa																							# A better ls
