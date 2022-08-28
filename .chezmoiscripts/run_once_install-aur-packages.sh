@@ -7,7 +7,6 @@ aur_packages=(
 	epson-inkjet-printer-escpr											# EPSON printer drivers
 	input-wacom-dkms																# Wacom tablet driver
 	ventoy-bin																			# Multi ISO USB manager
-	kwallet-secrets																	# KDE secrets management with support for org.freedesktop.secrets
 	huiontablet																			# Huion tablet driver
 
 	# Base ------------------------------------------------------------------------------------------------------------
