@@ -53,7 +53,6 @@ aur_packages=(
 	nvm																							# Node Version Manager, because having just one circle of hell isn't enough
 	kubecolor																				# Colorize kubectl output
 	astronvim																				# Defaults for neovim
-	dura-git																				# Never lose your work while using Git
 	flutter																					# Flutter SDK
 	godot-mono-bin																	# The best 2D game engine out there
 	imhex																						# Hex editor and analyzer
