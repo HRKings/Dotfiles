@@ -242,7 +242,7 @@ untarbrot() {
 	tar -xvf "$archive_name" --use-compress-program="$(where brotli)"
 }
 
-# Check a blake3 hash checksum ------------------------------------------------
+# Check a blake3 hash checksum ----------------------------------------------------------------
 checkblake3() {
 	if (( $# == 0 ))
 	then
@@ -256,10 +256,22 @@ checkblake3() {
 
 	if [[ -z $blake3_file ]]; then
 		blake3_file="${file_to_check}.blake3"
-		return 0
 	fi
 
 	echo "$(cat "$blake3_file" | awk '{print $1}')  $file_to_check" | b3sum -c
+}
+
+# Create a blake3 hash checksum -------------------------------
+sumblake3() {
+	if (( $# == 0 ))
+	then
+		echo "usage: $0 [file to checksum]"
+		return 1
+	fi
+
+	file_to_checksum=$1
+
+	b3sum "$file_to_checksum" > "${file_to_checksum}.blake3"
 }
 
 # Create a .gitignore using gibo --------------------
