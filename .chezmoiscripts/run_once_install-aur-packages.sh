@@ -80,7 +80,7 @@ aur_packages=(
 	typioca-git																			# Terminal typing speed tester
 )
 
-# Install all packages from the official Arch Linux Package Repository, if they are not already installed
+# Install all packages from the official Arch Linux Package Repository, if they are not already installed -------------------------------
 for package in "${aur_packages[@]}"
 do
 	yay -S --noconfirm $(yay -Qi "$package" 2>&1 >/dev/null | grep "error: package" | grep "was not found" | cut -d"'" -f2 | tr "\n" " ")

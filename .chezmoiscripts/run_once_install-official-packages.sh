@@ -120,5 +120,5 @@ official_packages=(
 	wakatime																				# WakaTime CLI
 )
 
-# Install all packages from the official Arch Linux Package Repository, if they are not already installed
+# Install all packages from the official Arch Linux Package Repository, if they are not already installed ----
 sudo pacman -Syyu "${official_packages[@]}" --needed
