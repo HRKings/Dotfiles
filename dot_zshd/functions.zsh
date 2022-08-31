@@ -589,3 +589,8 @@ magnet2torrent() {
 
   mv "$torrent_path" "$new_torrent_file"
 }
+
+# Move all files to their own folders ---------------------------------
+move2uniqfolder() {
+	fd . -t f -d 1 -x sh -c 'mkdir "{//}/{/.}" && mv "{}" "{//}/{/.}"'
+}
