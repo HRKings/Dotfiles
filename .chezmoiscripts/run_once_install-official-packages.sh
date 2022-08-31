@@ -69,7 +69,6 @@ official_packages=(
 	aspnet-runtime																	# Make backends with .NET
 	aspnet-targeting-pack
 	subversion																			# SVN, like Git, but less mainstream
-	cargo-edit																			# Edit the Cargo.toml easily
 	rust-script																			# Run Rust files as if they are scripts
 	git-filter-repo																	# Rewrite commit history quickly
 	jwt-cli																					# Encode and decode JWT in the terminal
