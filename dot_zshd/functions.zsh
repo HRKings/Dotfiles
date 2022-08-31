@@ -293,7 +293,7 @@ mkgitignore() {
 }
 
 # View 7z files ---------------------------------------------------------------------------------------------------
-view7zfiles() {
+7zcontent() {
 	DIVIDER=$(printf "%$(tput cols)s" " " | tr ' ' '*')
 
 	fd -t f -e '7z' | fzf --preview "7z l {} \
@@ -481,7 +481,7 @@ cz() (
 
 	# Ask for the commit type
 	gum style --bold "Enter the commit type:"
-	TYPE=$(printf "fix\nfeat\ndocs\nstyle\nrefactor\ntest\nchore\nrevert" | gum filter)
+	TYPE=$(printf "feat\nfix\ndocs\nstyle\nrefactor\ntest\nchore\nrevert" | gum filter)
 
 	# Get the scope from the params, if not, ask it
 	if [[ -z "$SCOPE" && "$QUICK" != "true" ]]; then
