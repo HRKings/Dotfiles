@@ -79,7 +79,7 @@ alias pbzip2="pbzip2"
 alias cat="bat"
 
 # Kitty aliases --------------------------
-alias ssh="kitty +kitten ssh"
+alias kssh="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
 alias hg="kitty +kitten hyperlinked_grep"
 
