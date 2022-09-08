@@ -546,17 +546,14 @@ cz() (
 magnet2torrent() {
 	magnet_link=$1
 
-	aria_output_path="/tmp/magnet2link_aria"
 
   if [[ -z "$magnet_link" ]]; then
     echo "usage: $0 [magnet link]"
     return 1
   fi
 
-  gum spin -s meter --title 'Fetching metadata with aria2...' -- \
-		sh -c "aria2c --bt-stop-timeout=60 --bt-save-metadata --bt-metadata-only \"$magnet_link\" > $aria_output_path"
-
-	aria_output=$(cat "$aria_output_path")
+  aria_output=$(gum spin -s meter --title 'Fetching metadata with aria2...' --show-output -- \
+								aria2c --bt-stop-timeout=60 --bt-save-metadata --bt-metadata-only "$magnet_link")
 
   if [[ "$?" -eq 1 ]]; then
     echo "Aria error"
