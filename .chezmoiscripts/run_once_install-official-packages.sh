@@ -19,6 +19,7 @@ official_packages=(
 	sheldon																					# Shell plugin manager
 	kitty																						# Hardware accelerated terminal
 	smb4k																						# SMB share support
+	helvum																					# Pipewire patchbay
 
 	# Base ------------------------------------------------------------------------------------------------------
 	exa																							# A better ls
