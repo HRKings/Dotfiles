@@ -1,4 +1,5 @@
 key.age
 .gnupg/keys/*
 .symlinked/**/*
+.pacdef/**/*
 README.md

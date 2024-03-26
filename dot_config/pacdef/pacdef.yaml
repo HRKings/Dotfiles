@@ -1,0 +1,3 @@
+aur_helper: paru
+disabled_backends: ["python", "rust"]
+warn_not_symlinks: false
