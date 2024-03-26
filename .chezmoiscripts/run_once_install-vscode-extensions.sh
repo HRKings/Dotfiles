@@ -5,7 +5,6 @@ vscode_extensions=(
 	1yib.rust-bundle                      # Rust
 	a5huynh.vscode-ron                    # Rusty Object Notation
 	alexcvzz.vscode-sqlite                # SQLite
-	bungcip.better-toml                   # Better TOML
 	earthly.earthfile-syntax-highlighting # Earthly Build
 	JuanBlanco.solidity                   # Solidity
 	mikestead.dotenv                      # dotEnv
@@ -100,7 +99,6 @@ vscode_extensions=(
 	EditorConfig.EditorConfig      # Override workspace configs based on .editorconfig
 	esbenp.prettier-vscode         # Prettier
 	foxundermoon.shell-format      # Shellscript formatter
-	HookyQR.beautify               # Beautify JS, CSS, JSON files
 	j-brooke.fracturedjsonvsc      # A JSON formatter focusing on readability
 	lkrms.inifmt                   # INI formatter
 	mechatroner.rainbow-csv        # Color-code CSVs

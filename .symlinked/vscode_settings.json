@@ -5,7 +5,6 @@
         "editor.defaultFormatter": "rust-lang.rust-analyzer",
         "editor.formatOnSave": true
     },
-    "astGrep.serverPath": "~/.cargo/bin/ast-grep",
     "cSpell.userWords": ["Crossterm", "HOTP", "Qdrant", "TOTP", "tauri"],
     "diffEditor.ignoreTrimWhitespace": false,
     "dotnetAcquisitionExtension.existingDotnetPath": [
