@@ -40,12 +40,10 @@ source ~/.zshd/aliases.zsh
 source ~/.zshd/completions.zsh
 
 #==================================================================================================================================
-# SSH Agent Auto-Start
+# 1Password SSH Agent
 #==================================================================================================================================
 
-# Use keychain to handle SSH Agent startup and key loading, to keep only one instance
-eval $(keychain --eval --noask -Q -q)
-keychain -q $(fd -E '*.*' -E 'config' -E '*hosts' . "$HOME/.ssh")
+SSH_AUTH_SOCK=~/.1password/agent.sock
 
 #================================================================================================================================
 # Source other scripts
@@ -54,10 +52,5 @@ keychain -q $(fd -E '*.*' -E 'config' -E '*hosts' . "$HOME/.ssh")
 # Setup Zoxide ------------
 eval "$(zoxide init zsh)"
 
-# Set up Node Version Manager -----
-source /usr/share/nvm/init-nvm.sh
-
-# pnpm
-export PNPM_HOME="/home/ton/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
+# Setup Atuin -------------
+eval "$(atuin init zsh)"

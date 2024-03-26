@@ -17,7 +17,7 @@ function gitcfg {
 		return 1
 	fi
 
-	GPG_EMAILS=$(gpg --list-secret-keys | grep ".*\@.*" | cut -d '<' -f 2 | cut -d '>' -f 1 | tac)
+	GPG_EMAILS=$(gpg --list-secret-keys | grep -v "revoked" | grep ".*@.*" | cut -d '<' -f 2 | cut -d '>' -f 1 | tac)
 	GIT_EMAIL=$(printf "%s\n" "${GPG_EMAILS[@]}" | fzf --preview 'gpg --keyid-format=long --locate-keys {1}')
 
 	if [[ ! -z "$GIT_EMAIL" ]]; then
@@ -25,10 +25,21 @@ function gitcfg {
 
 		git config user.email "${GIT_EMAIL}" && git config user.signingkey "${GPG_KEY}"
 
-		echo "\u001b[32mYour current GIT credentials are:\u001b[0m"
-		echo "\u001b[36m - Name  :\u001b[0m $(git config user.name)"
-		echo "\u001b[36m - Email :\u001b[0m $(git config user.email)"
-		echo "\u001b[36m - GPG   :\u001b[0m $(git config user.signingkey)"
+		TITLE=$(gum style --bold --border="rounded" --foreground="32" --border-foreground="33" -- "Your current GIT credentials are:")
+
+		NAME_TAG=$(gum style --foreground="36" -- '- Name	:  ')
+		EMAIL_TAG=$(gum style --foreground="36" -- '- Email	:  ')
+		GPG_TAG=$(gum style --foreground="36" -- '- GPG	:  ')
+
+		NAME=$(gum style --italic -- "$(git config user.name)")
+		EMAIL=$(gum style --italic -- "$(git config user.email)")
+		GPG=$(gum style --italic -- "$(git config user.signingkey)")
+
+		gum join --vertical \
+		"$TITLE" \
+		"$(gum join "$NAME_TAG" "$NAME" )" \
+		"$(gum join "$EMAIL_TAG" "$EMAIL" )" \
+		"$(gum join "$GPG_TAG" "$GPG" )"
 	fi
 }
 
@@ -39,7 +50,7 @@ function dumpgist {
 		return
 	fi
 
-	GIST=$(gh gist list -L 100 | grep "Template Docker Compose File" | cut -f 1,2 | fzf --preview 'echo {1} | cut -f 1 | xargs gh gist view --raw ')
+	GIST=$(gh gist list -L 100 | cut -f 1,2 | fzf --preview 'echo {1} | cut -f 1 | xargs gh gist view --raw ')
 
 	if [[ ! -z "$GIST" ]]; then
 		gh gist view --raw "$(echo $GIST | cut -f 1)" | tail -n +3 >$1 &&
@@ -73,21 +84,14 @@ function stringdiff {
 	delta /tmp/string_diff_file_1 /tmp/string_diff_file_2
 }
 
-# Open ranger and cd into the directory if you quit with Q ------------------------------------
-function ranger {
-	local IFS=$'\t\n'
-	local tempfile="$(mktemp -t tmp.XXXXXX)"
-	local ranger_cmd=(
-		command
-		ranger
-		--cmd="map Q chain shell echo %d > "$tempfile"; quitall"
-	)
-
-	${ranger_cmd[@]} "$@"
-	if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n $(pwd))" ]]; then
-		cd -- "$(cat "$tempfile")" || return
-	fi
-	command rm -f -- "$tempfile" 2>/dev/null
+# Open yazi and cd into the directory if you quit ------------------------------------
+function ya() {
+    tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+    yazi --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        z -- "$cwd"
+    fi
+    rm -f -- "$tmp"
 }
 
 # Benchmark the RAM usage of a given command -----------------------------------------------------------
@@ -199,9 +203,50 @@ cs() {
 	fi
 }
 
-# Generate random hex string ------
-randhex() {
-	openssl rand -hex $1 | toupper
+# Generate random hex string ------------------------------------
+sslrandhex() {
+	if (( $# == 0 ))
+	then
+		echo "generate random hex string using OpenSSL"
+		echo "usage: $0 [byte quantity]"
+		return 1
+	fi
+
+	openssl rand -hex $1
+}
+
+sslrandbytes() {
+	if (( $# == 0 ))
+	then
+		echo "generate random bytes using OpenSSL"
+		echo "usage: $0 [byte quantity]"
+		return 1
+	fi
+
+	openssl rand $1
+}
+
+# Generate data from /dev/urandom -------------------------------
+urandomhex() {
+	if (( $# == 0 ))
+	then
+		echo "generate random hex string using /dev/urandom"
+		echo "usage: $0 [byte quantity]"
+		return 1
+	fi
+
+	head -c $1 /dev/urandom | hexdump -e '"%02x"'
+}
+
+urandombytes() {
+	if (( $# == 0 ))
+	then
+		echo "generate random bytes using /dev/urandom"
+		echo "usage: $0 [byte quantity]"
+		return 1
+	fi
+
+	head -c $1 /dev/urandom
 }
 
 # Archive and unarchive a tarball using brotli -----------------------------------------------------------
@@ -242,7 +287,7 @@ untarbrot() {
 	tar -xvf "$archive_name" --use-compress-program="$(where brotli)"
 }
 
-# Check a blake3 hash checksum ----------------------------------------------------------------
+# Check and create a blake3 hash checksum ----------------------------------------------------------------
 checkblake3() {
 	if (( $# == 0 ))
 	then
@@ -261,7 +306,6 @@ checkblake3() {
 	echo "$(cat "$blake3_file" | awk '{print $1}')  $file_to_check" | b3sum -c
 }
 
-# Create a blake3 hash checksum -------------------------------
 sumblake3() {
 	if (( $# == 0 ))
 	then
@@ -297,10 +341,10 @@ mkgitignore() {
 	DIVIDER=$(printf "%$(tput cols)s" " " | tr ' ' '*')
 
 	fd -t f -e '7z' | fzf --preview "7z l {} \
-	&& printf '\n$DIVIDER\n' \
-	&& 7z l {} | tail -n 1 | awk '{print \"\n Compression ratio: \" (\$4 / \$3)}' \
-	&& printf '\n$DIVIDER\n' \
-	&& 7z l {} | tail -n +21 | head -n -2 | awk  'BEGIN{FIELDWIDTHS=\"53 1000\"}{print \$2}' | tree --fromfile ."
+		&& printf '\n$DIVIDER\n' \
+		&& 7z l {} | tail -n 1 | awk '{print \"\n Compression ratio: \" (\$4 / \$3)}' \
+		&& printf '\n$DIVIDER\n' \
+		&& 7z l {} | tail -n +21 | head -n -2 | awk  'BEGIN{FIELDWIDTHS=\"53 1000\"}{print \$2}' | tree --fromfile ."
 }
 
 # View 7z directory tree ----------------------------------------------------------------------------------
@@ -316,43 +360,6 @@ mkgitignore() {
 	7z l $compressed_archive | tail -n +21 | head -n -2 | awk  'BEGIN{FIELDWIDTHS="53 1000"}{print $2}' | tree --fromfile .
 }
 
-# Open nnn with cd on quit and the preview plugin --------------------------------------
-n ()
-{
-		# Block nesting of nnn in subshells
-		if [[ "${NNNLVL:-0}" -ge 1 ]]; then
-				echo "nnn is already running"
-				return
-		fi
-
-		# The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
-		# If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
-		# see. To cd on quit only on ^G, remove the "export" and make sure not to
-		# use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
-		#     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-		export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-
-		# Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
-		# stty start undef
-		# stty stop undef
-		# stty lwrap undef
-		# stty lnext undef
-
-		export PAGER="less -R"
-		# a = file preview requirement; r = Use advcpmv
-		export NNN_OPTS="ar"
-		export NNN_PLUG='v:preview-tui'
-
-		# The backslash allows one to alias n to nnn if desired without making an
-		# infinitely recursive alias
-		\nnn -P v "$@"
-
-		if [ -f "$NNN_TMPFILE" ]; then
-						. "$NNN_TMPFILE"
-						rm -f "$NNN_TMPFILE" > /dev/null
-		fi
-}
-
 # A more complete implementation of convetional commits -----------------------------------------------
 cz() (
 	# If we are not inside a Git repo, exit
@@ -361,9 +368,19 @@ cz() (
 		return 1
 	fi
 
+	# Trap any interrupts that may occur and halt the entire function
+	TRAPERR() {
+		if [[ $? = 130 ]]; then
+			exit 130
+		fi
+	}
+
+	# Hash the current path for use in the cache
+	PWD_HASH=$(echo "$PWD" | sha256sum | cut -d ' ' -f 1)
+
 	# Define the variables that will hold the cache path
-	SUMMARY_CACHE="/tmp/cz_summary"
-	DESCRIPTION_CACHE="/tmp/cz_description"
+	SUMMARY_CACHE="/tmp/cz_summary-$PWD_HASH"
+	DESCRIPTION_CACHE="/tmp/cz_description-$PWD_HASH"
 
 	_commit() {
 		# Preview the final changes
@@ -372,7 +389,8 @@ cz() (
 		test -n "$DESCRIPTION" && gum style --border="rounded" "$DESCRIPTION"
 
 		# Commit these changes if user confirms
-		gum confirm "Commit changes?" && git commit -m "$SUMMARY" -m "$DESCRIPTION" $AMEND
+		gum confirm "Commit changes?" && git commit -m "$SUMMARY" -m "$DESCRIPTION" $AMEND \
+			&& rm -f $SUMMARY_CACHE && rm -f "$DESCRIPTION_CACHE"
 	}
 
 	# Parse the flags and parameters
@@ -480,8 +498,11 @@ cz() (
 	fi
 
 	# Ask for the commit type
-	gum style --bold "Enter the commit type:"
-	TYPE=$(printf "feat\nfix\ndocs\nstyle\nrefactor\ntest\nchore\nrevert" | gum filter)
+	gum style --bold "Enter the commit type (defaults to 'feat'):"
+	TYPE=$(printf "feat\nupdate\nbug\nfix\nsecurity\nperformance\nimprovement\ndeprecated\ni18n\na11y\nrefactor\ndocs\ntest\ndeps\nconfig\nbuild\nrelease\nwip\nstyle\nrevert\nchore" | gum filter)
+	if [[ -z "$TYPE" ]]; then
+		TYPE="feat"
+	fi
 
 	# Get the scope from the params, if not, ask it
 	if [[ -z "$SCOPE" && "$QUICK" != "true" ]]; then
@@ -540,6 +561,9 @@ cz() (
 
 	# Execute the commit sequence
 	_commit
+
+	# Release the trap
+	unset -f TRAPERR
 )
 
 # Transform magnet links to .torrent files ------------------------------------------------
@@ -555,7 +579,7 @@ magnet2torrent() {
   aria_output=$(gum spin -s meter --title 'Fetching metadata with aria2...' --show-output -- \
 								aria2c --bt-stop-timeout=60 --bt-save-metadata --bt-metadata-only "$magnet_link")
 
-  if [[ "$?" -eq 1 ]]; then
+  if [[ $? = 1 ]]; then
     echo "Aria error"
     return 1
   fi
@@ -578,7 +602,7 @@ magnet2torrent() {
   	torrent_path=${torrent_path:1:-1}
 	fi
 
-  new_torrent_file=$(echo "$(dirname "$torrent_path")/${torrent_name}.torrent"| sd "[^\S\r\n]+" "_")
+  new_torrent_file=$(echo "$(dirname "$torrent_path")/${torrent_name}.torrent" | sd "[^\S\r\n]+" "_")
 
   echo "Downloaded: $torrent_name"
   echo "Moving from: $torrent_path"
@@ -590,4 +614,31 @@ magnet2torrent() {
 # Move all files to their own folders ---------------------------------
 move2uniqfolder() {
 	fd . -t f -d 1 -x sh -c 'mkdir "{//}/{/.}" && mv "{}" "{//}/{/.}"'
+}
+
+# Create file, optionally create the parent directories ----------------
+mkfile() {
+	if [[ $# -eq 0 ]]; then
+		echo "$0 - touch file, optionally create the parent directories"
+		echo " "
+		echo "Usage: $0 [options] FILE_NAME"
+		echo " "
+		echo "options:"
+		echo "-p : create the parent directories"
+		return 1
+	fi
+
+	param="$1"
+
+	if [[ "$param" = "-p" && $# -ne 2 ]]; then
+		echo "Usage: $0 -p FILE_NAME"
+		return 1
+	fi
+
+	if [[ "$param" = "-p" ]]; then
+		param=$2
+		mkdir -p "$(dirname "$param")"
+	fi
+
+	touch "$param" && echo "$param"
 }

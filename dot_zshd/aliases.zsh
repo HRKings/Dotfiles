@@ -63,20 +63,29 @@ alias clip="xclip -selection clipboard -i"
 alias listpkg="pacman -Qent"
 alias listaur="pacman -Qem"
 
+# Colored ps -------------------------------------------------
+alias psc="ps aux | ov --column-width --column-rainbow -H1"
+
+# Log coloring
+alias logc="ov --multi-color 'ERROR.*,WARN,INFO,DEBUG,not,^.{24}'"
+
 # Change name of programs -------------------------------
 alias vim="nvim"
+alias cat="bat"
+alias less="ov"
+alias cd="z"
+alias gzip="pigz"
+alias kubectl="kubecolor"
+
+# Simple shortcuts/renaming ------------------------------------------------------------------
+alias open="xdg-open"
 alias cshell="csharprepl"			# Open C# interactive shell (REPL)
-alias rsshell="evcxr"					# Open Rust interactive shell (REPL)
-alias gud="gitgud commit"
-alias mkfile="touch"
+alias rsshell="irust"					# Open Rust interactive shell (REPL)
 alias lgit="lazygit"
 alias ldocker="lazydocker"
 alias py="python"
-alias open="xdg-open"
-alias kubectl="kubecolor"
-alias gzip="pigz"
 alias pbzip2="pbzip2"
-alias cat="bat"
+alias sg="$HOME/.cargo/bin/sg"
 
 # Kitty aliases --------------------------
 alias kssh="kitty +kitten ssh"
@@ -89,20 +98,31 @@ eval $(thefuck --alias)
 # Alias Qalculate ----------------------------------------------------------------------------------------
 aliases[=]='noglob qalc' # The equals sign `=` is not bindable by default, so we have to use this syntax
 
-# Utility aliases -----
+# Utility aliases ----------------------------------
 alias toupper="tr '[:lower:]' '[:upper:]'"
 alias tolower="tr '[:upper:]' '[:lower:]'"
 alias brcat="brotli --stdout -d"
+
+alias ulidgen="ulid"
+alias ulidparse="ulid --format=rfc3339"
 
 #================================================================================================================================
 # Personal Shortcuts
 #================================================================================================================================
 
 alias editzsh="code ~/.zshd/ ~/.zshrc" # Open all ZSH configs in VSCode
-alias mkcompose="dumpgist docker-compose.yaml" # Create a Docker Compose file with a template
+alias editkitty="code ~/.config/kitty"
 alias getgitbackup='echo "dura/$(git rev-parse HEAD)"' # Get the dura branch for the Git backups
 alias zc="zi && code ." # Open Z interactive and open VSCode there
 alias pacseek="pacseek -i -u"
+alias conda_enable="source /opt/miniconda3/etc/profile.d/conda.sh"
+
+# Create a Docker Compose file with a template
+alias mkcompose="fd -at f 'docker-compose.yaml' '/mnt/BulkStorage/Dev/Docker_Projects/docker_compose_templates' | sd '(.*?docker_compose_templates)/' '\$1\t' | sd '/(docker-compose.yaml)' '\t\$1' | fzf --with-nth 2 --preview 'bat -f {1}/{2}/{3}' | sd '\t' '/' | xargs bat > docker-compose.yaml"
+
+# Search python venv and conda envs in the current folder, and activate the selected
+alias activate_pyenv='PYVENV=$(fd -HI -d 3 -t f "pyvenv.cfg" . | fzf --preview "ov {}" | xargs dirname) && source "$PYVENV/bin/activate"'
+alias activate_conda='conda_enable && CONDA_ENV=$(conda env list | rg "^\s" | sd "^\s+" "" | rg "^$PWD" | fzf) && conda activate "$CONDA_ENV"'
 
 #================================================================================================================================
 # Personal Cheatsheets Shortcuts
