@@ -19,5 +19,16 @@
 	"ColorScheme": "Arch Linux",
 	"BorderStyle": "Double",
 	"ShowPkgbuildCommand": "curl -s \"{url}\"|less",
-	"ShowPkgbuildInternally": false
+	"ShowPkgbuildInternally": false,
+	"ComputeRequiredBy": false,
+	"GlyphStyle": "Angled-No-X",
+	"DisableNewsFeed": false,
+	"FeedURLs": "https://archlinux.org/feeds/news/",
+	"FeedMaxItems": 5,
+	"SaveWindowLayout": false,
+	"LeftProportion": 0,
+	"Transparent": false,
+	"PackageColumnWidth": 0,
+	"EnableAutoSuggest": false,
+	"SepDepsWithNewLine": false
 }
