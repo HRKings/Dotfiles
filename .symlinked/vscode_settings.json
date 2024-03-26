@@ -1,55 +1,66 @@
 {
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "One Dark Pro",
-    "editor.fontFamily": "'FiraCode Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontLigatures": true,
-    "editor.bracketPairColorization.enabled": true,
-    "editor.guides.bracketPairs": true,
-    "terminal.integrated.defaultProfile.linux": "zsh",
-    "shellcheck.customArgs": [
-      "-x"
-    ],
-    "files.trimTrailingWhitespace": true,
-    "[json]": {
-      "editor.defaultFormatter": "j-brooke.fracturedjsonvsc"
+    "[json]": {"editor.defaultFormatter": "j-brooke.fracturedjsonvsc"},
+    "[jsonc]": {"editor.defaultFormatter": "j-brooke.fracturedjsonvsc"},
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer",
+        "editor.formatOnSave": true
     },
+    "astGrep.serverPath": "~/.cargo/bin/ast-grep",
+    "cSpell.userWords": ["Crossterm", "HOTP", "Qdrant", "TOTP", "tauri"],
+    "diffEditor.ignoreTrimWhitespace": false,
+    "dotnetAcquisitionExtension.existingDotnetPath": [
+        {"extensionId": "ms-dotnettools.csharp", "path": "/usr/bin/dotnet"}
+    ],
+    "editor.bracketPairColorization.enabled": true,
+    "editor.fontFamily": "'Iosevka Nerd Font Mono', 'FiraCode Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 18,
+    "editor.guides.bracketPairs": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.stickyScroll.enabled": true,
+    "editor.tabSize": 2,
+    "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+    "files.associations": {"*.sql.rollback": "sql"},
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
-    "diffEditor.ignoreTrimWhitespace": false,
+    "files.trimTrailingWhitespace": true,
+    "firedbg.showWelcome": false,
     "fontshortcuts.defaultTerminalFontSize": 14,
-    "editor.lineHeight": 0,
-    "editor.fontSize": 14,
-    "volar.codeLens.scriptSetupTools": true,
-    "volar.autoCompleteRefs": true,
-    "python.formatting.provider": "black",
-    "svelte.enable-ts-plugin": true,
-    "cSpell.userWords": [
-      "tauri"
-    ],
+    "git.experimental.mergeEditor": true,
+    "glassit.alpha": 245,
     "javascript.format.semicolons": "insert",
-    "typescript.format.semicolons": "insert",
-    "[vue]": {
-      "editor.defaultFormatter": "Vue.volar"
+    "notebook.cellToolbarLocation": {
+        "default"         : "right",
+        "jupyter-notebook": "left"
     },
+    "notebook.output.scrolling": true,
+    "oneDarkPro.bold": true,
+    "oneDarkPro.editorTheme": "One Dark Pro Darker",
+    "python.defaultInterpreterPath": "/opt/anaconda/bin/python",
+    "python.formatting.provider": "black",
+    "redhat.telemetry.enabled": false,
+    "rust-analyzer.check.command": "clippy",
+    "rust-analyzer.checkOnSave.command": "clippy",
+    "security.workspace.trust.untrustedFiles": "open",
+    "shellcheck.customArgs": ["-x"],
+    "svelte.enable-ts-plugin": true,
     "terminal.external.linuxExec": "kitty",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.fontSize": 18,
+    "terminal.integrated.inheritEnv": false,
     "terminal.integrated.localEchoExcludePrograms": [
-      "vim",
-      "vi",
-      "nano",
-			"micro",
-      "tmux",
-      "nvim"
+        "vim"   , "vi"    , "nano"  , "micro" , "tmux"  , "zellij", "nvim"
     ],
     "terminal.integrated.persistentSessionReviveProcess": "never",
-    "git.experimental.mergeEditor": true,
-    "editor.minimap.renderCharacters": false,
     "terminal.integrated.shellIntegration.enabled": true,
+    "terminal.integrated.stickyScroll.enabled": true,
+    "typescript.format.semicolons": "insert",
+    "vim.easymotion": true,
+    "volar.autoCompleteRefs": true,
+    "volar.codeLens.scriptSetupTools": true,
     "window.commandCenter": true,
     "window.titleBarStyle": "custom",
-		"rust-analyzer.checkOnSave.command": "clippy",
-	"oneDarkPro.bold": true,
-	"oneDarkPro.editorTheme": "One Dark Pro Darker",
-	"glassit.alpha": 245,
-	"redhat.telemetry.enabled": false,
-	"editor.tabSize": 2
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "workbench.iconTheme": "material-icon-theme"
 }
