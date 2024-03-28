@@ -9,8 +9,10 @@ cargo_tools=(
 	cargo-expand         # Show the results of a macro expansion
 	cargo-generate       # Create Rust projects using templates
 	cargo-information    # Show information of a crate
+	cargo-llvm-cov       # Generate source-based code coverage
 	cargo-nextest        # A better test runner for Rust
 	cargo-quickinstall   # A fallback fro binstall
+	cargo-shear          # Detect and remove unused dependencies
 	cargo-show-asm       # View the ASM output of a compiled function
 	cargo-update         # Update Cargo packages
 	coreutils            # GNU core utilities rewritten in Rust
