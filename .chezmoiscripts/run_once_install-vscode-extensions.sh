@@ -26,9 +26,9 @@ vscode_extensions=(
 	zerotaskx.rust-extension-pack # Rust again
 
 	# Appearance -------------------------------------------------------------
-	PKief.material-icon-theme   # Material Icons
-	s-nlf-fh.glassit            # Transparency for VSCode
-	zhuangtongfa.material-theme # OneDark Pro Theme
+	Catppuccin.catppuccin-vsc       # Catppuccin Mocha Theme
+	Catppuccin.catppuccin-vsc-icons # Catppuccin icons
+	s-nlf-fh.glassit                # Transparency for VSCode
 
 	# Utilities -----------------------------------------------------------------------------
 	aaron-bond.better-comments            # Highligh todo, info and other special comments
