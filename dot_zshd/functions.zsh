@@ -17,11 +17,11 @@ function gitcfg {
 		return 1
 	fi
 
-	GPG_EMAILS=$(gpg --list-secret-keys | grep -v "revoked" | grep ".*@.*" | cut -d '<' -f 2 | cut -d '>' -f 1 | tac)
+	GPG_EMAILS=$(gpg --list-secret-keys | rg -v "revoked" | rg ".*@.*" | sd '.*<(.*)>' '$1'  | tac)
 	GIT_EMAIL=$(printf "%s\n" "${GPG_EMAILS[@]}" | fzf --preview 'gpg --keyid-format=long --locate-keys {1}')
 
 	if [[ ! -z "$GIT_EMAIL" ]]; then
-		GPG_KEY=$(gpg --keyid-format=long --locate-keys "${GIT_EMAIL}" | head -n 1 | cut -d '/' -f 2 | cut -d ' ' -f 1)
+		GPG_KEY=$(gpg --keyid-format=long --locate-keys "${GIT_EMAIL}" | head -n 1 | choose -f '[/\s]' 2 )
 
 		git config user.email "${GIT_EMAIL}" && git config user.signingkey "${GPG_KEY}"
 
@@ -50,14 +50,13 @@ function dumpgist {
 		return
 	fi
 
-	GIST=$(gh gist list -L 100 | cut -f 1,2 | fzf --preview 'echo {1} | cut -f 1 | xargs gh gist view --raw ')
+	GIST=$(gh gist list -L 100 | choose 0 1 | fzf --preview 'echo {1} | choose 0 | xargs gh gist view --raw ')
 
 	if [[ ! -z "$GIST" ]]; then
-		gh gist view --raw "$(echo $GIST | cut -f 1)" | tail -n +3 >$1 &&
-			echo "\u001b[32mCreated '\u001b[36m$1\u001b[0m' \u001b[32mwith the gist '\u001b[36m$(echo $GIST | cut -f 2)\u001b[32m' contents...\u001b[0m"
+		gh gist view --raw "$(echo $GIST | choose 0)" | tail -n +3 >$1 &&
+			echo "\u001b[32mCreated '\u001b[36m$1\u001b[0m' \u001b[32mwith the gist '\u001b[36m$(echo $GIST | choose 1)\u001b[32m' contents...\u001b[0m"
 	fi
 }
-
 
 # Execute a Git command in all repositories contained in nested directories ----
 function gitrecurse {
@@ -364,7 +363,7 @@ cz() (
 	}
 
 	# Hash the current path for use in the cache
-	PWD_HASH=$(echo "$PWD" | sha256sum | cut -d ' ' -f 1)
+	PWD_HASH=$(echo "$PWD" | sha256sum | choose 0 )
 
 	# Define the variables that will hold the cache path
 	SUMMARY_CACHE="/tmp/cz_summary-$PWD_HASH"
@@ -558,7 +557,6 @@ cz() (
 magnet2torrent() {
 	magnet_link=$1
 
-
   if [[ -z "$magnet_link" ]]; then
     echo "usage: $0 [magnet link]"
     return 1
@@ -572,21 +570,21 @@ magnet2torrent() {
     return 1
   fi
 
-  aria_error=$(echo "$aria_output" | grep "not complete")
+  aria_error=$(echo "$aria_output" | rg "not complete")
 
-  torrent_name=$(echo "$aria_output" | grep '\[MEMORY\]\[METADATA\]' | awk -F 'METADATA\]' '{ print $2 }'  2> /dev/null | head -n 1)
+  torrent_name=$(echo "$aria_output" | rg '\[MEMORY\]\[METADATA\]' | awk -F 'METADATA\]' '{ print $2 }'  2> /dev/null | head -n 1)
 
   if [[ -n "$aria_error" ]]; then
     echo "Could not download metadata for '$torrent_name'"
     return 1
   fi
 
-	file_already_exists=$(echo "$aria_output" | grep "file already exists")
+	file_already_exists=$(echo "$aria_output" | rg "file already exists")
 	if [[ -n "$file_already_exists" ]]; then
 		echo "Torrent file already exists, trying to rename it..."
-		torrent_path=$(echo "$aria_output" | grep 'Saving metadata as' | awk -F 'Saving metadata as '  '{ print $2 }' | awk -F ' failed' '{ print $1 }')
+		torrent_path=$(echo "$aria_output" | rg 'Saving metadata as' | awk -F 'Saving metadata as '  '{ print $2 }' | awk -F ' failed' '{ print $1 }')
 	else
-		torrent_path=$(echo "$aria_output" | grep 'Saved metadata as' | awk -F 'Saved metadata as'  '{ print $2 }')
+		torrent_path=$(echo "$aria_output" | rg 'Saved metadata as' | awk -F 'Saved metadata as'  '{ print $2 }')
   	torrent_path=${torrent_path:1:-1}
 	fi
 
