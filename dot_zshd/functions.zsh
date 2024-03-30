@@ -58,18 +58,6 @@ function dumpgist {
 	fi
 }
 
-# List all packages in both Upstream and AUR, with fuzzy searching via fzf ----------------------------------------------------
-function pkgfind {
-	query=$@
-
-	if [ -z "$query" ]; then
-		echo "Usage: pkgfind PKG_NAME"
-		echo "PKG_NAME: the name of the package to search"
-		return
-	fi
-
-	yay -Sl | awk '{print "["$1"] " $2($4=="" ? "" : " *") }' | fzf --multi --bind 'tab:preview:yay -Si {2}' -q "$query" | cut -d " " -f 2 | xargs -ro yay -S
-}
 
 # Execute a Git command in all repositories contained in nested directories ----
 function gitrecurse {
