@@ -630,3 +630,55 @@ mkfile() {
 
 	touch "$param" && echo "$param"
 }
+
+# Open a Twitch TV stream -----------------------------
+twitch() {
+	# Parse the flags and parameters
+	while [ $# -gt 0 ]; do
+		case "$1" in
+			-h|--help)
+				echo "$0 - opens a Twitch stream"
+				echo " "
+				echo "$0 [options]"
+				echo " "
+				echo "options:"
+				echo "-c, --chat	Opens the chat using chatterino"
+				return 0
+				;;
+			-c | --chat)
+				CHAT="true"
+				shift
+				;;
+			*)
+				STREAM_URL=$1
+				shift
+				;;
+		esac
+	done
+
+	if ! [[ "$STREAM_URL" =~ '^https:\/\/(www\.)?twitch.tv\/' ]]; then
+		echo "Please provide a valid Twitch URL"
+		return 1
+	fi
+
+	if [[ -n "$CHAT" ]]; then
+		gum style --bold --foreground 1  "Opening the chat..."
+		CHANNEL_NAME=$(echo "$STREAM_URL" | choose -f '/' -1)
+		com.chatterino.chatterino -c "$CHANNEL_NAME" &
+		CHAT_PID=$!
+	fi
+
+	streamlink --player mpv --player-no-close \
+    --player-args="--no-border --force-seekable=yes --hr-seek=yes --hr-seek-framedrop=yes" \
+    --title='{author} - {category} - {title}' \
+    --stream-segment-threads 2 --hls-live-edge 4 \
+    --retry-open 2 --retry-streams 5 \
+		"$STREAM_URL" \
+    best
+
+		if [[ -n "$CHAT_PID" ]]; then
+			gum style --bold --foreground 1  "Closing the chat..."
+			kill -s SIGTERM $CHAT_PID
+			kill -s SIGTERM "$(ps | rg 'chatterino' | choose 0)"
+		fi
+}
