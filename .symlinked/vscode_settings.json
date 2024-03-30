@@ -5,6 +5,7 @@
         "editor.defaultFormatter": "rust-lang.rust-analyzer",
         "editor.formatOnSave": true
     },
+    "astGrep.serverPath": "/home/ton/.cargo/bin/ast-grep",
     "cSpell.userWords": ["Crossterm", "HOTP", "Qdrant", "TOTP", "tauri"],
     "diffEditor.ignoreTrimWhitespace": false,
     "dotnetAcquisitionExtension.existingDotnetPath": [
@@ -16,6 +17,7 @@
     "editor.fontSize": 18,
     "editor.guides.bracketPairs": true,
     "editor.minimap.renderCharacters": false,
+    "editor.renderWhitespace": "boundary",
     "editor.stickyScroll.enabled": true,
     "editor.tabSize": 2,
     "errorLens.enabledDiagnosticLevels": ["error", "warning"],
@@ -33,8 +35,6 @@
         "jupyter-notebook": "left"
     },
     "notebook.output.scrolling": true,
-    "oneDarkPro.bold": true,
-    "oneDarkPro.editorTheme": "One Dark Pro Darker",
     "python.defaultInterpreterPath": "/opt/anaconda/bin/python",
     "python.formatting.provider": "black",
     "redhat.telemetry.enabled": false,
@@ -60,6 +60,6 @@
     "window.commandCenter": true,
     "window.titleBarStyle": "custom",
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "One Dark Pro Darker",
-    "workbench.iconTheme": "material-icon-theme"
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.iconTheme": "catppuccin-mocha"
 }
