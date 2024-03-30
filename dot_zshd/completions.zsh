@@ -24,13 +24,13 @@ local cheats taglist pathlist
 
 _cheat_complete_personal_cheatsheets()
 {
-  cheats=("${(f)$(cheat -l -t personal | tail -n +2 | cut -d' ' -f1)}")
+  cheats=("${(f)$(cheat -l -t personal | tail -n +2 | choose 0)}")
   _describe -t cheats 'cheats' cheats
 }
 
 _cheat_complete_full_cheatsheets()
 {
-  cheats=("${(f)$(cheat -l | tail -n +2 | cut -d' ' -f1)}")
+  cheats=("${(f)$(cheat -l | tail -n +2 | choose 0)}")
   _describe -t cheats 'cheats' cheats
 }
 
@@ -42,7 +42,7 @@ _cheat_complete_tags()
 
 _cheat_complete_paths()
 {
-  pathlist=("${(f)$(cheat -d | cut -d':' -f1)}")
+  pathlist=("${(f)$(cheat -d | choose -f ':' 0)}")
   _describe -t pathlist 'pathlist' pathlist
 }
 

@@ -17,19 +17,9 @@ alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pac
 
 # Changing "ls" to "exa" --------------------------------------------------------------------------------------------------
 alias ls="exa -al --color=always --group-directories-first --icons --header"				# My preferred listing
-alias la="exa -a --color=always --group-directories-first --icons"									# All files and dirs
-alias ll="exa -l --color=always --group-directories-first --icons"									# Long format
-alias lt="exa -aT --color=always --group-directories-first --icons"									# Tree listing
-alias l.="exa -la --color=always --group-directories-first --icons | grep -P '\e\[[0-9]+m\.|\s\.'"	# All .files
-alias lss="exa -al --color=always --group-directories-first --icons | egrep"						# A "search" function
-
-# Colorize grep output (good for log files) --------
-alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
-alias fgrep="fgrep --color=auto"
+alias l.="exa -la --color=always --group-directories-first --icons | rg -P '\e\[[0-9]+m\.|\s\.'"	# All .files
 
 # Confirm before overwriting something --------
-alias cp="cpg -i"
 alias mv="mvg -i"
 alias rm="rm -i"
 
@@ -62,9 +52,6 @@ alias clip="xclip -selection clipboard -i"
 # List installed packages ----
 alias listpkg="pacman -Qent"
 alias listaur="pacman -Qem"
-
-# Colored ps -------------------------------------------------
-alias psc="ps aux | ov --column-width --column-rainbow -H1"
 
 # Log coloring
 alias logc="ov --multi-color 'ERROR.*,WARN,INFO,DEBUG,not,^.{24}'"
