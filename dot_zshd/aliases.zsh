@@ -110,8 +110,7 @@ alias ulidparse="ulid --format=rfc3339"
 # Personal Shortcuts
 #================================================================================================================================
 
-alias editzsh="code ~/.zshd/ ~/.zshrc" # Open all ZSH configs in VSCode
-alias editkitty="code ~/.config/kitty"
+alias editdot="chezmoi edit --apply" # Edit dotfiles
 alias getgitbackup='echo "dura/$(git rev-parse HEAD)"' # Get the dura branch for the Git backups
 alias zc="zi && code ." # Open Z interactive and open VSCode there
 alias pacseek="pacseek -i -u"
@@ -123,6 +122,9 @@ alias mkcompose="fd -at f 'docker-compose.yaml' '/mnt/BulkStorage/Dev/Docker_Pro
 # Search python venv and conda envs in the current folder, and activate the selected
 alias activate_pyenv='PYVENV=$(fd -HI -d 3 -t f "pyvenv.cfg" . | fzf --preview "ov {}" | xargs dirname) && source "$PYVENV/bin/activate"'
 alias activate_conda='conda_enable && CONDA_ENV=$(conda env list | rg "^\s" | sd "^\s+" "" | rg "^$PWD" | fzf) && conda activate "$CONDA_ENV"'
+
+# Download a file using gallery-dl on the current folder
+alias gldhere="gallery-dl -D . "
 
 #================================================================================================================================
 # Personal Cheatsheets Shortcuts
