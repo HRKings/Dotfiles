@@ -26,6 +26,9 @@ export MANPAGER="ov --section-delimiter '^[^\s]' --section-header"
 # Use `ov` for `bat` ---------
 export BAT_PAGER="ov -F -H3"
 
+# Enable cheatsheet integration with fzf -----
+export CHEAT_USE_FZF=true
+
 #================================================================================================================================
 # ZSH plugins configs
 #================================================================================================================================

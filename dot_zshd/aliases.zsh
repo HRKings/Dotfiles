@@ -75,14 +75,6 @@ alias py="python"
 alias pbzip2="pbzip2"
 alias sg="$HOME/.cargo/bin/sg"
 
-# Reminder about modern replacements ----------------------
-alias dig="echo 'Moderm: dog'"
-alias curl="echo 'Modern: curlie'"
-alias grep="echo 'Modern: rg'"
-alias sed="echo 'Modern: sd'"
-alias du="echo 'Modern: duf, dua'"
-alias ping="echo 'Modern: gping'; ping"
-
 # Kitty aliases --------------------------
 alias kssh="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
@@ -129,6 +121,7 @@ alias checkinternet="gping 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4 208.67.222.222 208.67
 # Personal Cheatsheets Shortcuts
 #================================================================================================================================
 
+alias modern="cheat personal/modern"
 alias csa="cheat arsenal -s"
 alias csh="cheat shell -s"
 alias csps="cheat snippets -s"

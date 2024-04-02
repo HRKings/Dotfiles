@@ -1,0 +1,18 @@
+---
+syntax: bash
+---
+# curl
+curlie
+
+# grep
+rg
+
+# sed
+sd
+
+# du
+duf
+dua
+
+# ping
+gping
