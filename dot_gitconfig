@@ -55,3 +55,4 @@
 [alias]
     amend = commit --amend --no-edit
     initial = commit -m 'initial commit'
+		stashm = stash push -m
