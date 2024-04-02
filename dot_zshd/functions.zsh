@@ -73,12 +73,12 @@ function stringdiff {
 
 # Open yazi and cd into the directory if you quit ------------------------------------
 function ya() {
-    tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-    yazi --cwd-file="$tmp"
-    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-        cd -- "$cwd"
-    fi
-    rm -f -- "$tmp"
+		tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+		yazi --cwd-file="$tmp"
+		if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+				cd -- "$cwd"
+		fi
+		rm -f -- "$tmp"
 }
 
 # Benchmark the RAM usage of a given command -----------------------------------------------------------
@@ -557,27 +557,27 @@ cz() (
 magnet2torrent() {
 	magnet_link=$1
 
-  if [[ -z "$magnet_link" ]]; then
-    echo "usage: $0 [magnet link]"
-    return 1
-  fi
+	if [[ -z "$magnet_link" ]]; then
+		echo "usage: $0 [magnet link]"
+		return 1
+	fi
 
-  aria_output=$(gum spin -s meter --title 'Fetching metadata with aria2...' --show-output -- \
+	aria_output=$(gum spin -s meter --title 'Fetching metadata with aria2...' --show-output -- \
 								aria2c --bt-stop-timeout=60 --bt-save-metadata --bt-metadata-only "$magnet_link")
 
-  if [[ $? = 1 ]]; then
-    echo "Aria error"
-    return 1
-  fi
+	if [[ $? = 1 ]]; then
+		echo "Aria error"
+		return 1
+	fi
 
-  aria_error=$(echo "$aria_output" | rg "not complete")
+	aria_error=$(echo "$aria_output" | rg "not complete")
 
-  torrent_name=$(echo "$aria_output" | rg '\[MEMORY\]\[METADATA\]' | awk -F 'METADATA\]' '{ print $2 }'  2> /dev/null | head -n 1)
+	torrent_name=$(echo "$aria_output" | rg '\[MEMORY\]\[METADATA\]' | awk -F 'METADATA\]' '{ print $2 }'  2> /dev/null | head -n 1)
 
-  if [[ -n "$aria_error" ]]; then
-    echo "Could not download metadata for '$torrent_name'"
-    return 1
-  fi
+	if [[ -n "$aria_error" ]]; then
+		echo "Could not download metadata for '$torrent_name'"
+		return 1
+	fi
 
 	file_already_exists=$(echo "$aria_output" | rg "file already exists")
 	if [[ -n "$file_already_exists" ]]; then
@@ -585,16 +585,16 @@ magnet2torrent() {
 		torrent_path=$(echo "$aria_output" | rg 'Saving metadata as' | awk -F 'Saving metadata as '  '{ print $2 }' | awk -F ' failed' '{ print $1 }')
 	else
 		torrent_path=$(echo "$aria_output" | rg 'Saved metadata as' | awk -F 'Saved metadata as'  '{ print $2 }')
-  	torrent_path=${torrent_path:1:-1}
+		torrent_path=${torrent_path:1:-1}
 	fi
 
-  new_torrent_file=$(echo "$(dirname "$torrent_path")/${torrent_name}.torrent" | sd "[^\S\r\n]+" "_")
+	new_torrent_file=$(echo "$(dirname "$torrent_path")/${torrent_name}.torrent" | sd "[^\S\r\n]+" "_")
 
-  echo "Downloaded: $torrent_name"
-  echo "Moving from: $torrent_path"
-  echo "Moving to: $new_torrent_file"
+	echo "Downloaded: $torrent_name"
+	echo "Moving from: $torrent_path"
+	echo "Moving to: $new_torrent_file"
 
-  mv "$torrent_path" "$new_torrent_file"
+	mv "$torrent_path" "$new_torrent_file"
 }
 
 # Move all files to their own folders ---------------------------------

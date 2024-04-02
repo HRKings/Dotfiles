@@ -1,24 +1,24 @@
 [user]
-        name = Helton Reis
-        useConfigOnly = true
+	name = Helton Reis
+	useConfigOnly = true
 
 [commit]
-        gpgsign = true
+	gpgsign = true
 
 [filter "lfs"]
-        clean = git-lfs clean -- %f
-        smudge = git-lfs smudge -- %f
-        process = git-lfs filter-process
-        required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 
 [pull]
-        rebase = true
+	rebase = true
 
 [init]
-        defaultBranch = master
+	defaultBranch = master
 
 [include]
-    path = .work.gitconfig
+	path = .work.gitconfig
 
 [safe]
 	directory = /opt/flutter
@@ -29,30 +29,30 @@
 [core]
 	fsmonitor = true
 	untrackedcache = true
-  pager = delta
+	pager = delta
 	attributesfile = ~/.gitattributes
 
 [interactive]
-  diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [add.interactive]
-  useBuiltin = false
+	useBuiltin = false
 
 [merge]
-  conflictstyle = diff3
+	conflictstyle = diff3
 
 [diff]
-  colorMoved = default
+	colorMoved = default
 
 [delta]
-  navigate = true
-  light = false
+	navigate = true
+	light = false
 	syntax-theme = TwoDark
 
 [diff "hex"]
-    textconv = hexdump -Cv
-    binary = true
+	textconv = hexdump -Cv
+	binary = true
 
 [alias]
-    amend = commit --amend --no-edit
-    initial = commit -m 'initial commit'
-		stashm = stash push -m
+	amend = commit --amend --no-edit
+	initial = commit -m 'initial commit'
+	stashm = stash push -m
