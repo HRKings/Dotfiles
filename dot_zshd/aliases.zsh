@@ -3,10 +3,10 @@
 #================================================================================================================================
 
 # pacman and yay (If needed a LC_ALL=en.US in front of any of these commands to force the language to english) --------
-alias pacup="sudo pacman -Syyu"								# Update only standard pkgs
-alias yayup="yay -Sua"										# Update only AUR pkgs
-alias yayupall="yay -Syyu --noconfirm"						# Update standard pkgs and AUR pkgs
-alias pacunlock="sudo rm /var/lib/pacman/db.lck"			# Remove pacman lock
+alias pacup="sudo pacman -Syyu"	# Update only standard pkgs
+alias yayup="yay -Sua"	# Update only AUR pkgs
+alias yayupall="yay -Syyu --noconfirm"	# Update standard pkgs and AUR pkgs
+alias pacunlock="sudo rm /var/lib/pacman/db.lck"	# Remove pacman lock
 alias paccleanup="sudo pacman -Qtdq | sudo pacman -Rns -"	# Remove orphaned packages
 
 # Get fastest mirrors -------------------------------------------------------------------------------
@@ -16,8 +16,8 @@ alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/p
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 # Changing "ls" to "exa" --------------------------------------------------------------------------------------------------
-alias ls="exa -al --color=always --group-directories-first --icons --header"				# My preferred listing
-alias l.="exa -la --color=always --group-directories-first --icons | rg -P '\e\[[0-9]+m\.|\s\.'"	# All .files
+alias ls="exa -al --color=always --group-directories-first --icons --header"	# My preferred listing
+alias l.="exa -la --color=always --group-directories-first --icons | rg '.*?\s\.'"	# All .files
 
 # Confirm before overwriting something --------
 alias mv="mvg -i"
@@ -31,7 +31,7 @@ alias tp="trash-put"
 alias emptytrash="rm -rf ~/.local/share/Trash/*"
 
 # Adding flags --------------------------------
-alias df="df -h"		# human-readable sizes
+alias df="df -h"	# human-readable sizes
 alias free="free -m"	# show sizes in MB
 
 # Get top process eating memory -------------------
@@ -43,8 +43,8 @@ alias pscpu="ps auxf | sort -nr -k 3"
 alias pscpu10="ps auxf | sort -nr -k 3 | head -10"
 
 # Format JSON from the clipboard ------------------------------------------------
-alias jsonf="xclip -o | jq" 				# Then print
-alias jsonfc="xclip -o | jq | xclip -i"		# Then put it back on the clipboard
+alias jsonf="xclip -o | jq"	# Then print
+alias jsonfc="xclip -o | jq | xclip -i"	# Then put it back on the clipboard
 
 # Copy something directly to the clipboard ----
 alias clip="xclip -selection clipboard -i"
@@ -63,16 +63,25 @@ alias less="ov"
 alias cd="z"
 alias gzip="pigz"
 alias kubectl="kubecolor"
+alias neofetch="fastfetch"
 
 # Simple shortcuts/renaming ------------------------------------------------------------------
 alias open="xdg-open"
-alias cshell="csharprepl"			# Open C# interactive shell (REPL)
-alias rsshell="irust"					# Open Rust interactive shell (REPL)
+alias cshell="csharprepl"	# Open C# interactive shell (REPL)
+alias rsshell="irust"	# Open Rust interactive shell (REPL)
 alias lgit="lazygit"
 alias ldocker="lazydocker"
 alias py="python"
 alias pbzip2="pbzip2"
 alias sg="$HOME/.cargo/bin/sg"
+
+# Reminder about modern replacements ----------------------
+alias dig="echo 'Moderm: dog'"
+alias curl="echo 'Modern: curlie'"
+alias grep="echo 'Modern: rg'"
+alias sed="echo 'Modern: sd'"
+alias du="echo 'Modern: duf, dua'"
+alias ping="echo 'Modern: gping'; ping"
 
 # Kitty aliases --------------------------
 alias kssh="kitty +kitten ssh"
@@ -97,7 +106,7 @@ alias ulidparse="ulid --format=rfc3339"
 # Personal Shortcuts
 #================================================================================================================================
 
-alias editdot="chezmoi edit --apply" # Edit dotfiles
+alias editdot="chezmoi edit --apply"	# Edit dotfiles
 alias getgitbackup='echo "dura/$(git rev-parse HEAD)"' # Get the dura branch for the Git backups
 alias zc="zi && code ." # Open Z interactive and open VSCode there
 alias pacseek="pacseek -i -u"
@@ -112,6 +121,9 @@ alias activate_conda='conda_enable && CONDA_ENV=$(conda env list | rg "^\s" | sd
 
 # Download a file using gallery-dl on the current folder
 alias gldhere="gallery-dl -D . "
+
+# Quickly check if the internet is down
+alias checkinternet="gping 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4 208.67.222.222 208.67.220.220 "
 
 #================================================================================================================================
 # Personal Cheatsheets Shortcuts
