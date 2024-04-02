@@ -648,31 +648,19 @@ twitch() {
 				shift
 				;;
 			*)
-				STREAM_URL=$1
+				CHANNEL_NAME=$1
 				shift
 				;;
 		esac
 	done
 
-	if ! [[ "$STREAM_URL" =~ '^https:\/\/(www\.)?twitch.tv\/' ]]; then
-		echo "Please provide a valid Twitch URL"
-		return 1
-	fi
-
 	if [[ -n "$CHAT" ]]; then
 		gum style --bold --foreground 1  "Opening the chat..."
-		CHANNEL_NAME=$(echo "$STREAM_URL" | choose -f '/' -1)
 		com.chatterino.chatterino -c "$CHANNEL_NAME" &
 		CHAT_PID=$!
 	fi
 
-	streamlink --player mpv --player-no-close \
-    --player-args="--no-border --force-seekable=yes --hr-seek=yes --hr-seek-framedrop=yes" \
-    --title='{author} - {category} - {title}' \
-    --stream-segment-threads 2 --hls-live-edge 4 \
-    --retry-open 2 --retry-streams 5 \
-		"$STREAM_URL" \
-    best
+	streamlink "https://www.twitch.tv/$CHANNEL_NAME" best
 
 		if [[ -n "$CHAT_PID" ]]; then
 			gum style --bold --foreground 1  "Closing the chat..."

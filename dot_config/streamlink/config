@@ -1,0 +1,11 @@
+player=mpv
+player-no-close
+player-args=--no-border --force-seekable=yes --hr-seek=yes --hr-seek-framedrop=yes
+
+title='{author} - {category} - {title}'
+
+stream-segment-threads=2
+hls-live-edge=4
+
+retry-open=2
+retry-streams=5
