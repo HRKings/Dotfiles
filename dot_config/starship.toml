@@ -1,0 +1,107 @@
+# Choose the color palette -------------
+palette = "catppuccin_mocha"
+
+# The actual prompt formatting ---------
+format = '''
+[╭─](bold surface2)[$os|$shell$username$hostname](bg:mantle)$directory$git_status[](fg:mantle)[$fill](bold surface3)$status$cmd_duration$time
+[╰─](bold surface2)$character'''
+
+# Prompt configs ------------------
+command_timeout = 1000
+
+[fill]
+symbol = '·'
+
+[character]
+error_symbol = '[✗](bold red) '
+success_symbol = "[❯](bold surface2)"
+
+[os]
+format = " $symbol($style)"
+style = "bold fg:yellow bg:mantle"
+disabled = false
+
+[os.symbols]
+EndeavourOS = ""
+
+[username]
+style_user = 'text bold'
+style_root = 'subtext1 bold'
+format = ' - [$user]($style)'
+disabled = false
+
+[hostname]
+ssh_only = true
+style = "fg:text bg:mantle dimmed bold"
+format = '[$ssh_symbol](bold blue)@[$hostname]($style) '
+
+[shell]
+zsh_indicator = "󰰶"
+bash_indicator = ""
+fish_indicator = '󰈺'
+powershell_indicator = '_'
+unknown_indicator = '󱔢'
+style = 'fg:text bg:mantle bold'
+disabled = false
+
+[directory]
+style = "fg:text bg:mantle"
+truncation_length = 3
+truncation_symbol = '󰇘/'
+before_repo_root_style = "bold subtext1"
+truncate_to_repo = true
+home_symbol = '󰠦'
+format = "[ $path ]($style)[$read_only]($read_only_style)"
+
+[status]
+style = 'bg:mantle'
+symbol = '[✘](fg:red $style)'
+success_symbol = '[✔](fg:green $style)'
+format = '[](fg:mantle)[$symbol]($style)[ $common_meaning$signal_name$maybe_int]($style)'
+map_symbol = true
+disabled = false
+
+[cmd_duration]
+min_time = 500
+format = '[took [$duration](bold yellow)](bg:mantle)'
+
+[time]
+style = "bold bg:mantle fg:subtext1"
+disabled = false
+format = '[  at $time  ]($style)'
+time_format = '%FT%T'
+
+# Module configs -------------------
+[git_status]
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+
+# Catppuccin Mocha Pallete -----------------------------------------------------
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
