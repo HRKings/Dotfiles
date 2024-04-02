@@ -27,11 +27,12 @@ export MANPAGER="ov --section-delimiter '^[^\s]' --section-header"
 export BAT_PAGER="ov -F -H3"
 
 #================================================================================================================================
-# ZStyle configs
+# ZSH plugins configs
 #================================================================================================================================
 
 # Configure ZSH Notify ------------------------------
 zstyle ':notify:*' command-complete-timeout 1
-zstyle ':notify:*' error-title "Command failed"
-zstyle ':notify:*' success-title "Command finished"
+zstyle ':notify:*' app-name 'zsh'
+zstyle ':notify:*' error-title '❌ Failed in #{time_elapsed} | Exit-Code: #{exit-code}'
+zstyle ':notify:*' success-title 'Finished in #{time_elapsed}'
 zstyle ':notify:*' expire-time 15000

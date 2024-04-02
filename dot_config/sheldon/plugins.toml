@@ -35,7 +35,7 @@ github = 'zsh-users/zsh-autosuggestions'
 github = 'zsh-users/zsh-completions'
 
 [plugins.zsh-notify]
-github = 'marzocchi/zsh-notify'
+github = 'HRKings/zsh-notify'
 
 [plugins.powerlevel10k]
 github = 'romkatv/powerlevel10k'
