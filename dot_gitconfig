@@ -55,4 +55,6 @@
 [alias]
 	amend = commit --amend --no-edit
 	initial = commit -m 'initial commit'
-	stashm = stash push -m
+	stashm = stash push -Sm
+	remotes = ! git remote | fzf --preview 'git remote -v show -n {}'
+	remotesv = ! git remote | fzf --preview 'git remote -v show {}'
