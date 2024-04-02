@@ -51,3 +51,7 @@
 [diff "hex"]
     textconv = hexdump -Cv
     binary = true
+
+[alias]
+    amend = commit --amend --no-edit
+    initial = commit -m 'initial commit'
