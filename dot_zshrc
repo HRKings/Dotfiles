@@ -2,7 +2,7 @@
 # Code that must be run before the prompt start in each session initialization
 #==================================================================================================
 
-source ~/.zshd/session_init.zsh
+source "$HOME/.zshd/session_init.zsh"
 
 #==================================================================================================
 # Powerlevel10k Instant Prompt
@@ -18,8 +18,8 @@ fi
 # Sheldon (ZSH Plugins)
 #==================================================================================================
 
-# Set the path for OhMyZSH -----------------------------------------------
-export ZSH="$HOME/.local/share/sheldon/repos/github.com/ohmyzsh/ohmyzsh"
+# # Set the path for OhMyZSH -----------------------------------------------
+# export ZSH="$HOME/.local/share/sheldon/repos/github.com/ohmyzsh/ohmyzsh"
 
 # Load Sheldon --------------------------
 eval "$(sheldon source)"
@@ -29,16 +29,16 @@ eval "$(sheldon source)"
 #==================================================================================================
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f $HOME/.p10k.zsh ]] || source "$HOME/.p10k.zsh"
 
 #==================================================================================================
 # The rest of my .zshrc
 #==================================================================================================
 
-source ~/.zshd/variables.zsh
-source ~/.zshd/functions.zsh
-source ~/.zshd/aliases.zsh
-source ~/.zshd/completions.zsh
+source "$HOME/.zshd/variables.zsh"
+source "$HOME/.zshd/functions.zsh"
+source "$HOME/.zshd/aliases.zsh"
+source "$HOME/.zshd/completions.zsh"
 
 #==================================================================================================================================
 # 1Password SSH Agent
