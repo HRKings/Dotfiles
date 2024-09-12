@@ -668,3 +668,20 @@ twitch() {
 			kill -s SIGTERM "$(ps | rg 'chatterino' | choose 0)"
 		fi
 }
+
+# Clear caches ------
+function clearcache {
+	gum confirm "Are you sure you want to clear all caches?" || return
+
+	gum style --bold --foreground 1  "Clearing Docker..."
+	docker system prune -f
+	echo ""
+
+	gum style --bold --foreground 1  "Clearing Yay..."
+	yay -Sc
+	echo ""
+
+	gum style --bold --foreground 1  "Clearing dotNet..."
+	dotnet nuget locals --clear all
+}
+
