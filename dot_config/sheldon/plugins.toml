@@ -27,6 +27,8 @@ github = 'Aloxaf/fzf-tab'
 
 [plugins.fast-syntax-highlighting]
 github = 'zdharma-continuum/fast-syntax-highlighting'
+[plugins.fast-syntax-highlighting.hooks]
+post = 'fast-theme -q XDG:catppuccin-mocha'
 
 [plugins.zsh-autosuggestions]
 github = 'zsh-users/zsh-autosuggestions'
