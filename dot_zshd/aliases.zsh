@@ -60,7 +60,6 @@ alias logc="ov --multi-color 'ERROR.*,WARN,INFO,DEBUG,not,^.{24}'"
 alias vim="nvim"
 alias cat="bat"
 alias less="ov"
-alias cd="z"
 alias gzip="pigz"
 alias kubectl="kubecolor"
 alias neofetch="fastfetch"
@@ -114,8 +113,8 @@ alias activate_conda='conda_enable && CONDA_ENV=$(conda env list | rg "^\s" | sd
 # Download a file using gallery-dl on the current folder
 alias gldhere="gallery-dl -D . "
 
-# Quickly check if the internet is down
-alias checkinternet="gping 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4 208.67.222.222 208.67.220.220 "
+# Quickly check if the internet is down (DNS order: Cloudflare, Google, Cisco)
+alias checkinternet="gping 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4 208.67.222.222 208.67.220.220"
 
 #================================================================================================================================
 # Personal Cheatsheets Shortcuts
@@ -125,3 +124,5 @@ alias modern="cheat personal/modern"
 alias csa="cheat arsenal -s"
 alias csh="cheat shell -s"
 alias csps="cheat snippets -s"
+alias aliaslist="cat ~/.zshd/aliases.zsh | ov --section-header --section-delimiter '^#'"
+alias functionlist="cat ~/.zshd/functions.zsh | rg -B 1 'function\s' | ov --section-header --section-delimiter '^#'"
