@@ -1,11 +1,13 @@
 player=mpv
 player-no-close
-player-args=--no-border --force-seekable=yes --hr-seek=yes --hr-seek-framedrop=yes
+player-passthrough
+player-args=--force-seekable=yes --hr-seek=yes --hr-seek-framedrop=yes --cache=no
 
 title='{author} - {category} - {title}'
 
-stream-segment-threads=2
-hls-live-edge=4
+stream-segment-threads=4
+hls-segment-stream-data
+hls-live-edge=1
 
 retry-open=2
 retry-streams=5
