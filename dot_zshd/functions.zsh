@@ -72,7 +72,7 @@ function stringdiff {
 }
 
 # Open yazi and cd into the directory if you quit ------------------------------------
-function ya() {
+function ya {
 		tmp="$(mktemp -t "yazi-cwd.XXXXX")"
 		yazi --cwd-file="$tmp"
 		if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
@@ -175,13 +175,13 @@ function relativecalc {
 }
 
 # Navigate folder with ease --------------
-tere() {
+function tere {
 	local result=$(command tere "$@")
 	[ -n "$result" ] && cd -- "$result"
 }
 
 # Interactive mode for cheatsheet --------------------------------------------------------------------------------
-cs() {
+function cs {
 	QUERY=$1
 	if [ -z "$QUERY" ]; then
 		cheat -l | awk '{print $1}' | fzf --header-lines 1 --preview-window=70% --preview 'cheat -c {1}'
@@ -191,7 +191,7 @@ cs() {
 }
 
 # Generate random hex string ------------------------------------
-sslrandhex() {
+function sslrandhex {
 	if (( $# == 0 ))
 	then
 		echo "generate random hex string using OpenSSL"
@@ -202,7 +202,7 @@ sslrandhex() {
 	openssl rand -hex $1
 }
 
-sslrandbytes() {
+function sslrandbytes {
 	if (( $# == 0 ))
 	then
 		echo "generate random bytes using OpenSSL"
@@ -214,7 +214,7 @@ sslrandbytes() {
 }
 
 # Generate data from /dev/urandom -------------------------------
-urandomhex() {
+function urandomhex {
 	if (( $# == 0 ))
 	then
 		echo "generate random hex string using /dev/urandom"
@@ -225,7 +225,7 @@ urandomhex() {
 	head -c $1 /dev/urandom | hexdump -e '"%02x"'
 }
 
-urandombytes() {
+function urandombytes {
 	if (( $# == 0 ))
 	then
 		echo "generate random bytes using /dev/urandom"
@@ -237,7 +237,7 @@ urandombytes() {
 }
 
 # Archive and unarchive a tarball using brotli -----------------------------------------------------------
-tarbrot() {
+function tarbrot {
 	if [ ! command -v brotli &> /dev/null ]; then
 		echo "'brotli' could not be found"
 		return 1
@@ -256,7 +256,7 @@ tarbrot() {
 	tar -cvf "${archive_name}" --use-compress-program="$(where brotli)" "${=path_to_archive}"
 }
 
-untarbrot() {
+function untarbrot {
 	if [ ! command -v brotli &> /dev/null ]; then
 		echo "'brotli' could not be found"
 		return 1
@@ -275,7 +275,7 @@ untarbrot() {
 }
 
 # Check and create a blake3 hash checksum ----------------------------------------------------------------
-checkblake3() {
+function checkblake3 {
 	if (( $# == 0 ))
 	then
 		echo "usage: $0 [file to check] <blake3 file>"
@@ -293,7 +293,7 @@ checkblake3() {
 	echo "$(cat "$blake3_file" | awk '{print $1}')  $file_to_check" | b3sum -c
 }
 
-sumblake3() {
+function sumblake3 {
 	if (( $# == 0 ))
 	then
 		echo "usage: $0 [file to checksum]"
@@ -306,7 +306,7 @@ sumblake3() {
 }
 
 # Create a .gitignore using gibo --------------------
-mkgitignore() {
+function mkgitignore {
 	if [ ! command -v gibo &> /dev/null ]; then
 		echo "gibo cannot be found"
 		return 1
@@ -324,7 +324,7 @@ mkgitignore() {
 }
 
 # View 7z files ---------------------------------------------------------------------------------------------------
-7zcontent() {
+function 7zcontent {
 	DIVIDER=$(printf "%$(tput cols)s" " " | tr ' ' '*')
 
 	fd -t f -e '7z' | fzf --preview "7z l {} \
@@ -335,7 +335,7 @@ mkgitignore() {
 }
 
 # View 7z directory tree ----------------------------------------------------------------------------------
-7ztree() {
+function 7ztree {
 	if (( $# == 0 ))
 	then
 		echo "usage: $0 [7z archive to display]"
@@ -348,7 +348,7 @@ mkgitignore() {
 }
 
 # A more complete implementation of convetional commits -----------------------------------------------
-cz() (
+function cz {
 	# If we are not inside a Git repo, exit
 	if [[ $(git rev-parse --is-inside-work-tree 2&>/dev/null) != "true" ]]; then
 		echo "Current folder '$PWD' is not a git repository."
@@ -551,10 +551,10 @@ cz() (
 
 	# Release the trap
 	unset -f TRAPERR
-)
+}
 
 # Transform magnet links to .torrent files ------------------------------------------------
-magnet2torrent() {
+function magnet2torrent {
 	magnet_link=$1
 
 	if [[ -z "$magnet_link" ]]; then
@@ -598,12 +598,12 @@ magnet2torrent() {
 }
 
 # Move all files to their own folders ---------------------------------
-move2uniqfolder() {
+function move2uniqfolder {
 	fd . -t f -d 1 -x sh -c 'mkdir "{//}/{/.}" && mv "{}" "{//}/{/.}"'
 }
 
 # Create file, optionally create the parent directories ----------------
-mkfile() {
+function mkfile {
 	if [[ $# -eq 0 ]]; then
 		echo "$0 - touch file, optionally create the parent directories"
 		echo " "
@@ -630,7 +630,7 @@ mkfile() {
 }
 
 # Open a Twitch TV stream -----------------------------
-twitch() {
+function twitch {
 	# Parse the flags and parameters
 	while [ $# -gt 0 ]; do
 		case "$1" in
