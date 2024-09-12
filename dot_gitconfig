@@ -43,10 +43,14 @@
 [diff]
 	colorMoved = default
 
+[include]
+	path = ~/.config/delta/themes/catppuccin.gitconfig
+
 [delta]
 	navigate = true
 	light = false
-	syntax-theme = TwoDark
+	syntax-theme = Catppuccin Mocha
+	features = catppuccin-mocha
 
 [diff "hex"]
 	textconv = hexdump -Cv
