@@ -685,3 +685,52 @@ function clearcache {
 	dotnet nuget locals --clear all
 }
 
+# Run a command inside a docker compose container
+function dockershell {
+	# Parse the flags and parameters
+	while [ $# -gt 0 ]; do
+		case "$1" in
+			-h|--help)
+				echo "$0 - executes an interactive shell inside a docker"
+				echo " "
+				echo "$0 [options] [shell]"
+				echo " "
+				echo "options:"
+				echo "-a, --all	'Use docker ps' instead of 'docker compose ps'"
+				echo "shell:"
+				echo "Especifies the shell, by default will be 'bash'"
+				return 0
+				;;
+			-a | --all)
+				CONTAINERS=
+				shift
+				;;
+			*)
+				SHELL_COMMAND=$1
+				shift
+				;;
+		esac
+	done
+
+	if [[ -z "$CONTAINERS" ]]; then
+		CONTAINERS=$(docker compose ps --status running --format '{{.Name}}')
+	fi
+
+	if [[ -z "$CONTAINERS" ]]; then
+		echo "No containers were found"
+		return 1
+	fi
+
+	if [[ -z "$SHELL_COMMAND" ]]; then
+		SHELL_COMMAND="bash"
+	fi
+
+	SELECTED_CONTAINER=$(echo $CONTAINERS | fzf)
+
+	if [[ -z "$SELECTED_CONTAINER" ]]; then
+		echo "No container was selected"
+		return 1
+	fi
+
+	docker exec -it "$SELECTED_CONTAINER" "$SHELL_COMMAND"
+}
