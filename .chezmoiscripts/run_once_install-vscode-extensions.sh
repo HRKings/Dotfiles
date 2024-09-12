@@ -10,20 +10,20 @@ vscode_extensions=(
 	mikestead.dotenv                      # dotEnv
 	ms-dotnettools.csharp                 # C#
 	ms-python.python                      # Python
-	ms-python.vscode-pylance
-	nvarner.typst-lsp             # Typst
-	oven.bun-vscode               # Bun runtime
-	pest.pest-ide-tools           # Pest parser
-	prql-lang.prql-vscode         # PRQL, next-level SQL
-	redhat.ansible                # Ansible
-	redhat.vscode-xml             # XML
-	redhat.vscode-yaml            # YAML
-	skellock.just                 # Just command runner
-	svelte.svelte-vscode          # Svelte
-	tamasfe.even-better-toml      # TOML
-	Vue.volar                     # Vue 3 Tooling
-	yzhang.markdown-all-in-one    # Markdown All-In-One
-	zerotaskx.rust-extension-pack # Rust again
+	ms-python.vscode-pylance              # Python Language Server
+	nvarner.typst-lsp                     # Typst
+	oven.bun-vscode                       # Bun runtime
+	pest.pest-ide-tools                   # Pest parser
+	prql-lang.prql-vscode                 # PRQL, next-level SQL
+	redhat.ansible                        # Ansible
+	redhat.vscode-xml                     # XML
+	redhat.vscode-yaml                    # YAML
+	skellock.just                         # Just command runner
+	svelte.svelte-vscode                  # Svelte
+	tamasfe.even-better-toml              # TOML
+	Vue.volar                             # Vue 3 Tooling
+	yzhang.markdown-all-in-one            # Markdown All-In-One
+	zerotaskx.rust-extension-pack         # Rust again
 
 	# Appearance -------------------------------------------------------------
 	Catppuccin.catppuccin-vsc       # Catppuccin Mocha Theme
@@ -36,7 +36,6 @@ vscode_extensions=(
 	anteprimorac.html-end-tag-labels      # Display what the end tags are (classes and such)
 	antfu.iconify                         # Preview Iconify icons
 	ast-grep.ast-grep-vscode              #  AST Grep support
-	bbugh.change-color-format             # Change between color formats (RGB, HSL, etc.)
 	bibhasdn.unique-lines                 # Delete duplicated lines
 	britesnow.vscode-toggle-quotes        # Toggle quotes around strings
 	deerawan.vscode-faker                 # Easily generate fake data
@@ -58,28 +57,30 @@ vscode_extensions=(
 	WallabyJs.quokka-vscode               # Inline function results for JS
 	wix.vscode-import-cost                # JS Package Import Cost
 	wmaurer.change-case                   # Quickly change the casing of a selection
+	YoavBls.pretty-ts-errors              # Makes TypeScript errors readable
 
 	# Editors/Previewers ------------------------------------------------------------------------
 	github.vscode-github-actions             # GitHub Actions
 	hbenl.vscode-test-explorer               # Test explorer
 	janisdd.vscode-edit-csv                  # CSV editor
 	kisstkondoros.vscode-gutter-preview      # Preview images on hover
-	mgt19937.typst-preview                   # Typst files preview
+	myriad-dreamin.tinymist                  # Typst files preview
 	ms-dotnettools.dotnet-interactive-vscode # DotNet support for Jupyter notebooks
 	ms-toolsai.jupyter                       # Jupyter Notebooks editor
-	ms-toolsai.jupyter-keymap
-	ms-toolsai.jupyter-renderers
-	ms-toolsai.vscode-jupyter-cell-tags
-	ms-vscode-remote.remote-ssh      # Open any folder on a remote machine
-	ms-vscode-remote.remote-ssh-edit # Easily edit SSH configs
-	ms-vscode.remote-explorer        # View remote SSH machines
-	tomoki1207.pdf                   # Preview a PDF in the editor
+	ms-toolsai.jupyter-keymap                # Jupyter
+	ms-toolsai.jupyter-renderers             # Jupyter
+	ms-toolsai.vscode-jupyter-cell-tags      # Jupyter
+	ms-vscode-remote.remote-ssh              # Open any folder on a remote machine
+	ms-vscode-remote.remote-ssh-edit         # Easily edit SSH configs
+	ms-vscode.remote-explorer                # View remote SSH machines
+	tomoki1207.pdf                           # Preview a PDF in the editor
 
 	# Intellisense ------------------------------------------------------------
 	bradlc.vscode-tailwindcss          # TailWind tooling
 	christian-kohler.npm-intellisense  # Intellisense for NPM
 	christian-kohler.path-intellisense # Intellisense for File Path
 	ecmel.vscode-html-css              # HTML/CSS
+	fill-labs.dependi                  # Manage dependencies for Rust, Go, JS, Python and PHP
 
 	# Workflow --------------------------------------------------------------------
 	continue.continue                 # Add local LLM support
