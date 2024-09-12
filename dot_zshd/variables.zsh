@@ -2,7 +2,7 @@
 # PATH
 #================================================================================================================================
 
-export PATH="$PATH:${HOME}/.local/bin:${GOPATH}/bin:${HOME}/.cargo/bin:${HOME}/.local/share/JetBrains/Toolbox/scripts:${HOME}/.dotnet/tools"
+export PATH="$PATH:${HOME}/.local/bin:${GOPATH}/bin:${HOME}/.cargo/bin:${HOME}/.local/share/JetBrains/Toolbox/scripts:${HOME}/.dotnet/tools:${HOME}/go/bin"
 
 #================================================================================================================================
 # Exports
@@ -39,3 +39,11 @@ zstyle ':notify:*' app-name 'zsh'
 zstyle ':notify:*' error-title '❌ Failed in #{time_elapsed} | Exit-Code: #{exit-code}'
 zstyle ':notify:*' success-title 'Finished in #{time_elapsed}'
 zstyle ':notify:*' expire-time 15000
+
+#================================================================================================================================
+# Keybinds for ZSH
+#================================================================================================================================
+
+# Ctrl+Arrow Keys to jump between words (this replaces the only use case I had for oh-my-zsh. At least I think...)
+# bindkey "^[[1;5C" forward-word
+# bindkey "^[[1;5D" backward-word
