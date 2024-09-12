@@ -60,5 +60,7 @@
 	amend = commit --amend --no-edit
 	initial = commit -m 'initial commit'
 	stashm = stash push -Sm
+	fetcha = fetch --all
+	update = ! git stash && git fetcha && git pull && git stash pop
 	remotes = ! git remote | fzf --preview 'git remote -v show -n {}'
 	remotesv = ! git remote | fzf --preview 'git remote -v show {}'
