@@ -7,3 +7,14 @@ rustflags = ["-C", "link-arg=--ld-path=/usr/bin/wild"]
 
 [alias]
 t="nextest run"
+
+[unstable]
+codegen-backend = true
+
+[profile.dev-cranelift]
+inherits = "dev"
+codegen-backend = "cranelift"
+
+
+[profile.release]
+strip = "symbols"
