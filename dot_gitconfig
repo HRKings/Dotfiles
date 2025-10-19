@@ -38,7 +38,11 @@
 	useBuiltin = false
 
 [merge]
-	conflictstyle = diff3
+	tool = nvim
+[mergetool "nvim"]
+	cmd = nvim -c "DiffviewOpen"
+[mergetool]
+	prompt = false
 
 [diff]
 	colorMoved = default
@@ -56,11 +60,22 @@
 	textconv = hexdump -Cv
 	binary = true
 
+# Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
+[alias]
+	# View changes from recent commits on the current branch with difftastic
+	syntaxlog = -c diff.external=difft log --ext-diff
+	# View changes from the most recent commit with difftastic
+	syntaxshow = -c diff.external=difft show --ext-diff
+	# View uncommitted changes with difftastic
+	syntaxdiff = -c diff.external=difft diff
+
 [alias]
 	amend = commit --amend --no-edit
 	initial = commit -m 'initial commit'
 	stashm = stash push -Sm
 	fetcha = fetch --all
-	update = ! git stash && git fetcha && git pull && git stash pop
+	pulla = pull --autostash
 	remotes = ! git remote | fzf --preview 'git remote -v show -n {}'
-	remotesv = ! git remote | fzf --preview 'git remote -v show {}'
+	remotesu = ! git remote | fzf --preview 'git remote -v show {}'
+	amerge = merge --abort
+	arebase = rebase --abort
