@@ -1,0 +1,40 @@
+# Font
+font-family = "Iosevka Nerd Font"
+font-size = 16
+
+# Aesthetics
+background-opacity = 0.75
+background-blur = 25
+
+# Window
+window-width = 140
+window-height = 30
+maximize = true
+
+window-padding-x = 14
+window-padding-y = 14
+resize-overlay = never
+
+gtk-tabs-location = bottom
+
+# Shell
+shell-integration-features = true
+# command = /usr/bin/env nu
+
+keybind = ctrl+arrow_up=jump_to_prompt:-1
+keybind = ctrl+arrow_up=jump_to_prompt:+1
+
+# Quake Terminal
+quick-terminal-position = top
+quick-terminal-size = 50%,90%
+quick-terminal-screen = main
+gtk-quick-terminal-layer = top
+quick-terminal-autohide = true
+keybind = global:super+shift+enter=toggle_quick_terminal
+
+# Misc
+bell-features = system,audio,attention,title,border
+
+# Cursor styling
+cursor-style = "block"
+cursor-style-blink = false
