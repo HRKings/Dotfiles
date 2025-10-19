@@ -1,7 +1,7 @@
 #! /bin/bash
 
 browsers=(
-	"thorium"
+	"helium"
 	"zen-bin"
 )
 
