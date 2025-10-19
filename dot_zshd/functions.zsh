@@ -12,7 +12,7 @@ function reloadzsh {
 
 # Select which Git email and GPG signing key to use inside a repository -----------------------------------------------
 function gitcfg {
-	if [[ $(git rev-parse --is-inside-work-tree 2&>/dev/null) != "true" ]]; then
+	if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) != "true" ]]; then
 		echo "Current folder '$PWD' is not a git repository."
 		return 1
 	fi
@@ -71,115 +71,6 @@ function stringdiff {
 	delta /tmp/string_diff_file_1 /tmp/string_diff_file_2
 }
 
-# Open yazi and cd into the directory if you quit ------------------------------------
-function ya {
-		tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-		yazi --cwd-file="$tmp"
-		if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-				cd -- "$cwd"
-		fi
-		rm -f -- "$tmp"
-}
-
-# Benchmark the RAM usage of a given command -----------------------------------------------------------
-function benchmem {
-	runs=$1
-	command_name=$2
-	values_output_file=$3
-
-	if [ -z "$runs" ] || [ -z "$command_name" ]; then
-		echo "Usage: benchmem RUNS COMMAND_NAME <VALUES_OUTPUT_FILE>"
-		echo "RUNS: the number of time to run the benchmark"
-		echo "COMMAND_NAME: the command to benchmark"
-		echo "VALUES_OUTPUT_FILE: Optional. A file to output the memory values of each benchmark"
-		return
-	fi
-
-	total=0
-
-	min=16000000000
-	max=0
-
-	values=()
-	for _ in {1..$runs}; do
-		i=$( (command time -f "%M" "$command_name") 2>&1 >/dev/null)
-		total=$(echo $total+$i | bc)
-
-		if (($i < $min)); then
-			min=$i
-		fi
-
-		if (($i > $max)); then
-			max=$i
-		fi
-
-		values+=($i)
-	done
-	mean=$(echo "scale=2; $total / $runs" | bc)
-
-	standardDeviation=0
-	for value in "${values[@]}"; do
-		standardDeviation=$(echo "$standardDeviation + ( ( $value - $mean )^2 )" | bc)
-	done
-	standardDeviation=$(echo "scale=2; sqrt( $standardDeviation / $runs )" | bc)
-
-	if [ ! -z "$values_output_file" ]; then
-		echo "${values[@]}" >$values_output_file
-	fi
-
-	echo "$command_name | $mean ± $standardDeviation | $min | $max" | column -t -s '|' -N 'Command,Mean,Min,Max'
-	echo "Obs.: the mean is followed by '± Standard Deviation'"
-}
-
-# Calculate the ratio of the mean of various numeric outputs in relation to another --------------------------------------
-function relativecalc {
-	size=$1
-	base_path=$2
-
-	if [ -z "$size" ] || [ -z "$base_path" ] || [ -z "$3" ]; then
-		echo "Usage: relativecalc SIZE VALUES_FILE_BASE VALUES_FILE_1 <VALUES_FILE_2> .. <VALUES_FILE_N>"
-		echo "SIZE: The amount of lines of the files"
-		echo "VALUES_FILE_BASE: A file containing SIZE lines with one value per line, serving as a comparison base"
-		echo "VALUES_FILE_1: A file containing SIZE lines with one value per line to compare against the base"
-		echo "VALUES_FILE_2 .. N: Optional. More files to compare against the base"
-	fi
-
-	files=($@)
-	base_file=($(cat $base_path))
-
-	output=$(printf "$base_path | 1.0\n")
-
-	for file_path in "${files[@]:2}"; do
-		current_file=($(cat $file_path))
-		total=0
-		values=()
-
-		for line in {1..$size}; do
-			relative=$(echo "scale=2; ${current_file[$line]} / ${base_file["line"]}" | bc)
-			total=$(echo $total+$relative | bc)
-			values+=($relative)
-		done
-		mean=$(echo "scale=2; $total / $size" | bc)
-
-		standardDeviation=0
-		for value in "${values[@]}"; do
-			standardDeviation=$(echo "$standardDeviation + ( ( $value - $mean )^2 )" | bc)
-		done
-		standardDeviation=$(echo "scale=2; sqrt( $standardDeviation / $size )" | bc)
-
-		output=$(printf "$output\n$file_path | $mean ± $standardDeviation\n")
-	done
-
-	echo "$output" | column -t -s '|' -N 'File,Relative'
-	echo "Obs.: the mean is followed by '± Standard Deviation'"
-}
-
-# Navigate folder with ease --------------
-function tere {
-	local result=$(command tere "$@")
-	[ -n "$result" ] && cd -- "$result"
-}
-
 # Interactive mode for cheatsheet --------------------------------------------------------------------------------
 function cs {
 	QUERY=$1
@@ -234,44 +125,6 @@ function urandombytes {
 	fi
 
 	head -c $1 /dev/urandom
-}
-
-# Archive and unarchive a tarball using brotli -----------------------------------------------------------
-function tarbrot {
-	if [ ! command -v brotli &> /dev/null ]; then
-		echo "'brotli' could not be found"
-		return 1
-	fi
-
-	local archive_name path_to_archive
-	if (( $# < 2 ))
-	then
-		echo "usage: $0 [archive_name.tar.br] [/path/to/include/into/archive ...]"
-		return 1
-	fi
-
-	archive_name="${1:t}"
-	path_to_archive="${@:2}"
-
-	tar -cvf "${archive_name}" --use-compress-program="$(where brotli)" "${=path_to_archive}"
-}
-
-function untarbrot {
-	if [ ! command -v brotli &> /dev/null ]; then
-		echo "'brotli' could not be found"
-		return 1
-	fi
-
-	local archive_name
-	if (( $# == 0 ))
-	then
-		echo "usage: $0 [archive_name.tar.br]"
-		return 1
-	fi
-
-	archive_name="${1:t}"
-
-	tar -xvf "$archive_name" --use-compress-program="$(where brotli)"
 }
 
 # Check and create a blake3 hash checksum ----------------------------------------------------------------
@@ -501,6 +354,7 @@ function cz {
 	test -n "$SCOPE" && SCOPE="($SCOPE)"
 
 	# Ask for breaking changes
+	BREAKING=""
 	gum confirm --default=false "There are breaking changes?" && BREAKING="!"
 
 	# Ask for a breaking change footer if not in the quick mode
@@ -677,12 +531,16 @@ function clearcache {
 	docker system prune -f
 	echo ""
 
-	gum style --bold --foreground 1  "Clearing Yay..."
+	gum style --bold --foreground 1  "Clearing AUR..."
 	yay -Sc
+	paru -Sc
 	echo ""
 
 	gum style --bold --foreground 1  "Clearing dotNet..."
 	dotnet nuget locals --clear all
+
+	gum style --bold --foreground 1  "Clearing Cargo..."
+	cargo cache -a
 }
 
 # Run a command inside a docker compose container
@@ -702,7 +560,7 @@ function dockershell {
 				return 0
 				;;
 			-a | --all)
-				CONTAINERS=
+				CONTAINERS=$(docker ps --format '{{.Names}}')
 				shift
 				;;
 			*)
@@ -733,4 +591,16 @@ function dockershell {
 	fi
 
 	docker exec -it "$SELECTED_CONTAINER" "$SHELL_COMMAND"
+}
+
+# ---
+function ycd {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  local cwd
+
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
 }

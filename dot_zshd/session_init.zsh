@@ -9,6 +9,7 @@ function quote {
 									"The art isn't the art. The art is never the art. The art is the thing that happens inside you when you make it."
 									"The society that separates its scholars from its warriors will have its thinking done by cowards and its fighting by fools."
 									"Always remember these words: Work hard, study well and eat and sleep plenty; We must master the art of peace in addition to the art of war."
+									"Do you think the cost of winning is high? Just wait until you see the bill regret sends your way."
 								)
 
 		selected_quote=$(shuf -n 1 -e "$APERTURE_SCIENCE[@]" "$OTHER_QUOTES[@]")

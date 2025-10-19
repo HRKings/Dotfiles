@@ -86,3 +86,7 @@ compdef _cheat cheat
 
 # 1Password Completion -------------------------
 eval "$(op completion zsh)"; compdef _op op
+
+
+# AWS CLI completion ----------------------
+complete -C '/usr/bin/aws_completer' aws

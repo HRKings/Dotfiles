@@ -18,8 +18,8 @@ fi
 # Sheldon (ZSH Plugins)
 #==================================================================================================
 
-# # Set the path for OhMyZSH -----------------------------------------------
-# export ZSH="$HOME/.local/share/sheldon/repos/github.com/ohmyzsh/ohmyzsh"
+# Set the path for OhMyZSH -----------------------------------------------
+export ZSH="$HOME/.local/share/sheldon/repos/github.com/ohmyzsh/ohmyzsh"
 
 # Load Sheldon --------------------------
 eval "$(sheldon source)"
@@ -55,3 +55,6 @@ eval "$(zoxide init zsh)"
 
 # Setup Atuin -------------
 eval "$(atuin init zsh)"
+
+# Setup Fast Node Manager (fnm) -------------
+eval "$(fnm env --use-on-cd --shell zsh)"

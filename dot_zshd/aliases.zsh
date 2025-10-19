@@ -43,15 +43,17 @@ alias pscpu="ps auxf | sort -nr -k 3"
 alias pscpu10="ps auxf | sort -nr -k 3 | head -10"
 
 # Format JSON from the clipboard ------------------------------------------------
-alias jsonf="xclip -o | jq"	# Then print
-alias jsonfc="xclip -o | jq | xclip -i"	# Then put it back on the clipboard
+alias jsonf="wl-paste | jq"	# Then print
+alias jsonfc="wl-paste | jq | wl-copy"	# Then put it back on the clipboard
 
 # Copy something directly to the clipboard ----
-alias clip="xclip -selection clipboard -i"
+alias clip="wl-copy"
 
 # List installed packages ----
 alias listpkg="pacman -Qent"
 alias listaur="pacman -Qem"
+# List packages installed by user (after home directory creation)
+alias listpkgs="paclog --before=\"$(stat $HOME | rg 'Birth' | choose 1..)\" | rg 'installed' | choose 3 | sort | uniq > /tmp/pkgs_before_home && pacman -Qqe | sort | uniq > /tmp/pkgs_current ; git diff /tmp/pkgs_before_home /tmp/pkgs_current | tail -n +6 | rg '^+' | sd '\+' ''; \rm /tmp/pkgs_before_home /tmp/pkgs_current"
 
 # Log coloring
 alias logc="ov --multi-color 'ERROR.*,WARN,INFO,DEBUG,not,^.{24}'"
@@ -71,7 +73,6 @@ alias rsshell="irust"	# Open Rust interactive shell (REPL)
 alias lgit="lazygit"
 alias ldocker="lazydocker"
 alias py="python"
-alias pbzip2="pbzip2"
 alias sg="$HOME/.cargo/bin/sg"
 
 # Kitty aliases --------------------------
@@ -98,10 +99,13 @@ alias ulidparse="ulid --format=rfc3339"
 #================================================================================================================================
 
 alias editdot="chezmoi edit --apply"	# Edit dotfiles
-alias getgitbackup='echo "dura/$(git rev-parse HEAD)"' # Get the dura branch for the Git backups
 alias zc="zi && code ." # Open Z interactive and open VSCode there
 alias pacseek="pacseek -i -u"
 alias conda_enable="source /opt/miniconda3/etc/profile.d/conda.sh"
+
+# Use dura for creating git commits periodicaly and not lose any progress
+alias startgitbackup='dura serve &; dura watch' # Start dura and watch the current repository
+alias getgitbackup='echo "dura/$(git rev-parse HEAD)"' # Get the dura branch for the Git backups
 
 # Create a Docker Compose file with a template
 alias mkcompose="fd -at f 'docker-compose.yaml' '/mnt/BulkStorage/Dev/Docker_Projects/docker_compose_templates' | sd '(.*?docker_compose_templates)/' '\$1\t' | sd '/(docker-compose.yaml)' '\t\$1' | fzf --with-nth 2 --preview 'bat -f {1}/{2}/{3}' | sd '\t' '/' | xargs bat > docker-compose.yaml"
