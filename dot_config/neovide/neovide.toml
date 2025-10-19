@@ -1,0 +1,10 @@
+maximized = true
+vsync = true
+
+[font]
+size = 16
+hinting = "full"
+edging = "antialias"
+
+[[font.normal]]
+family = "Iosevka Nerd Font"
