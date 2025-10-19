@@ -18,7 +18,7 @@
 disable = ["pacdef"]
 
 # Ignore failures for these steps
-# ignore_failures = ["powershell"]
+ignore_failures = ["spicetify", "self_update", "uv"]
 
 # List of remote machines with Topgrade installed on them
 # remote_topgrades = ["toothless", "pi", "parnas"]
