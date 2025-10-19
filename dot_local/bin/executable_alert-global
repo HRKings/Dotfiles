@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-export XDG_RUNTIME_DIR=/run/user/$(id -u) && ffplay -v 0 -nodisp -autoexit "$@"
