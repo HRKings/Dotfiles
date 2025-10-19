@@ -1,16 +1,30 @@
 {
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
   "[json]": {"editor.defaultFormatter": "j-brooke.fracturedjsonvsc"},
   "[jsonc]": {"editor.defaultFormatter": "j-brooke.fracturedjsonvsc"},
+  "[properties]": {"editor.defaultFormatter": "foxundermoon.shell-format"},
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.formatOnSave": true
   },
-  "astGrep.serverPath": "/home/ton/.cargo/bin/ast-grep",
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescriptreact]": {"editor.defaultFormatter": "esbenp.prettier-vscode"},
+  "[vue]": {"editor.defaultFormatter": "Vue.volar"},
+  "[yaml]": {"editor.defaultFormatter": "redhat.vscode-yaml"},
+  "astGrep.serverPath": "/usr/bin/ast-grep",
+  "cSpell.enabledFileTypes": {"shellscript": true},
+  "cSpell.language": "en,pt-BR,pt,lorem,en-GB,en-US",
+  "cSpell.userWords": ["nushell", "pacman"],
   "diffEditor.ignoreTrimWhitespace": false,
   "dotnetAcquisitionExtension.existingDotnetPath": [
     {"extensionId": "ms-dotnettools.csharp", "path": "/usr/bin/dotnet"}
   ],
   "editor.bracketPairColorization.enabled": true,
+  "editor.detectIndentation": false,
   "editor.fontFamily": "'Iosevka Nerd Font Mono', 'FiraCode Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 18,
@@ -20,13 +34,14 @@
   "editor.stickyScroll.enabled": true,
   "editor.tabSize": 2,
   "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+  "extensions.experimental.affinity": {"asvetliakov.vscode-neovim": 1},
   "files.associations": {"*.sql.rollback": "sql"},
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "firedbg.showWelcome": false,
   "fontshortcuts.defaultTerminalFontSize": 14,
-  "git.experimental.mergeEditor": true,
+  "git.openRepositoryInParentFolders": "always",
   "glassit.alpha": 245,
   "javascript.format.semicolons": "insert",
   "languageToolLinter.diagnosticSeverity": "information",
@@ -37,14 +52,19 @@
     "jupyter-notebook": "left"
   },
   "notebook.output.scrolling": true,
-  "python.defaultInterpreterPath": "/opt/anaconda/bin/python",
-  "python.formatting.provider": "black",
+  "npm.packageManager": "bun",
   "redhat.telemetry.enabled": false,
+  "rust-analyzer.cargo.targetDir": true,
   // "rust-analyzer.checkOnSave.command": "clippy",
   "security.workspace.trust.untrustedFiles": "open",
+  "shebang.associations": [
+    {"language": "nushell", "pattern": "^#!\\s*\/?.*\\bnu\\b"}
+  ],
   "shellcheck.customArgs": ["-x"],
-  "terminal.external.linuxExec": "kitty",
-  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.explorerKind": "external",
+  "terminal.external.linuxExec": "ghostty",
+  "terminal.integrated.defaultProfile.linux": "Nushell",
+  "terminal.integrated.fontFamily": "'Iosevka Nerd Font', 'FiraCode Nerd Font', 'Droid Sans Mono', 'monospace', monospace",
   "terminal.integrated.fontSize": 18,
   "terminal.integrated.inheritEnv": false,
   "terminal.integrated.localEchoExcludePrograms": [
@@ -54,22 +74,30 @@
   "terminal.integrated.shellIntegration.enabled": true,
   "terminal.integrated.stickyScroll.enabled": true,
   "typescript.format.semicolons": "insert",
-  "typst-lsp.exportPdf": "never",
-  "vim.easymotion": true,
-  "volar.autoCompleteRefs": true,
-  "volar.codeLens.scriptSetupTools": true,
   "window.commandCenter": true,
+  "window.newWindowProfile": "Default",
   "window.titleBarStyle": "custom",
   "window.zoomLevel": 0,
   "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.editor.empty.hint": "hidden",
   "workbench.iconTheme": "catppuccin-mocha",
-  "[yaml]": {"editor.defaultFormatter": "redhat.vscode-yaml"},
-  "[properties]": {"editor.defaultFormatter": "foxundermoon.shell-format"},
-  "editor.detectIndentation": false,
-  "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+  "languageToolLinter.languageTool.preferredVariants": "pt-BR",
+  "languageToolLinter.lintOnOpen": true,
+  "languageToolLinter.languageTool.level": "picky",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "docker.extension.enableComposeLanguageServer": false,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
-  "[vue]": {"editor.defaultFormatter": "Vue.volar"},
-  "cSpell.userWords": ["pokemons"],
-  "window.newWindowProfile": "Default"
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  }
 }
