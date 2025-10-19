@@ -1,0 +1,25 @@
+#! /usr/sh
+
+# Added by Toolbox App
+export PATH="$PATH:/home/ton/.local/share/JetBrains/Toolbox/scripts"
+
+# Use the correct file picker
+export GTK_USE_PORTAL=1
+
+# Set some variables so webkit apps don't crash when opening
+export GDK_BACKEND=wayland
+export WEBKIT_DISABLE_COMPOSITING_MODE=1
+
+# Enable Anti Aliasing for fonts inside Java GUI aplications
+export _JAVA_OPTIONS='-Dswing.aatext=TRUE -Dawt.useSystemAAFontSettings=on'
+
+# Make electron application behave when in Wayland
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+  export ELECTRON_OZONE_PLATFORM_HINT=wayland
+else
+  export ELECTRON_OZONE_PLATFORM_HINT=auto
+fi
+
+# Set some default programs
+export BROWSER=re.sonny.Junction
+export EDITOR=nvim
