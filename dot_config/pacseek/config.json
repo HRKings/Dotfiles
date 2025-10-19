@@ -1,5 +1,5 @@
 {
-	"AurRpcUrl": "http://aur.olympus.local/",
+	"AurRpcUrl": "https://aurapi.moson.org/rpc",
 	"AurTimeout": 5000,
 	"AurSearchDelay": 500,
 	"AurUseDifferentCommands": false,
