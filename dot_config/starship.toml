@@ -158,6 +158,12 @@ disabled = false
 format = '[ · $time  ]($style)'
 time_format = '%FT%T'
 
+[env_var.shpool]
+variable = 'SHPOOL_SESSION_NAME'
+symbol = ''
+format = '[${symbol} ${env_value} ](bold yellow bg:prev_bg)'
+description = 'The shpool session name currently attached'
+
 # Module configs -------------------
 
 [sudo]
@@ -173,9 +179,9 @@ format = '[󰏖 $version ]($style)'
 [jobs]
 symbol_threshold = 1
 number_threshold = 2
-symbol = '󱇝 '
-style = 'bold red bg:prev_bg'
-format = "[$symbol$number]($style)"
+symbol = '󱇝'
+style = 'bold red bg:surface0'
+format = "[$symbol$number ]($style)"
 
 # Languages
 
