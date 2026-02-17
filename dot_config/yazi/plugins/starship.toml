@@ -1,0 +1,297 @@
+# Get editor completions based on the config schema ----
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Choose the color palette -------------
+palette = "catppuccin_mocha"
+
+# The actual prompt formatting ---------
+format = """\
+[](fg:surface1)[ ($os|)($sudo|)$shell$username$hostname ](bg:surface1)[](surface1 bg:surface2)\
+[ $directory ](bg:surface2)[](surface2 bg:surface0)\
+[ ($git_status󰁥⠀)$git_branch$git_state ](bg:prev_bg)[](fg:prev_bg)\
+"""
+
+# Slanted:  
+right_format = """[](fg:surface0)[ ](bg:surface0)$all[](surface0)[─╯](bold surface2)"""
+
+# Prompt configs ------------------
+command_timeout = 1000
+continuation_prompt = '[󱞩](bold surface2) '
+add_newline = false
+
+# Segment 1 ---
+[os]
+style = "bold yellow bg:prev_bg"
+format = "$symbol($style)"
+disabled = true
+
+[os.symbols]
+EndeavourOS = " "
+Windows = ""
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "$󱄛$"
+
+[shell]
+zsh_indicator = "󰰶 "
+bash_indicator = " "
+fish_indicator = '󰈺 '
+powershell_indicator = '_'
+nu_indicator = "ημ"
+unknown_indicator = '󱔢 '
+style = 'text bold bg:prev_bg'
+format = "[$indicator]($style)"
+disabled = false
+
+[username]
+style_user = 'text bold bg:prev_bg'
+style_root = 'subtext1 bold bg:prev_bg'
+format = ' - [$user]($style)'
+disabled = true
+
+[hostname]
+ssh_only = true
+ssh_symbol = "󰣀 "
+style = "text dimmed bold bg:prev_bg"
+format = '[$ssh_symbol](bold blue)@[$hostname]($style)'
+
+# Segment 2 ---
+
+[directory]
+style = "subtext1 bg:prev_bg"
+truncation_length = 2
+truncation_symbol = '󰇘/'
+fish_style_pwd_dir_length = 1
+before_repo_root_style = "bold subtext1 bg:prev_bg"
+truncate_to_repo = false
+home_symbol = "󰠦 "
+format = "[$read_only]($read_only_style)[$before_root_path$repo_root$path]($style)"
+read_only = '󰉐 '
+read_only_style = "bold red bg:prev_bg"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Dev" = "󰲋 "
+
+# Segment 3 ---
+
+[git_status]
+ahead = '⇡ ${count}'
+diverged = '[「󱡷 ⇡ ${ahead_count} ⇣ ${behind_count} 」](bold peach bg:prev_bg)'
+behind = '⇣ ${count}'
+modified = '󰲶 ${count}'
+untracked = '[󰡯 ${count}](bold yellow bg:prev_bg)'
+deleted = '󰷮 ${count}'
+renamed = '󰾹 ${count}'
+conflicted = '[󰏯 ${count}](bold red bg:prev_bg)'
+up_to_date = '[󱓏 ](teal bg:prev_bg)'
+stashed = '[󰆓 ${count}](rosewater bg:prev_bg)'
+staged = '[${count}](bold green bg:prev_bg)'
+style = "lavender bg:prev_bg"
+format = '[($conflicted )($stashed )($deleted )($renamed )($modified )($typechanged)($staged )($untracked )($ahead_behind )]($style)'
+
+[git_state]
+style = "bold lavender bg:prev_bg"
+bisect = ' '
+rebase = '󱖈 '
+merge = ' '
+cherry_pick = ' '
+revert = '󰌥 '
+format = '[$symbol]($style)'
+
+[git_branch]
+style = "bg:prev_bg"
+symbol = "󰁥⠀"
+format = "[($branch(:$remote_branch))]($style)"
+truncation_length = 32
+truncation_symbol = '󰩫'
+
+# Fill ---
+
+[fill]
+symbol = '·'
+
+[character]
+error_symbol = '[✗](bold red)'
+success_symbol = "[󰸞](bold green)"
+disabled = true
+
+# Right Segment ----
+
+[status]
+style = 'bg:prev_bg'
+symbol = '[ ](red $style)'
+success_symbol = '[󰚔 ](green $style)'
+format = '[$symbol]($style)[$common_meaning$signal_name$maybe_int]($style)'
+map_symbol = true
+disabled = false
+
+[cmd_duration]
+min_time = 500
+style = "bold yellow bg:prev_bg"
+format = ' [](subtext0 bg:prev_bg) [$duration]($style)'
+
+[time]
+style = "subtext0 bg:prev_bg"
+disabled = false
+format = '[ · $time  ]($style)'
+time_format = '%FT%T'
+
+[env_var.shpool]
+variable = 'SHPOOL_SESSION_NAME'
+symbol = ''
+format = '[${symbol} ${env_value} ](bold yellow bg:prev_bg)'
+description = 'The shpool session name currently attached'
+
+# Module configs -------------------
+
+[sudo]
+disabled = false
+symbol = ' '
+style = 'bold red bg:prev_bg'
+format = "[$symbol]($style)"
+
+[package]
+style = "bg:prev_bg"
+format = '[󰏖 $version ]($style)'
+
+[jobs]
+symbol_threshold = 1
+number_threshold = 2
+symbol = '󱇝'
+style = 'bold red bg:surface0'
+format = "[$symbol$number ]($style)"
+
+# Languages
+
+[rust]
+symbol = ""
+style = "peach bold bg:prev_bg"
+format = '[${symbol}( ${version}) ]($style)'
+
+[lua]
+symbol = ""
+style = "blue bold bg:prev_bg"
+format = '[${symbol}( ${version}) ]($style)'
+
+[dotnet]
+symbol = ' '
+style = "mauve bold bg:prev_bg"
+heuristic = false
+format = '[${symbol}(${version} )(「$tfm 」)]($style)'
+
+[python]
+symbol = ' '
+style = "yellow bold bg:prev_bg"
+format = '[${symbol}${pyenv_prefix}(${version} )(「$virtualenv 」)]($style)'
+
+[nodejs]
+symbol = " "
+style = "green bold bg:prev_bg"
+format = '[${symbol}( ${version}) ]($style)'
+
+[bun]
+symbol = ""
+style = "rosewater bold bg:prev_bg"
+format = '[${symbol}( ${version}) ]($style)'
+
+[c]
+symbol = " "
+style = "blue bold bg:prev_bg"
+format = '[${symbol}( ${version}) ]($style)'
+
+[cpp]
+symbol = " "
+style = "blue bold bg:prev_bg"
+format = '[${symbol}( ${version}) ]($style)'
+
+[cmake]
+symbol = ""
+style = "blue bold bg:prev_bg"
+format = '[${symbol}( ${version}) ]($style)'
+
+[golang]
+symbol = ""
+style = "sapphire bold bg:prev_bg"
+format = '[${symbol}( ${version}) ]($style)'
+
+[php]
+symbol = ""
+style = "blue bold bg:prev_bg"
+format = '[${symbol}( ${version}) ]($style)'
+
+[java]
+symbol = " "
+style = "peach bold bg:prev_bg"
+format = '[${symbol}( ${version}) ]($style)'
+
+[kotlin]
+symbol = ""
+style = "mauve bold bg:prev_bg"
+format = '[${symbol}( ${version}) ]($style)'
+
+[docker_context]
+symbol = ""
+style = "sapphire bg:prev_bg"
+format = '[${symbol}( ${context}) ]($style)'
+
+[gleam]
+symbol = "󰦥"
+style = "pink bold bg:prev_bg"
+format = '[${symbol}( ${version}) ]($style)'
+
+# Dev tools
+
+[mise]
+symbol = ""
+style = "bold purple bg:prev_bg"
+format = '[${symbol}( ${health}) ]($style)'
+
+# Catppuccin Mocha Pallete -----------------------------------------------------
+# Source: https://github.com/catppuccin/starship/blob/main/themes/mocha.toml
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
