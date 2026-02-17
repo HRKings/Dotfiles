@@ -1,0 +1,47 @@
+[tools]
+bun = "latest"
+cargo-binstall = "latest"
+"cargo:nurl" = "latest"
+"cargo:shpool" = "latest"
+"cargo:topiary-cli" = "latest"
+"cargo:https://github.com/cksac/fake-rs" = { version = "latest", features = "cli" }
+dotnet = "latest"
+"dotnet:dotnet-ef" = "latest"
+flutter = "latest"
+go = "latest"
+"go:github.com/dimonomid/nerdlog/cmd/nerdlog" = "latest"
+"go:golang.org/x/tools/cmd/goimports" = "latest"
+kubecolor = "latest"
+node = "latest"
+"pipx:harlequin" = "latest"
+"pipx:magika" = "latest"
+python = "latest"
+rust = "latest"
+uv = "latest"
+"cargo:nu_plugin_skim" = "latest"
+"cargo:nu_plugin_json_path" = "latest"
+"cargo:nu_plugin_ulid" = "latest"
+"pipx:huggingface_hub" = "latest"
+"npm:azurite" = "latest"
+"npm:azure-functions-core-tools" = "latest"
+terraform = "latest"
+helm = "latest"
+pkl = "latest"
+hk = "latest"
+"github:LostRuins/koboldcpp" = "latest"
+"github:xo/usql" = "latest"
+
+[settings]
+experimental = true
+lockfile = true
+
+[settings.python]
+uv_venv_create_args = ['--seed']
+# default_packages_file = '~/.config/mise/default-python-packages.txt'
+uv_venv_auto = true
+
+[settings.pipx]
+uvx = true
+
+[settings.npm]
+bun = true
