@@ -136,18 +136,29 @@ def "llamacpp generate commit-message" [
 ] {
   let staged = if ($staged) { ["--staged"] } else { [] }
 
-  let prompt = ($"<|start_header_id|>system<|end_header_id|>
-    ```diff
-      (^git diff ...$staged | to text)
-    ```<|eot_id|>
-    <|start_header_id|>user<|end_header_id|>
-    Generate a very short commit message that best describes the changes made.
-    <|eot_id|>
-    <|start_header_id|>assistant<|end_header_id|>
+  let system_prompt = ("
+Generate a commit message.
+The message should not exceed 80 characters.
+
+Remember to follow these guidelines:
+1. Use the imperative mood
+2. Be concise and clear
+3. Explain the 'why' behind the change
+4. The message should follow the conventional commits guidelines, prefixed with the type like: `feat:, update:, fix:`
+5. You will always answer with only the message and nothing more
     ")
+ 
+   let diff = ($"```diff
+      (^git diff ...$staged | to text)
+    ```")
 
+  let response = (http post --content-type application/json "http://localhost:1234/v1/chat/completions" 
+    {
+      model: "qwen2.5-coder-1.5b-instruc-128k",
+      messages: [{role: "system", content: $system_prompt}, {role: "user", content: $diff}],
+      temperature: 0.5, max_tokens: 2048, stream: false
+    }
+  )
 
-  let response = http post --content-type application/json http://localhost:5000/completion { prompt: $prompt, n_predit: 1024, stream: false }
-
-  print ($response | get content)
+  print ($response | get choices.0 | get message.content)
 }
