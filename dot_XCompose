@@ -1,0 +1,48 @@
+include "%H/.local/share/omarchy/default/xcompose"
+
+# Identification
+# <Multi_key> <space> <n> : ""
+# <Multi_key> <space> <e> : ""
+
+# Latin
+<Multi_key> <apostrophe> <e> : "é"
+<Multi_key> <apostrophe> <E> : "É"
+<Multi_key> <asciicircum> <e> : "ê"
+<Multi_key> <asciicircum> <E> : "Ê"
+
+<Multi_key> <asciitilde> <o> : "õ"
+<Multi_key> <asciitilde> <O> : "Õ"
+<Multi_key> <apostrophe> <o> : "ó"
+<Multi_key> <apostrophe> <O> : "Ó"
+
+<Multi_key> <asciitilde> <a> : "ã"
+<Multi_key> <asciitilde> <A> : "Ã"
+<Multi_key> <apostrophe> <a> : "á"
+<Multi_key> <apostrophe> <A> : "Á"
+
+<Multi_key> <apostrophe> <i> : "í"
+<Multi_key> <apostrophe> <I> : "Í"
+
+<Multi_key> <apostrophe> <c> : "ç"
+<Multi_key> <apostrophe> <C> : "Ç"
+
+<Multi_key> <apostrophe> <u> : "ú"
+<Multi_key> <apostrophe> <U> : "Ú"
+
+# Greek characters
+<Multi_key> <asterisk> <p> <i> : "π"
+<Multi_key> <asterisk> <a> : "α"
+<Multi_key> <asterisk> <b> : "β"
+
+# Portuguese shortcuts
+<Multi_key> <v> <c> : "você"
+<Multi_key> <V> <C> : "VOCÊ"
+
+<Multi_key> <n> <n> : "não"
+<Multi_key> <N> <N> : "NÃO"
+
+<Multi_key> <c> <a> <o> : "ção"
+<Multi_key> <a> <o> : "ão"
+<Multi_key> <c> <o> <e> : "çõe"
+<Multi_key> <o> <e> : "õe"
+
