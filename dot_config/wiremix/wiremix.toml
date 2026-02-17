@@ -1,0 +1,41 @@
+[[names.overrides]]
+types = [ "endpoint", "device" ]
+property = "node:node.name"
+value = "alsa_output.usb-Logitech_A50_X-00.pro-output-0"
+templates = [ "{node:node.description}" ]
+
+[[names.overrides]]
+types = [ "endpoint", "device" ]
+property = "node:node.name"
+value = "alsa_output.usb-Logitech_A50_X-00.pro-output-1"
+templates = [ "{node:node.description}" ]
+
+[[names.overrides]]
+types = [ "endpoint", "device" ]
+property = "node:node.name"
+value = "alsa_input.usb-Logitech_A50_X-00.pro-input-0"
+templates = [ "{node:node.description}" ]
+
+[[names.overrides]]
+types = [ "endpoint", "device" ]
+property = "node:node.name"
+value = "alsa_input.usb-Logitech_A50_X-00.pro-input-1"
+templates = [ "{node:node.description}" ]
+
+# The Spotify client's node.name is "spotify", and it also uses "Spotify" for
+# media.name. This override makes wiremix use just the node.name, so it shows
+# as "spotify" instead of "spotify: Spotify".
+[[names.overrides]]
+types = [ "stream" ]
+property = "node:node.name"
+value = "spotify"
+templates = [ "{node:node.name}" ]
+
+# mpv is also a bit redundant with the default naming scheme - it suffixes
+# media.name with "- mpv". This override makes it show as "foo - mpv" instead
+# of "mpv: foo - mpv".
+[[names.overrides]]
+types = [ "stream" ]
+property = "node:node.name"
+value = "mpv"
+templates = [ "{node:media.name}" ]
