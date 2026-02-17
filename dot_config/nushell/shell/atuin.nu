@@ -3,10 +3,12 @@
 module compat {
   export def --wrapped "random uuid -v 7" [...rest] { atuin uuid }
 }
-use (if not (
+use (
+  if not (
     (version).major > 0 or
     (version).minor >= 103
-) { "compat" }) *
+  ) { "compat" }
+) *
 
 $env.ATUIN_SESSION = (random uuid -v 7 | str replace -a "-" "")
 hide-env -i ATUIN_HISTORY_ID
@@ -15,119 +17,118 @@ hide-env -i ATUIN_HISTORY_ID
 let ATUIN_KEYBINDING_TOKEN = $env.ATUIN_KEYBINDING_TOKEN
 
 let _atuin_pre_execution = {||
-    if ($nu | get history-enabled?) == false {
-        return
-    }
-
-    let cmd = (commandline)
-
-    if ($cmd | is-empty) {
-        return
-    }
-
-    # Support expanding aliases
-    let spans = ($cmd | split row ' ')
-    let span_zero = ($spans | get -o 0)
-
-    let expanded_alias = scope aliases
-		  | where name == $span_zero
-		  | get -o 0.expansion
-      | default ''
-
-    if ($expanded_alias != null and ($expanded_alias | is-not-empty)) {
-      let command = ($spans | skip 1 | prepend $expanded_alias | str join ' ')
-
-      $env.ATUIN_HISTORY_ID = (atuin history start -- $command)
-
-      return;
-    }
-
-    # Fallback to normal behaviour
-    if not ($cmd | str starts-with $ATUIN_KEYBINDING_TOKEN) {
-        $env.ATUIN_HISTORY_ID = (atuin history start -- $cmd)
-    }
+  if ($nu | get history-enabled?) == false {
+    return
+  }
+  let cmd = (commandline)
+  if ($cmd | is-empty) {
+    return
+  }
+  if not ($cmd | str starts-with $ATUIN_KEYBINDING_TOKEN) {
+    $env.ATUIN_HISTORY_ID = (atuin history start -- $cmd)
+  }
 }
 
 let _atuin_pre_prompt = {||
-    let last_exit = $env.LAST_EXIT_CODE
-    if 'ATUIN_HISTORY_ID' not-in $env {
-        return
+  let last_exit = $env.LAST_EXIT_CODE
+  if 'ATUIN_HISTORY_ID' not-in $env {
+    return
+  }
+  with-env {ATUIN_LOG: error} {
+    if (version).minor >= 104 or (version).major > 0 {
+      job spawn -t atuin {
+        ^atuin history end $'--exit=($env.LAST_EXIT_CODE)' -- $env.ATUIN_HISTORY_ID | complete
+      } | ignore
+    } else {
+      do { atuin history end $'--exit=($last_exit)' -- $env.ATUIN_HISTORY_ID } | complete
     }
-    with-env { ATUIN_LOG: error } {
-        if (version).minor >= 104 or (version).major > 0 {
-            job spawn -t atuin {
-                ^atuin history end $'--exit=($env.LAST_EXIT_CODE)' -- $env.ATUIN_HISTORY_ID | complete
-            } | ignore
-        } else {
-            do { atuin history end $'--exit=($last_exit)' -- $env.ATUIN_HISTORY_ID } | complete
-        }
-
-    }
-    hide-env ATUIN_HISTORY_ID
+  }
+  hide-env ATUIN_HISTORY_ID
 }
 
-
 def _atuin_search_cmd [...flags: string] {
+  if (version).minor >= 106 or (version).major > 0 {
     [
-        $ATUIN_KEYBINDING_TOKEN,
-        ([
-            `with-env { ATUIN_LOG: error, ATUIN_QUERY: (commandline), ATUIN_SHELL_ZSH: t } {`,
-                ([
-                    'let output = (run-external atuin search',
-                    ($flags | append [--interactive] | each {|e| $'"($e)"'}),
-                    'e>| str trim)',
-                ] | flatten | str join ' '),
-                'if ($output | str starts-with "__atuin_accept__:") {',
-                'commandline edit --accept ($output | str replace "__atuin_accept__:" "")',
-                '} else {',
-                'commandline edit $output',
-                '}',
-            `}`,
-        ] | flatten | str join "\n"),
-    ] | str join "\n"
+      $ATUIN_KEYBINDING_TOKEN
+      (
+        [
+          `with-env { ATUIN_LOG: error, ATUIN_QUERY: (commandline), ATUIN_SHELL: nu } {`
+          (
+            [
+              'let output = (run-external atuin search'
+              ($flags | append [--interactive] | each {|e| $'"($e)"' })
+              'e>| str trim)'
+            ] | flatten | str join ' '
+          )
+          'if ($output | str starts-with "__atuin_accept__:") {'
+          'commandline edit --accept ($output | str replace "__atuin_accept__:" "")'
+          '} else {'
+          'commandline edit $output'
+          '}'
+          `}`
+        ] | flatten | str join "\n"
+      )
+    ]
+  } else {
+    [
+      $ATUIN_KEYBINDING_TOKEN
+      (
+        [
+          `with-env { ATUIN_LOG: error, ATUIN_QUERY: (commandline) } {`
+          'commandline edit'
+          '(run-external atuin search'
+          ($flags | append [--interactive] | each {|e| $'"($e)"' })
+          ' e>| str trim)'
+          `}`
+        ] | flatten | str join ' '
+      )
+    ]
+  } | str join "\n"
 }
 
 $env.config = ($env | default {} config).config
 $env.config = ($env.config | default {} hooks)
 $env.config = (
-    $env.config | upsert hooks (
-        $env.config.hooks
-        | upsert pre_execution (
-            $env.config.hooks | get pre_execution? | default [] | append $_atuin_pre_execution)
-        | upsert pre_prompt (
-            $env.config.hooks | get pre_prompt? | default [] | append $_atuin_pre_prompt)
+  $env.config | upsert hooks (
+    $env.config.hooks
+    | upsert pre_execution (
+      $env.config.hooks | get pre_execution? | default [] | append $_atuin_pre_execution
     )
+    | upsert pre_prompt (
+      $env.config.hooks | get pre_prompt? | default [] | append $_atuin_pre_prompt
+    )
+  )
 )
 
 $env.config = ($env.config | default [] keybindings)
 
 $env.config = (
-    $env.config | upsert keybindings (
-        $env.config.keybindings
-        | append {
-            name: atuin
-            modifier: control
-            keycode: char_r
-            mode: [emacs, vi_normal, vi_insert]
-            event: { send: executehostcommand cmd: (_atuin_search_cmd) }
-        }
-    )
+  $env.config | upsert keybindings (
+    $env.config.keybindings
+    | append {
+      name: atuin
+      modifier: control
+      keycode: char_r
+      mode: [emacs vi_normal vi_insert]
+      event: {send: executehostcommand cmd: (_atuin_search_cmd)}
+    }
+  )
 )
 
 $env.config = (
-    $env.config | upsert keybindings (
-        $env.config.keybindings
-        | append {
-            name: atuin
-            modifier: none
-            keycode: up
-            mode: [emacs, vi_normal, vi_insert]
-            event: {
-                until: [
-                    {send: menuup}
-                    {send: executehostcommand cmd: (_atuin_search_cmd '--shell-up-key-binding') }
-                ]
-            }
-        }
-    )
+  $env.config | upsert keybindings (
+    $env.config.keybindings
+    | append {
+      name: atuin
+      modifier: none
+      keycode: up
+      mode: [emacs vi_normal vi_insert]
+      event: {
+        until: [
+          {send: menuup}
+          {send: executehostcommand cmd: (_atuin_search_cmd '--shell-up-key-binding')}
+        ]
+      }
+    }
+  )
 )

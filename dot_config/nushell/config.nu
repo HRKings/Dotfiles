@@ -7,7 +7,7 @@ source ./themes/catppuccin-mocha.nu
 
 # Create the Atuin hiding token -------------------
 $env.ATUIN_KEYBINDING_TOKEN = $"# (random uuid)"
-$env.ATUIN_CONFIG_DIR = ( $env.HOME | path join ".config/atuin-nushell" )
+$env.ATUIN_CONFIG_DIR = ($env.HOME | path join ".config/atuin-nushell")
 
 # Nushell configs ------------------------------------------------------------------------------------------------------
 source ./options/main.nu
@@ -21,9 +21,7 @@ use std *
 source ./shell/atuin.nu
 source ./shell/zoxide.nu
 source ./shell/starship.nu
-# ^oh-my-posh init nu --config='/home/ton/.config/oh-my-posh.toml'
-source ./shell/fnm.nu
-source ./shell/mise.nu
+use ./shell/mise.nu
 
 # Autoload -----------
 source ./autoload.nu

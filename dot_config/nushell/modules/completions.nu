@@ -54,6 +54,7 @@ let external_completer = {|spans|
 		__zoxide_z | __zoxide_zi => $zoxide_completer
     # Marimo does not have any nushell compatible completions
     marimo => $fish_completer
+    nvim | neovide => $fish_completer
     # Fallback to carapace if by default
 		_ => $carapace_completer
 	} | do $in $spans

@@ -18,7 +18,7 @@ def getpubip [
     return (^dig -6 +short myip.opendns.com @resolver1.opendns.com)
   }
 
-  ^dig +short ANY myip.opendns.com @resolver1.opendns.com
+  ^dog -1 myip.opendns.com @resolver1.opendns.com
 }
 
 # ------------------------------------------------------------------------------------------------------------------------

@@ -38,24 +38,24 @@ let scheme = {
   operator: $theme.sky
   string: $theme.green
   virtual_text: $theme.surface2
-  variable: { fg: $theme.flamingo attr: i }
+  variable: {fg: $theme.flamingo attr: i}
   filepath: $theme.yellow
 }
 
 # Retrieve the theme settings -------------------------------
 $env.config.color_config = {
-  separator: { fg: $theme.surface2 attr: b }
-  leading_trailing_space_bg: { fg: $theme.lavender attr: u }
-  header: { fg: $theme.text attr: b }
+  separator: {fg: $theme.surface2 attr: b}
+  leading_trailing_space_bg: {fg: $theme.lavender attr: u}
+  header: {fg: $theme.text attr: b}
   row_index: $scheme.virtual_text
   record: $theme.text
   list: $theme.text
   hints: $scheme.virtual_text
-  search_result: { fg: $theme.base bg: $theme.yellow }
+  search_result: {fg: $theme.base bg: $theme.yellow}
   shape_closure: $theme.teal
   closure: $theme.teal
-  shape_flag: { fg: $theme.maroon attr: i }
-  shape_matching_brackets: { attr: u }
+  shape_flag: {fg: $theme.maroon attr: i}
+  shape_matching_brackets: {attr: u}
   shape_garbage: $theme.red
   shape_keyword: $theme.mauve
   shape_match_pattern: $theme.green
@@ -66,7 +66,7 @@ $env.config.color_config = {
   shape_record: $scheme.punctuation
   shape_vardecl: $scheme.variable
   shape_variable: $scheme.variable
-  empty: { attr: n }
+  empty: {attr: n}
   filesize: {||
     if $in < 1kb {
       $theme.teal
@@ -101,8 +101,8 @@ $env.config.color_config = {
       $theme.mauve
     }
   }
-  date: {|| (date now) - $in |
-    if $in < 1day {
+  date: {||
+    (date now) - $in | if $in < 1day {
       $theme.teal
     } else if $in < 1wk {
       $theme.green
@@ -127,7 +127,7 @@ $env.config.color_config = {
   custom: $theme.pink
   background: $theme.base
   foreground: $theme.text
-  cursor: { bg: $theme.rosewater fg: $theme.base }
+  cursor: {bg: $theme.rosewater fg: $theme.base}
   shape_range: $scheme.operator
   range: $scheme.operator
   shape_pipe: $scheme.operator
@@ -160,15 +160,15 @@ $env.config.color_config = {
 $env.config.highlight_resolved_externals = true
 
 $env.config.explore = {
-    status_bar_background: { fg: $theme.text, bg: $theme.mantle },
-    command_bar_text: { fg: $theme.text },
-    highlight: { fg: $theme.base, bg: $theme.yellow },
-    status: {
-        error: $theme.red,
-        warn: $theme.yellow,
-        info: $theme.blue,
-    },
-    selected_cell: { bg: $theme.blue fg: $theme.base },
+  status_bar_background: {fg: $theme.text bg: $theme.mantle}
+  command_bar_text: {fg: $theme.text}
+  highlight: {fg: $theme.base bg: $theme.yellow}
+  status: {
+    error: $theme.red
+    warn: $theme.yellow
+    info: $theme.blue
+  }
+  selected_cell: {bg: $theme.blue fg: $theme.base}
 }
 
 # Export the theme for usage in other places -------

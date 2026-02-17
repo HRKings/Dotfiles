@@ -53,7 +53,7 @@ def "llamacpp serve" [
   let swa = if ( $swa_full | default false ) { [ "--swa-full"] } else { [] }
   let mmproj = if ( $mmproj | str is-blank ) { [] } else { [ "--mmproj" $mmproj ] }
   if ( not ($mmproj | is-empty) and ($mmproj_cpu | default false) ) { $mmproj | append "--no-mmproj-offload" }
-  let use_embedded_template = if ( $use_embedded_template | default false ) { []  } else { [ "--jinja" ] }
+  let use_embedded_template = if ( $use_embedded_template | default true ) { []  } else { [ "--jinja" ] }
 
   let override_tensors = if ( $override_tensors_device | str is-blank ) { [] } else { [ "--override-tensor" $override_tensors_device ] }
 
