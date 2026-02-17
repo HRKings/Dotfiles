@@ -1,0 +1,4 @@
+[".config/topiary/queries/nu.scm"]
+type = "file"
+url = "https://raw.githubusercontent.com/blindFS/topiary-nushell/refs/heads/main/languages/nu.scm"
+refreshPeriod = "24h"
