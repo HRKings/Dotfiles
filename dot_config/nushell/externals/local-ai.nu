@@ -152,7 +152,7 @@ Remember to follow these guidelines:
       (^git diff ...$staged | to text)
     ```")
 
-  let response = (http post --content-type application/json "http://localhost:1234/v1/chat/completions" 
+  let response = (http post --content-type application/json "http://localhost:1234/v1/chat/completions"
     {
       model: "qwen2.5-coder-1.5b-instruc-128k",
       messages: [{role: "system", content: $system_prompt}, {role: "user", content: $diff}],
