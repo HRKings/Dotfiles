@@ -1,1 +1,2 @@
-link-mode = "symlink"
+# link-mode = "symlink"
+cache-dir = "/mnt/Dev/.cache/uv"
