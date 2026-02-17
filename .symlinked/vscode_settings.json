@@ -1,4 +1,5 @@
 {
+  "update.mode": "none",
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
@@ -99,5 +100,6 @@
   },
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
-  }
+  },
+  "mise.configureExtensionsAutomatically": true
 }
