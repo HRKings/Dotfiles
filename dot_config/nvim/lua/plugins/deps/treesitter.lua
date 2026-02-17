@@ -1,0 +1,31 @@
+return {
+	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = {
+			ensure_installed = {
+				"devicetree",
+				"lua",
+				"sql",
+				"go",
+				"regex",
+				"bash",
+				"markdown",
+				"markdown_inline",
+				"yaml",
+				"toml",
+				"json",
+				"jsonc",
+				"cpp",
+				"csv",
+				"java",
+				"javascript",
+				"python",
+				"dockerfile",
+				"html",
+				"css",
+				"promql",
+				"glsl",
+			},
+		},
+	},
+}
